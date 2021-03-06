@@ -1,0 +1,46 @@
+0000000000000000000000000000000000000000 1e0f99faa1046a5302be6ddee8bca069b9258af9 Kyler Juresic <Kylerjuresic@gmail.com> 1614307121 -0600	checkout: moving from master to main
+1e0f99faa1046a5302be6ddee8bca069b9258af9 30e250689f75f94dd45fd6a91866a86af67ff86f Kyler Juresic <Kylerjuresic@gmail.com> 1614307217 -0600	commit: Revert "Create dummy"
+30e250689f75f94dd45fd6a91866a86af67ff86f e2e26e25ccae36a33e0ca22adc060ab1ce7e5479 Kyler Juresic <Kylerjuresic@gmail.com> 1614307260 -0600	commit: First Upload
+e2e26e25ccae36a33e0ca22adc060ab1ce7e5479 e2e26e25ccae36a33e0ca22adc060ab1ce7e5479 Kyler Juresic <Kylerjuresic@gmail.com> 1614388421 -0600	discard: [68f862f862ed4f8acff58e29e62d327c43b40005]
+e2e26e25ccae36a33e0ca22adc060ab1ce7e5479 e9b289f02a05a4ee4da8e23e2322fb5ec57ead96 Kyler Juresic <Kylerjuresic@gmail.com> 1614388434 -0600	Fast forward branch main to branch main
+e9b289f02a05a4ee4da8e23e2322fb5ec57ead96 92f245a1f5be90fd7bf4dcc6941645c589892e1e Kyler Juresic <Kylerjuresic@gmail.com> 1614389062 -0600	commit: updating Updater| Fixing execution policy for powershell scripts
+92f245a1f5be90fd7bf4dcc6941645c589892e1e 0c75ad465fc9e14b0ebc359c0f918a2ad2762fd2 Kyler Juresic <Kylerjuresic@gmail.com> 1614390313 -0600	commit: Updating Updater | Removed debug pause
+0c75ad465fc9e14b0ebc359c0f918a2ad2762fd2 bb1a971afce381ad49a35460abb26669171cb174 Kyler Juresic <Kylerjuresic@gmail.com> 1614390414 -0600	commit: Updating Updater | Fixed 7zip
+bb1a971afce381ad49a35460abb26669171cb174 a141b4c3e8ed450775e12f245273c000097ad05d Kyler Juresic <Kylerjuresic@gmail.com> 1614405456 -0600	commit: Update Version 0.5.5
+a141b4c3e8ed450775e12f245273c000097ad05d a8f33a080840e88beaa0ff0050f2cebeef4e8fe9 Kyler Juresic <Kylerjuresic@gmail.com> 1614413630 -0600	commit: Update Version 0.5.6 | Changed base health, small UI tweaks
+a8f33a080840e88beaa0ff0050f2cebeef4e8fe9 40db22f55a048a1cce76a91c91996bf8d2b1c4ed Kyler Juresic <Kylerjuresic@gmail.com> 1614413678 -0600	commit: change version file to 0.5.6
+40db22f55a048a1cce76a91c91996bf8d2b1c4ed caeb1d274d3c0596d7e0b4a1b9548222513fe1fc Kyler Juresic <Kylerjuresic@gmail.com> 1614417689 -0600	commit: Update Version 0.5.6 | No Change - just memeing
+caeb1d274d3c0596d7e0b4a1b9548222513fe1fc 474f02a980f5ca4d375d70a99f160c06a8261ba5 Kyler Juresic <Kylerjuresic@gmail.com> 1614417724 -0600	commit (amend): Update Version 0.5.7 | No Change - just memeing
+474f02a980f5ca4d375d70a99f160c06a8261ba5 eef28df4f19211b854ec76947014fb4842704aa3 Kyler Juresic <Kylerjuresic@gmail.com> 1614417729 -0600	commit (merge): Merge remote-tracking branch 'origin/main' into main
+eef28df4f19211b854ec76947014fb4842704aa3 98e4590207564a29aa7c056d627e34744bda042d Kyler Juresic <Kylerjuresic@gmail.com> 1614471955 -0600	commit: Update Version 0.5.8 | Adds/updates mods
+98e4590207564a29aa7c056d627e34744bda042d 30cbee97f91c9f230ffa20ea36bef59c8b2d5ca7 Kyler Juresic <Kylerjuresic@gmail.com> 1614474368 -0600	commit: update Version File | 0.5.8 - I keep forgetting....
+30cbee97f91c9f230ffa20ea36bef59c8b2d5ca7 8042407a3d335b626ff60fe562ee8c4a4165585b Kyler Juresic <Kylerjuresic@gmail.com> 1614489181 -0600	commit: Update Version 0.5.9 | Add mod locator
+8042407a3d335b626ff60fe562ee8c4a4165585b 8042407a3d335b626ff60fe562ee8c4a4165585b Kyler Juresic <Kylerjuresic@gmail.com> 1614490276 -0600	discard: [27bf4bc6154e236a3ed6cd0be9c4df9cb21e6892]
+8042407a3d335b626ff60fe562ee8c4a4165585b 8042407a3d335b626ff60fe562ee8c4a4165585b Kyler Juresic <Kylerjuresic@gmail.com> 1614490284 -0600	discard: [ddb547fe773c91e67b2efb49d097c168ccbeef13]
+8042407a3d335b626ff60fe562ee8c4a4165585b b2ac79e508d7d7bc617e33386adbc0588ec7efd1 Kyler Juresic <Kylerjuresic@gmail.com> 1614539487 -0600	commit: Update Version 0.6.0 | Attempt fixing constant lag spikes with 4+ players
+b2ac79e508d7d7bc617e33386adbc0588ec7efd1 53a8d99b6f370de1c57953f3958eb80a3dd3ae88 Kyler Juresic <Kylerjuresic@gmail.com> 1614540370 -0600	commit: Update Version 0.6.1 | Updating mods
+53a8d99b6f370de1c57953f3958eb80a3dd3ae88 623559ba23a4b5d52ecec16cce135abe58efc2a4 Kyler Juresic <Kylerjuresic@gmail.com> 1614551737 -0600	commit: Update Version 0.6.2 | Changed Ship Speeds
+623559ba23a4b5d52ecec16cce135abe58efc2a4 623559ba23a4b5d52ecec16cce135abe58efc2a4 Kyler Juresic <Kylerjuresic@gmail.com> 1614553671 -0600	discard: [091b78af9ce7badd131fa4a834f88729a4ca2a21] [6b7182b9a215ed256b06883be4154c1553d0c14e]
+623559ba23a4b5d52ecec16cce135abe58efc2a4 623559ba23a4b5d52ecec16cce135abe58efc2a4 Kyler Juresic <Kylerjuresic@gmail.com> 1614553750 -0600	discard: [8ffde521573b9d56d90d5db20297d49059f724b1]
+623559ba23a4b5d52ecec16cce135abe58efc2a4 cc51158f04f5694672564c1edffeedf0948631ef Kyler Juresic <Kylerjuresic@gmail.com> 1614553931 -0600	commit: Fixed an Oops
+cc51158f04f5694672564c1edffeedf0948631ef dc9e8f4ec5eb13d4cd3c3f8c40d6c037a1c2d290 Kyler Juresic <Kylerjuresic@gmail.com> 1614555095 -0600	commit: Fixed enable/disable script - redownload updater
+dc9e8f4ec5eb13d4cd3c3f8c40d6c037a1c2d290 df69d725fa4f9b2830cab9d48f723e1c01c10dae Kyler Juresic <Kylerjuresic@gmail.com> 1614559950 -0600	commit: Update Version 0.6.2 | Attempts fixing lag / Disconnects
+df69d725fa4f9b2830cab9d48f723e1c01c10dae 0c57ff250a774ea840caebed00b64707d784e137 Kyler Juresic <Kylerjuresic@gmail.com> 1614647649 -0600	Fast forward branch main to branch origin/main
+0c57ff250a774ea840caebed00b64707d784e137 46918a21828c6c5b3c0e993faccb71e0dc70b1a3 Kyler Juresic <Kylerjuresic@gmail.com> 1614653846 -0600	commit: Update Version 0.7.6 | Fixed ores dropping WAAAY too much ore
+46918a21828c6c5b3c0e993faccb71e0dc70b1a3 fd861cd667675c4889870ee7ac81f249c4ca733e Kyler Juresic <Kylerjuresic@gmail.com> 1614655391 -0600	commit: Changed more numbers
+fd861cd667675c4889870ee7ac81f249c4ca733e a0eef25bb6c0fc1770daaaaf41264a2a13a9367a Kyler Juresic <Kylerjuresic@gmail.com> 1614658344 -0600	commit: Updated Updater | Please update it manually
+a0eef25bb6c0fc1770daaaaf41264a2a13a9367a 972fb6cdb4923a87dea8d9d8877acc71bf23f91a Kyler Juresic <Kylerjuresic@gmail.com> 1614705893 -0600	commit: Update Version 0.7.7 | Added Building Camera
+972fb6cdb4923a87dea8d9d8877acc71bf23f91a 1ba50366d4d3ae471e6d9525342c417c6bfbcac3 Kyler Juresic <Kylerjuresic@gmail.com> 1614705931 -0600	commit: Update Version File 0.7.5
+1ba50366d4d3ae471e6d9525342c417c6bfbcac3 9e1aeda4b29e6c582a01d07f857247ab9e5feb93 Kyler Juresic <Kylerjuresic@gmail.com> 1614705946 -0600	commit (amend): Update Version File 0.7.7
+9e1aeda4b29e6c582a01d07f857247ab9e5feb93 2e47979d1689dd313a70bff832fdd104b38dc4a9 Kyler Juresic <Kylerjuresic@gmail.com> 1614705971 -0600	commit (merge): Merge remote-tracking branch 'origin/main' into main
+2e47979d1689dd313a70bff832fdd104b38dc4a9 2e9ef20915df6a935937eddae982320f35c0325a Kyler Juresic <Kylerjuresic@gmail.com> 1614721445 -0600	commit: Update Version 0.7.8 | Adding Mods, Changing Settings, Doing updates, blah blah blah
+2e9ef20915df6a935937eddae982320f35c0325a 648850b3cca9b49526024bcb625afa7fa52d11b6 Kyler Juresic <Kylerjuresic@gmail.com> 1614726548 -0600	commit: Update Updater
+648850b3cca9b49526024bcb625afa7fa52d11b6 09306df08a483a23e23cba139157dfd3321dc984 Kyler Juresic <Kylerjuresic@gmail.com> 1614746479 -0600	commit: Update Version 0.7.9 | Beat the Game.  Add mod for changing animation speeds
+09306df08a483a23e23cba139157dfd3321dc984 e102fc8bc96fad9879fddc86570b78c586694514 Kyler Juresic <Kylerjuresic@gmail.com> 1614837168 -0600	commit: Update Version 0.7.10 | Mod Updates and new stuff
+e102fc8bc96fad9879fddc86570b78c586694514 226922541a865fa54166e407009142394ab3d0c9 Kyler Juresic <Kylerjuresic@gmail.com> 1614994018 -0600	Fast forward branch main to branch origin/main
+226922541a865fa54166e407009142394ab3d0c9 66f9c3d4741b11203e156008d76a2061862a1b6d Kyler Juresic <Kylerjuresic@gmail.com> 1614994155 -0600	commit: More Temp Push
+66f9c3d4741b11203e156008d76a2061862a1b6d 250e515de5ba678e3f6a9db1b596952838fa52be Kyler Juresic <Kylerjuresic@gmail.com> 1614996135 -0600	commit: Update Version 0.7.12 | Test Build - not production ready
+250e515de5ba678e3f6a9db1b596952838fa52be b3e2de66915259987e5de6ea8cabf15ecf43a007 Kyler Juresic <Kylerjuresic@gmail.com> 1614997728 -0600	commit: Config Changes
+b3e2de66915259987e5de6ea8cabf15ecf43a007 014db0d8100a618b003cfee8a2366550384cec62 Kyler Juresic <Kylerjuresic@gmail.com> 1614998649 -0600	commit: Update Version 0.7.13 | Lots of Changes, mods functionality replaced by Valheim plus
+014db0d8100a618b003cfee8a2366550384cec62 c9a7c1fbdc4f74a855e7a49f36f6566b52390afb Kyler Juresic <Kylerjuresic@gmail.com> 1615053855 -0600	commit: Update Version | 0.7.14 | Valheim Plus broke chests wait for new update
+c9a7c1fbdc4f74a855e7a49f36f6566b52390afb 577b3caea14541ca63ef9efe0da78882e38969d6 Kyler Juresic <Kylerjuresic@gmail.com> 1615054850 -0600	commit: Update Version 0.7.15 | Fixed inventory issues
