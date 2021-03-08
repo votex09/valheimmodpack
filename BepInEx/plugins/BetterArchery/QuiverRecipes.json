@@ -1,0 +1,27 @@
+{
+  "recipes": [
+    {
+      "name": "Recipe_LeatherQuiver",
+      "item": "LeatherQuiver",
+      "amount": 1,
+      "craftingStation": "piece_workbench",
+      "minStationLevel": 1,
+      "enabled": true,
+      "repairStation": "piece_workbench",
+      "resources": [
+        {
+          "item": "LeatherScraps",
+          "amount": 20
+        },
+        {
+          "item": "DeerHide",
+          "amount": 10
+        },
+        {
+          "item": "TrollHide",
+          "amount": 10
+        }
+      ]
+    }
+  ]
+}

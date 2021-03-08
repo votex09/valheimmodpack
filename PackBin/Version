@@ -1,4 +1,4 @@
-Version: 0.7.19
+Version: 0.7.20
 Config Changes
 Update Version 0.7.13 | Lots of Changes, mods functionality replaced by Valheim plus
 Update Version | 0.7.14 | Valheim Plus broke chests wait for new update
@@ -9,3 +9,4 @@ Prestage Updater Changes
 03-07-2021 - 02:02:05 Update Version 0.7.17 | Changed some settings - Removed old configs from config folder
 03-07-2021 - 12:52:40 Update Version 0.7.18 | Added mod - PickableTimeFix. Fixes berry growth timers
 03-07-2021 - 16:13:49 Update Version 0.7.19 | Updated AddAllFuel,CraftFromContainers,Exhaustion,ImmersivePortals - Fixes bugs
+03-07-2021 - 21:40:55 Update Version 0.7.20 | Updated Mods, adds archery changes (betterarchery)
