@@ -1,4 +1,4 @@
-0.7.24
+0.7.25
 
 
 03-06-2021 - 14:35:13 V.0.7.16 | //Fixed Updater - Updates automatically now.  Modpack should work fine now, characters may be affected... sorry
@@ -10,3 +10,4 @@
 03-08-2021 - 00:10:58 V.0.7.22 | //Removed BetterArchery - Breaks multiple things... will wait until it is fixed
 03-08-2021 - 15:11:01 V.0.7.23 | //Updated Mods
 03-09-2021 - 14:08:41 V.0.7.24 | //Food does not degrade until it is about to expire
+03-09-2021 - 18:42:09 V.0.7.25 | //Test update - Adds first person camera and a skill to build stamina.  Updated other mods.
