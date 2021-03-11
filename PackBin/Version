@@ -14,5 +14,4 @@
 03-10-21 - 12:56 0.7.26 | "Multiple updates.  Cleaned up configs."
 03-10-21 - 13:15 0.7.27 | "More updates for mods. Fixes bugs with enchanted loot."
 03-10-21 - 21:31 0.7.28 | "Fixed some issues with Epic Loot, added new dependancies for stat calculation (Exhaustion mod)"
-03-10-21 - 22:42 0.7.29 | "Removed Exhaustion - incompatibility with dynamic stat changes when changing speed due to debuff"
 03-11-21 - 00:48 0.7.30 | "Fixed bug with kiln/smelter not producing items"
