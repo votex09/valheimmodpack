@@ -1,0 +1,19 @@
+{
+  "recipes": [
+    {
+      "name": "Recipe_Chain",
+      "item": "Chain",
+      "amount": 2,
+      "craftingStation": "forge",
+      "minStationLevel": 1,
+      "enabled": true,
+      "repairStation": "",
+      "resources": [
+        {
+          "item": "Iron",
+          "amount": 3
+        }
+      ]
+    }
+  ]
+}
