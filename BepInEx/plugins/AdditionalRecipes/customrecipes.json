@@ -1,5 +1,5 @@
 {
-  "recipes": [
+  "customrecipes": [
     {
       "name": "Recipe_Chain",
       "item": "Chain",
@@ -11,7 +11,7 @@
       "resources": [
         {
           "item": "Iron",
-          "amount": 3
+          "amount": 5
         }
       ]
     }
