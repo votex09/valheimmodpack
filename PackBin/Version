@@ -1,4 +1,4 @@
-0.7.36
+0.7.37
 
 
 03-06-21 - 14:35 0.7.16 | "Fixed Updater - Updates automatically now.  Modpack should work fine now, characters may be affected... sorry"
@@ -21,3 +21,4 @@
 03-11-21 - 16:09 0.7.34 | "More changes to signs / mod update checker update"
 03-11-21 - 17:05 0.7.35 | "Fixed autodoors ignoring the crypt"
 03-11-21 - 18:29 0.7.36 | "Changed a bunch of settings, updated some more mods last minute (Fixes MORE bugs)"
+03-12-21 - 16:57 0.7.37 | "Added configuration manager for in game changes, updates to EpicLoot and Portals, trader sells more"
