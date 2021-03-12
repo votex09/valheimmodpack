@@ -1,4 +1,4 @@
-0.7.35
+0.7.36
 
 
 03-06-21 - 14:35 0.7.16 | "Fixed Updater - Updates automatically now.  Modpack should work fine now, characters may be affected... sorry"
@@ -20,3 +20,4 @@
 03-11-21 - 11:43 0.7.33 | "Added glutton - food is less annoying"
 03-11-21 - 16:09 0.7.34 | "More changes to signs / mod update checker update"
 03-11-21 - 17:05 0.7.35 | "Fixed autodoors ignoring the crypt"
+03-11-21 - 18:29 0.7.36 | "Changed a bunch of settings, updated some more mods last minute (Fixes MORE bugs)"
