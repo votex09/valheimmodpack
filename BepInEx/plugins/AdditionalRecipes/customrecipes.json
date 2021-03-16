@@ -1,5 +1,6 @@
 {
-  "customrecipes": [
+  "customrecipes": 
+  [
     {
       "name": "Recipe_Chain",
       "item": "Chain",
@@ -8,40 +9,62 @@
       "minStationLevel": 1,
       "enabled": true,
       "repairStation": "",
-      "resources": [
+      "resources": 
+      [
         {
           "item": "Iron",
           "amount": 5
         }
       ]
-    },
-      {
-         "name":"Recipe_Dyrnwyn",
-         "item":"SwordIronFire",
-         "amount":1,
-         "craftingStation":"forge",
-         "minStationLevel":2,
-         "enabled":true,
-         "repairStation":"",
-         "resources":[
-            {
-               "item":"FineWood",
-               "amount":2
-            },
-			{
-               "item":"SurtlingCore",
-               "amount":20
-            },
-			{
-               "item":"Flametal",
-               "amount":20
-            },
-			{
-               "item":"LeatherScraps",
-               "amount":3
-            }
-			
-         ]
-      }
+    }
+    ,
+    {
+      "name":"Recipe_Dyrnwyn",
+      "item":"SwordIronFire",
+      "amount":1,
+      "craftingStation":"forge",
+      "minStationLevel":2,
+      "enabled":true,
+      "repairStation":"",
+      "resources":
+      [
+        {
+          "item":"FineWood",
+          "amount":2
+        }
+        ,
+        {
+          "item":"SurtlingCore",
+          "amount":20
+        }
+        ,
+        {
+          "item":"Flametal",
+          "amount":20
+        }
+        ,
+        {
+          "item":"LeatherScraps",
+          "amount":3
+        }
+      ]
+    }
+    ,
+    {
+      "name":"Recipe_SilverNecklace",
+      "item":"SilverNecklace",
+      "amount":1,
+      "craftingStation":"forge",
+      "minStationLevel":2,
+      "enabled":true,
+      "repairStation":"",
+      "resources": 
+      [
+        {
+          "item":"Silver",
+          "amount":1
+        }
+      ]
+    }
   ]
 }
