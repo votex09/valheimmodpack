@@ -1,4 +1,4 @@
-0.7.43
+0.7.44
 
 
 03-06-21 - 14:35 0.7.16 | "Fixed Updater - Updates automatically now.  Modpack should work fine now, characters may be affected... sorry"
@@ -29,3 +29,4 @@
 03-15-21 - 18:25 0.7.41 | "Major changes to the trader, food changes, messed with creature levels"
 03-16-21 - 00:17 0.7.42 | "Can sell metal bars to the trader now for money - More things to buy.  Tons of config changes"
 03-16-21 - 01:23 0.7.43 | "Some food changes, new skills."
+03-16-21 - 22:37 0.7.44 | "Removes fermenter percentage mod"
