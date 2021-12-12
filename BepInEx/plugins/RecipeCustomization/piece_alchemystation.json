@@ -1,0 +1,1 @@
+{"name":"piece_alchemystation","craftingStation":"$piece_workbench","minStationLevel":1,"amount":1,"disabled":false,"reqs":["FineWood:15:0:True","Coal:10:0:True","Bronze:5:0:True","RunestoneRare:2:0:True"]}
