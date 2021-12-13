@@ -1,0 +1,25 @@
+{ 
+	"item_armor_pchaosbodytwo":"Uncanny plate harness",
+	"item_armor_pchaosbodydescriptiontwo":"A hollow suit of fully enclosing armor. The thick plate is pitted and scarred, but remains incredibly sturdy. The eight-spoked star clasped over the breastplate evokes a hazy, blood-addled nostalgia.",
+	"item_helmet_pchaosplate":"Uncanny plate helm",
+	"item_helmet_pchaosplatedescription":"A vicious-looking casque. The alloy plate that encloses it seems corroded and stained, even though the structure yet holds steady. An uncanny air of familiarity echoes within its confines.",
+	"item_legs_pchaoslegs":"Uncanny plate leggings",
+	"item_legs_pchaoslegsdescription":"Thick leather leggings reinforced with metal. The armor plates are heavy, anchoring the boots to the earth with stains and scars that cannot be erased. And yet, they do little to burden the wearer.",
+
+	"item_armor_t1_pchaosbody":"Half plate harness",
+	"item_armor_t1_pchaosbodydescription":"A battered suit of heavy plate. The eight-spoked star clasped over the breastplate is dull and rusted.",
+	"item_helmet_t1pchaosplate":"Tusk plate helm",
+	"item_helmet_t1pchaosplatedescription":"A plate helm, bearing the fierce tusks of a boar. The beast's death throes echo eerily within its hollow confines.",
+	"item_legs_t1pchaoslegs":"Battered plate leggings",
+	"item_legs_t1pchaoslegsdescription":"Thick leather leggings reinforced with metal. The armor plates are heavy, anchoring the boots to the earth with stains and scars that cannot be erased.",
+	
+	"item_armor_t2_pchaosbody":"Three quarters plate harness",
+	"item_armor_t2_pchaosbodydescription":"A battered suit of heavy plate, cast from cold iron. The eight-spoked star clasped over the breastplate catches the sun's rays with an uncanny, icy glint.",
+	"item_helmet_t2pchaosplate":"Fanged plate helm",
+	"item_helmet_t2pchaosplatedescription":"A plate helm, sporting the razor fangs of a mountain wolf. The metal is ever-cold to the touch, as though the ice has sunk its claws into it.",
+	"item_legs_t2pchaoslegs":"Refurbished plate leggings",
+	"item_legs_t2pchaoslegsdescription":"Thick leather leggings reinforced with cold iron. The armor plates are heavy, anchoring the boots to the earth with stains and scars that cannot be erased.",
+	
+	"item_helmet_pchaosplate_alt":"Warped plate helm",
+	"item_helmet_pchaosplatedescription_alt":"A helmet of already strange make, its structure further twisted by forces unknown. Visions of a distant and dark millennium glimmer like embers in its shadowy eyeslits." 
+}
