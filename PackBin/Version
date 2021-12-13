@@ -1,4 +1,4 @@
-0.9.3
+0.9.4
 
 
 03-06-21 - 14:35 0.7.16 | "Fixed Updater - Updates automatically now.  Modpack should work fine now, characters may be affected... sorry"
@@ -44,3 +44,4 @@
 12-12-21 - 19:14 0.9.1 | "Total pack rewrite, many things are different, some things are removed.  Early alpha Playtest"
 12-12-21 - 22:35 0.9.2 | "Adds Better Archery"
 12-13-21 - 8:55  0.9.3 | "Adds Cartography skill, repairing all items with 1 click, possible fix for epic loot lag"
+12-13-21 - 11:28 0.9.4 | "Adds RuneMagic.  TESTING DualWielding for balance and usability. Update Snap Points, adds Building Skill"
