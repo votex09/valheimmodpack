@@ -1,4 +1,4 @@
-0.9.6
+0.9.7
 
 
 03-06-21 - 14:35 0.7.16 | "Fixed Updater - Updates automatically now.  Modpack should work fine now, characters may be affected... sorry"
@@ -47,3 +47,4 @@
 12-13-21 - 11:28 0.9.4 | "Adds RuneMagic.  TESTING DualWielding for balance and usability. Update Snap Points, adds Building Skill"
 12-13-21 - 18:41 0.9.5 | "Finalized new distribution method, added QuickWheel (Useful for controller players)"
 12-13-21 - 22:15 0.9.6 | "Alternate method of git pathing, changed some configs."
+12-14-21 - 00:03 0.9.7 | "Updater should work for people that install the game in the default dir"
