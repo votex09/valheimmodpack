@@ -132,11 +132,34 @@ if ($args[0] -eq "-update") {
         Invoke-WebRequest https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe -O $PSScriptRoot\PackBin\git.exe
         Clear-Host
         Write-Host "Installing Git..." -ForegroundColor Green
-        Write-Host "Please accept the installation.  Once complete," -ForegroundColor Green
+        Write-Host "Please accept the installation." -ForegroundColor Green
         Start-Process "$PSScriptRoot\PackBin\git.exe" /SILENT
         Start-Sleep 20
-        Wait-Process -Name git.exe
+        Write-Host "Waiting for Git to finish installing..." -ForegroundColor Yellow
+        pause
     }
-    if (!(Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) { #Verify Git is installed.
+    if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) { #Verify Git is installed.
+        Clear-Host
+        Write-Host "Git found." -ForegroundColor Green
+        if (Test-Path -Path $PSScriptRoot\PackBin\git\valheimdirtbagmodpack\winhttp.dll) {
+            git -C $PSScriptRoot\PackBin\git\valheimdirtbagmodpack pull --progress
+            Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
+            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E
+            #Clear-Host
+            Write-Host "Update complete." -ForegroundColor Green
+            pause
+            exit
+        }
+        else {
+            Write-Host "Pack not found. Cloning repository..." -ForegroundColor Yellow
+            New-Item -Path $PSScriptRoot\PackBin\git\valheimdirtbagmodpack -Type directory
+            git -C $PSScriptRoot\PackBin\git\valheimdirtbagmodpack clone https://github.com/votex09/valheimdirtbagmodpack --progress
+            Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
+            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E
+            #Clear-Host
+            Write-Host "Update complete." -ForegroundColor Green
+            pause
+            exit
+        }
     }
 }
