@@ -153,7 +153,7 @@ if ($args[0] -eq "-update") {
         else {
             Write-Host "Pack not found. Cloning repository..." -ForegroundColor Yellow
             New-Item -Path $PSScriptRoot\PackBin\git\valheimdirtbagmodpack -Type directory
-            git -C $PSScriptRoot\PackBin\git\valheimdirtbagmodpack clone https://github.com/votex09/valheimdirtbagmodpack --progress
+            git -C $PSScriptRoot\PackBin\git\ clone https://github.com/votex09/valheimdirtbagmodpack --progress
             Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E
             #Clear-Host
