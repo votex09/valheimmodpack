@@ -51,7 +51,7 @@ if ($args[0] -eq "-full") {
 }
 if ($args[0] -eq "-checkstatus") {
     if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) {
-        git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") remote update >> /dev/null
+        git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") remote update *> $null
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") status -uno | Out-File -FilePath "$PSScriptRoot\PackBin\gitstatus.txt"
         $updatemessage = Get-Item -Path "$PSScriptRoot\PackBin\gitstatus.txt" | Get-Content -Tail 5
         Write-Host $updatemessage[1].Replace("fast-forwarded.", "updated.")
