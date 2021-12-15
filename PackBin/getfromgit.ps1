@@ -50,7 +50,7 @@ if ($args[0] -eq "-full") {
     exit
 }
 if ($args[0] -eq "-checkstatus") {
-    if (!(Test-Path -Path $PSScriptRoot\PackBin\git.exe)) {
+    if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) {
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") remote update | Out-Null
         $updatemessage = git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") status -uno | Get-Content -Tail 5
         Write-Host $updatemessage[1]
