@@ -51,8 +51,8 @@ if ($args[0] -eq "-full") {
 }
 if ($args[0] -eq "-checkstatus") {
     git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") remote update | Out-Null
-    git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") status -uno | Tee-Object -Variable cmdOutput
-    $updatemessage = ($cmdOutput.Message -split '\n')[0]
+    git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") status -uno | Out-File -FilePath "$PSScriptRoot\gitstatus.log"
+    $updatemessage = Get-Item -Path "$PSScriptRoot\gitstatus.log" | Get-Content -TotalCount 2
     Write-Host $updatemessage[1]
     if (Test-Path -Path $PSScriptRoot\PackBin\Version) {
         $updates = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -Tail 5
