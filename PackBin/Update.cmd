@@ -15,7 +15,8 @@ echo [3] Update Pack
 echo [4] Start Game
 echo [5] Enable HD Textures
 echo [6] Disable HD Textures
-echo [x] Update scripts and exit
+echo [ENTER] Update scripts and restart
+echo [x] Exit
 echo.
 set /p x="Select an option: "
 if /I "%x%" == "0" powershell -executionpolicy bypass -file .\getfromgit.ps1 -full
