@@ -2539,7 +2539,7 @@
                 the mod settings button on first in-game menu start.
             </summary>
         </member>
-        <member name="M:Jotunn.GUI.InGameConfig.Instantiate(UnityEngine.Transform)">
+        <member name="M:Jotunn.GUI.InGameConfig.CreateMenu(UnityEngine.Transform)">
             <summary>
                 Create our own menu list entry when mod config is available
             </summary>
@@ -2548,6 +2548,11 @@
         <member name="M:Jotunn.GUI.InGameConfig.CreateWindow(UnityEngine.Transform)">
             <summary>
                 Create custom configuration window
+            </summary>
+        </member>
+        <member name="M:Jotunn.GUI.InGameConfig.CreatePlugin(Jotunn.GUI.ModSettings,System.Collections.Generic.KeyValuePair{System.String,BepInEx.BaseUnityPlugin})">
+            <summary>
+                Create settings for a plugin
             </summary>
         </member>
         <member name="M:Jotunn.GUI.InGameConfig.GetConfigurationEntries(System.String)">
