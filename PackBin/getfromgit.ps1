@@ -138,7 +138,7 @@ if ($args[0] -eq "-update") {
         Write-Host "Installing Git..." -ForegroundColor Green
         Write-Host "Please accept the installation." -ForegroundColor Green
         Start-Process -FilePath "$PSScriptRoot\PackBin\git.exe" -ArgumentList /SILENT
-        Write-Host "Waiting for Git to finish installing..." -ForegroundColor Yellow
+        Write-Host "Please wait for Git to finish installing..." -ForegroundColor Yellow
         pause
     }
     if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) { #Verify Git is installed.
