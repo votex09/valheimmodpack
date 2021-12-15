@@ -128,8 +128,10 @@ if ($args[0] -eq "-update") {
     if (!(Test-Path -Path $PSScriptRoot\PackBin\git.exe)) { #If git is not downloaded, download it.
         clear-host
         Write-Host "Git not found. Downloading from host... " -ForegroundColor Yellow
-        New-Item -Path $PSScriptRoot\PackBin\ -Type directory
-        write-host $PSScriptroot
+        if (!(Test-Path -Path $PSScriptRoot\PackBin\)) {
+            New-Item -Path $PSScriptRoot\PackBin\ -Type directory
+        }
+        write-host "Current Directory: $PSScriptroot"
         Start-Sleep 2
         Invoke-WebRequest https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe -O $PSScriptRoot\PackBin\git.exe
         Clear-Host
