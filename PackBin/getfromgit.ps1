@@ -166,7 +166,9 @@ if ($args[0] -eq "-update") {
             New-Item -Path $PSScriptRoot\PackBin\git\valheimdirtbagmodpack -Type directory
             git -C ("$PSScriptRoot\PackBin\git\ ") clone ("https://github.com/votex09/valheimdirtbagmodpack") --progress
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\clone.bat -NoNewWindow
-            Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
+            If ((Test-Path -Path $PSScriptRoot\BepinEx\Plugins\)) {
+                Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
+            }
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #Clear-Host
             Write-Host "Update complete." -ForegroundColor Green
