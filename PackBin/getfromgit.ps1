@@ -50,14 +50,19 @@ if ($args[0] -eq "-full") {
     exit
 }
 if ($args[0] -eq "-checkstatus") {
-    $updates = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -Tail 5
-    $vers = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -TotalCount 1
-    Write-Host "Current Version : $vers -- Update Log:`n" 
-    Write-Host $updates[4] -ForegroundColor Blue
-    Write-Host $updates[3] -ForegroundColor Blue
-    Write-Host $updates[2] -ForegroundColor Blue
-    Write-Host $updates[1] -ForegroundColor Blue
-    Write-Host $updates[0] -ForegroundColor Blue
+    if (Test-Path -Path $PSScriptRoot\PackBin\Version) {
+        $updates = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -Tail 5
+        $vers = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -TotalCount 1
+        Write-Host "Current Version : $vers -- Update Log:`n" 
+        Write-Host $updates[4] -ForegroundColor Blue
+        Write-Host $updates[3] -ForegroundColor Blue
+        Write-Host $updates[2] -ForegroundColor Blue
+        Write-Host $updates[1] -ForegroundColor Blue
+        Write-Host $updates[0] -ForegroundColor Blue
+    }
+    else {
+        Write-Host "No update log found. Please update the pack."
+    }
     Write-Host "`n=========================`n"
 
     If (Test-Path -Path $bepdisabled) { #If plugins are disabled.
