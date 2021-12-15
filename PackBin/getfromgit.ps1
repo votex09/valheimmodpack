@@ -54,7 +54,7 @@ if ($args[0] -eq "-checkstatus") {
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") remote update *> $null
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") status -uno | Out-File -FilePath "$PSScriptRoot\PackBin\gitstatus.txt"
         $updatemessage = Get-Item -Path "$PSScriptRoot\PackBin\gitstatus.txt" | Get-Content -Tail 5
-        Write-Host $updatemessage[1].Replace("fast-forwarded.", "updated.").Replace("branch", "modpack").Replace("\'origin/main\' ", "")
+        Write-Host $updatemessage[1].Replace("fast-forwarded.", "updated.").Replace("branch", "modpack version").Replace("`'origin/main`' ", "")
     }
     if (Test-Path -Path $PSScriptRoot\PackBin\Version) {
         $updates = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -Tail 5
