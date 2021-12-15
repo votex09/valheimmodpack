@@ -1,4 +1,4 @@
-0.9.94
+1.0.0
 
 
 03-06-21 - 14:35 0.7.16 | "Fixed Updater - Updates automatically now.  Modpack should work fine now, characters may be affected... sorry"
@@ -52,3 +52,4 @@
 12-14-21 - 16:52 0.9.9 | "Adds *Magic* to the world"
 12-14-21 - 20:07 0.9.91| "Removed a rogue BANG (!) preventing plugins folder from being deleted"
 12-15-21 - 13:00 0.9.94| "Updates comforttweaks.  Disabled HD Textures - they break the game."
+12-15-21 - 14:46 1.0.0 | "Adds pressure plates to open and close doors automatically."
