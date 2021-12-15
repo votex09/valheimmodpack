@@ -1,4 +1,4 @@
-0.9.7
+0.9.91
 
 
 03-06-21 - 14:35 0.7.16 | "Fixed Updater - Updates automatically now.  Modpack should work fine now, characters may be affected... sorry"
@@ -49,3 +49,5 @@
 12-13-21 - 22:15 0.9.6 | "Alternate method of git pathing, changed some configs."
 12-14-21 - 00:03 0.9.7 | "Updater should work for people that install the game in the default dir"
 12-14-21 - 12:08 0.9.8 | "Removes CraftFromContainers - Func exists in V+, changes some configs"
+12-14-21 - 16:52 0.9.9 | "Adds *Magic* to the world"
+12-14-21 - 20:07 0.9.91| "Removed a rogue BANG (!) preventing plugins folder from being deleted"

@@ -37,10 +37,10 @@ if ($args[0] -eq "-full") {
         Rename-Item -Path $bepdisabled -NewName "winhttp.dll"
     }
     Write-Host "Downloading mod package from git..."
-    Invoke-WebRequest https://github.com/votex09/valheimdirtbagmodpack/archive/main.zip -O $PSScriptRoot\PackBin\pack.zip
+    Invoke-WebRequest "https://github.com/votex09/valheimdirtbagmodpack/archive/main.zip" -O $PSScriptRoot\PackBin\pack.zip
     & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\pack.zip" "-o$PSScriptRoot\PackBin\unpack\"
     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
-    Robocopy ("$PSScriptRoot\PackBin\unpack\valheimdirtbagmodpack-main\ ") ("$PSScriptRoot ") /E
+    Robocopy ("$PSScriptRoot\PackBin\unpack\valheimdirtbagmodpack-main\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
     Clear-Host
     Write-Host "Cleaning up..."
     Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
@@ -52,8 +52,7 @@ if ($args[0] -eq "-full") {
 if ($args[0] -eq "-checkstatus") {
     $updates = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -Tail 5
     $vers = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -TotalCount 1
-    Write-Host "Current Version : $vers" 
-    Write-Host "Update Log:`n" 
+    Write-Host "Current Version : $vers -- Update Log:`n" 
     Write-Host $updates[4] -ForegroundColor Blue
     Write-Host $updates[3] -ForegroundColor Blue
     Write-Host $updates[2] -ForegroundColor Blue
@@ -88,8 +87,8 @@ if ($args[0] -eq "-enableHD") {
     If (Test-Path -Path $HDDisabled) { #If textures are disabled, rename file so they are enabled.
     Rename-Item -Path $HDDisabled -NewName "HDEnabled"
         If (!(Test-Path -Path $PSScriptRoot\valheim_Data\GoViTextures.7z)) { #If GoViTextures.7z is not present, download it.
-            Write-Host "GoViTextures not found. Downloading from host... (651MB)"
-            Invoke-WebRequest ftp://nerdhaus.asuscomm.com/HiveMind/Shared/GoViTextures.7z -O $PSScriptRoot\valheim_Data\GoViTextures.7z
+            Write-Host "GoViTextures not found. Downloading from host... (651.54MB)"
+            Invoke-WebRequest "https://votex09.tonidoid.com/core/downloadfile?filepath=N%3A%5CGoViTextures%2E7z&filename=GoViTextures.7z&disposition=attachment" -O $PSScriptRoot\valheim_Data\GoViTextures.7z
         }
         Clear-Host
         Write-Host "HDTextures = false : Enabling HD Textures..."
@@ -110,8 +109,8 @@ if ($args[0] -eq "-disableHD") {
     If (Test-Path -Path $HDEnabled) { #If textures are enabled, rename file so they are disabled.
     Rename-Item -Path $HDEnabled -NewName "HDDisabled"
         If (!(Test-Path -Path $PSScriptRoot\valheim_Data\originalTextures.7z)) { #If originalTextures.7z is not present, download it.
-            Write-Host "Original textures not found. Downloading from host... (62.7MB)"
-            Invoke-WebRequest ftp://nerdhaus.asuscomm.com/HiveMind/Shared/originalTextures.7z -O $PSScriptRoot\valheim_Data\originalTextures.7z
+            Write-Host "Original textures not found. Downloading from host... (62.73MB)"
+            Invoke-WebRequest "https://votex09.tonidoid.com/core/downloadfile?filepath=N%3A%5CoriginalTextures%2E7z&filename=originalTextures.7z&disposition=attachment" -O $PSScriptRoot\valheim_Data\originalTextures.7z
         }
         Clear-Host
         Write-Host "HDTextures = true : Disabling HD Textures..."
@@ -129,7 +128,7 @@ if ($args[0] -eq "-update") {
     if (!(Test-Path -Path $PSScriptRoot\PackBin\git.exe)) { #If git is not downloaded, download it.
         clear-host
         Write-Host "Git not found. Downloading from host... " -ForegroundColor Yellow
-        Invoke-WebRequest https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe -O $PSScriptRoot\PackBin\git.exe
+        Invoke-WebRequest "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe" -O $PSScriptRoot\PackBin\git.exe
         Clear-Host
         Write-Host "Installing Git..." -ForegroundColor Green
         Write-Host "Please accept the installation." -ForegroundColor Green
@@ -144,8 +143,10 @@ if ($args[0] -eq "-update") {
         if (Test-Path -Path $PSScriptRoot\PackBin\git\valheimdirtbagmodpack\winhttp.dll) {
             git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") pull --progress
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\pull.bat -NoNewWindow
-            Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
-            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E
+            If ((Test-Path -Path $PSScriptRoot\BepinEx\Plugins\)) {
+                Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
+            }
+            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #Clear-Host
             Write-Host "Update complete." -ForegroundColor Green
             pause
@@ -154,10 +155,10 @@ if ($args[0] -eq "-update") {
         else {
             Write-Host "Pack not found. Cloning repository..." -ForegroundColor Yellow
             New-Item -Path $PSScriptRoot\PackBin\git\valheimdirtbagmodpack -Type directory
-            git -C ("$PSScriptRoot\PackBin\git\ ") clone (https://github.com/votex09/valheimdirtbagmodpack) --progress
+            git -C ("$PSScriptRoot\PackBin\git\ ") clone ("https://github.com/votex09/valheimdirtbagmodpack") --progress
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\clone.bat -NoNewWindow
             Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
-            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E
+            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #Clear-Host
             Write-Host "Update complete." -ForegroundColor Green
             pause

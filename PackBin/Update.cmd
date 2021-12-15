@@ -1,11 +1,10 @@
-.\PackBin\7z\7za.exe x ".\PackBin\Updater.7z" "-o.\" -aoa
-:Selector
 @echo off
+:Selector
+curl -o getfromgit.ps1 https://raw.githubusercontent.com/votex09/valheimdirtbagmodpack/main/PackBin/getfromgit.ps1
 cls
 ECHO =============================
 ECHO    Valheim Updater/Patcher
 ECHO =============================
-ECHO.
 echo.
 powershell -executionpolicy bypass -file .\getfromgit.ps1 -checkstatus
 echo.
@@ -16,7 +15,7 @@ echo [3] Update Pack
 echo [4] Start Game
 echo [5] Enable HD Textures
 echo [6] Disable HD Textures
-echo.
+echo [x] Update scripts and exit
 echo.
 set /p x="Select an option: "
 if /I "%x%" == "0" powershell -executionpolicy bypass -file .\getfromgit.ps1 -full
@@ -26,6 +25,9 @@ if /I "%x%" == "3" powershell -executionpolicy bypass -file .\getfromgit.ps1 -up
 if /I "%x%" == "4" goto startgame
 if /I "%x%" == "5" powershell -executionpolicy bypass -file .\getfromgit.ps1 -enableHD
 if /I "%x%" == "6" powershell -executionpolicy bypass -file .\getfromgit.ps1 -disableHD
+if /I "%x%" == "x" goto end
 goto Selector
 :startgame
 explorer steam://rungameid/892970
+:end
+curl -o Update.cmd https://raw.githubusercontent.com/votex09/valheimdirtbagmodpack/main/PackBin/Update.cmd
