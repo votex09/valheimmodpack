@@ -90,6 +90,7 @@ if ($args[0] -eq "-checkstatus") {
         Write-Host "HD Textures are not Currently Installed" -ForegroundColor Yellow
     }
 }
+<#
 if ($args[0] -eq "-enableHD") {
     #check to see if textures are disabled
     if ((Test-Path -Path $HDDisabled) -eq $false -And (Test-Path -Path $HDEnabled) -eq $false) { #If HD is not installed.
@@ -99,7 +100,7 @@ if ($args[0] -eq "-enableHD") {
     Rename-Item -Path $HDDisabled -NewName "HDEnabled"
         If (!(Test-Path -Path $PSScriptRoot\valheim_Data\GoViTextures.7z)) { #If GoViTextures.7z is not present, download it.
             Write-Host "GoViTextures not found. Downloading from host... (651.54MB)"
-            Invoke-WebRequest "https://votex09.tonidoid.com/core/downloadfile?filepath=N%3A%5CGoViTextures%2E7z&filename=GoViTextures.7z&disposition=attachment" -O $PSScriptRoot\valheim_Data\GoViTextures.7z
+            #Invoke-WebRequest "https://votex09.tonidoid.com/core/downloadfile?filepath=N%3A%5CGoViTextures%2E7z&filename=GoViTextures.7z&disposition=attachment" -O $PSScriptRoot\valheim_Data\GoViTextures.7z
         }
         Clear-Host
         Write-Host "HDTextures = false : Enabling HD Textures..."
@@ -121,7 +122,7 @@ if ($args[0] -eq "-disableHD") {
     Rename-Item -Path $HDEnabled -NewName "HDDisabled"
         If (!(Test-Path -Path $PSScriptRoot\valheim_Data\originalTextures.7z)) { #If originalTextures.7z is not present, download it.
             Write-Host "Original textures not found. Downloading from host... (62.73MB)"
-            Invoke-WebRequest "https://votex09.tonidoid.com/core/downloadfile?filepath=N%3A%5CoriginalTextures%2E7z&filename=originalTextures.7z&disposition=attachment" -O $PSScriptRoot\valheim_Data\originalTextures.7z
+            #Invoke-WebRequest "https://votex09.tonidoid.com/core/downloadfile?filepath=N%3A%5CoriginalTextures%2E7z&filename=originalTextures.7z&disposition=attachment" -O $PSScriptRoot\valheim_Data\originalTextures.7z
         }
         Clear-Host
         Write-Host "HDTextures = true : Disabling HD Textures..."
@@ -134,6 +135,7 @@ if ($args[0] -eq "-disableHD") {
         exit
     }
 }
+#>
 if ($args[0] -eq "-update") {
     #check to see if git is installed
     if (!(Test-Path -Path $PSScriptRoot\PackBin\git.exe)) { #If git is not downloaded, download it.
