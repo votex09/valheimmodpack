@@ -129,7 +129,7 @@ if ($args[0] -eq "-update") {
         clear-host
         Write-Host "Git not found. Downloading from host... " -ForegroundColor Yellow
         New-Item -Path $PSScriptRoot\PackBin\ -Type directory
-        Invoke-WebRequest "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe" -O $PSScriptRoot\PackBin\git.exe
+        Invoke-WebRequest https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe -O $PSScriptRoot\PackBin\git.exe
         Clear-Host
         Write-Host "Installing Git..." -ForegroundColor Green
         Write-Host "Please accept the installation." -ForegroundColor Green
