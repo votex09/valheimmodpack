@@ -55,7 +55,11 @@ if ($args[0] -eq "-checkstatus") {
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") status -uno | Out-File -FilePath "$PSScriptRoot\PackBin\gitstatus.txt"
         $updatemessage = Get-Item -Path "$PSScriptRoot\PackBin\gitstatus.txt" | Get-Content -Tail 5
         Write-Host $updatemessage[1].Replace("fast-forwarded.", "updated.").Replace("branch", "modpack version") -ForegroundColor Cyan
+        $vers = git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") rev-list --count main 
+        Write-Host "Current Version : $vers -- Update Log:`n"
+        git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") log -n 5 --pretty='format:%C(auto)%as - %s'
     }
+    <#
     if (Test-Path -Path $PSScriptRoot\PackBin\Version) {
         $updates = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -Tail 5
         $vers = Get-Item -Path "$PSScriptRoot\PackBin\Version" | Get-Content -TotalCount 1
@@ -66,6 +70,7 @@ if ($args[0] -eq "-checkstatus") {
         Write-Host $updates[1] -ForegroundColor Blue
         Write-Host $updates[0] -ForegroundColor Blue
     }
+    #>
     else {
         Write-Host "No update log found. Please update the pack."
     }
