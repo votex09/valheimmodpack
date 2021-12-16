@@ -58,7 +58,7 @@ if ($args[0] -eq "-checkstatus") {
         $vers = git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") rev-list --count main 
         Write-Host "Current Version : $vers -- Update Log:`n"
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") log -n 40 --pretty='format:%cs | %ch - %s' | Out-File -FilePath "$PSScriptRoot\PackBin\gitlog.txt"
-        $logshort = Get-Item -Path "$PSScriptRoot\PackBin\\gitlog.txt" | Get-Content -Head 6
+        $logshort = Get-Item -Path "$PSScriptRoot\PackBin\gitlog.txt" | Get-Content -Head 6
         Write-Host $logshort[1] -ForegroundColor Blue
         Write-Host $logshort[2] -ForegroundColor Blue
         Write-Host $logshort[3] -ForegroundColor Blue
