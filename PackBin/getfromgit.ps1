@@ -259,7 +259,7 @@ if ($args[0] -eq "-cfglock") {
                         $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$i])"
                         if ($null -ne $SEL) {
                             Write-Host "$($availablelocks[$i]) was already locked."
-                            Start-Sleep 3
+                            Start-Sleep 1
                         }
                         else {
                             Write-Host "Locking $($availablelocks[$i])..."
@@ -271,18 +271,18 @@ if ($args[0] -eq "-cfglock") {
                     #check if array index is out of bounds
                     if ($userselection -gt $availablelocks.Count -or $userselection -lt 0) {
                         Write-Host "Invalid selection."
-                        Start-Sleep 3
+                        Start-Sleep 1
                     }
                     else {
                         $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$userselection])"
                         if ($null -ne $SEL) {
                             Write-Host "$($availablelocks[$userselection]) was already locked."
-                            Start-Sleep 3
+                            Start-Sleep 1
                         }
                         else {
                             Write-Host "Locking $($availablelocks[$userselection])..."
                             Add-Content -Path $excludefile -Value "$($availablelocks[$userselection])"
-                            Start-Sleep 3
+                            Start-Sleep 1
                         }
                     }
                 }
@@ -294,12 +294,12 @@ if ($args[0] -eq "-cfglock") {
                         $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$i])"
                         if ($null -eq $SEL) {
                             Write-Host "$($availablelocks[$i]) was already unlocked."
-                            Start-Sleep 3
+                            Start-Sleep 1
                         }
                         else {
                             Write-Host "Unlocking $($availablelocks[$i])..."
                             ((Get-Content -Path $excludefile) -replace "$($availablelocks[$i])", "") | Set-Content -Path $excludefile
-                            Start-Sleep 3
+                            Start-Sleep 1
                         }
                     }
                 }
@@ -307,18 +307,18 @@ if ($args[0] -eq "-cfglock") {
                     #check if array index is out of bounds
                     if ($userselection -gt $availablelocks.Count -or $userselection -lt 0) {
                         Write-Host "Invalid selection."
-                        Start-Sleep 3
+                        Start-Sleep 1
                     }
                     else {
                         $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$userselection])"
                         if ($null -eq $SEL) {
                             Write-Host "$($availablelocks[$userselection]) was already unlocked."
-                            Start-Sleep 3
+                            Start-Sleep 1
                         }
                         else {
                             Write-Host "Unlocking $($availablelocks[$userselection])..."
                             ((Get-Content -Path $excludefile) -replace "$($availablelocks[$userselection])", "") | Set-Content -Path $excludefile
-                            Start-Sleep 3
+                            Start-Sleep 1
                         }
                     }
                 }
@@ -328,6 +328,7 @@ if ($args[0] -eq "-cfglock") {
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" -Type file
         }
     (Get-Content $excludefile) | Where-Object {$_.trim() -ne "" } | set-content $excludefile
+    Start-Sleep 2
     }
 }
 if ($args[0] -eq "-enableHD") {
