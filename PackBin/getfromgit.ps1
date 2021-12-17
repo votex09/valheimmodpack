@@ -207,6 +207,7 @@ if ($args[0] -eq "-cfglock") {
     while ($menumode -eq "continue") {
         Clear-Host
         if ((Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")) {
+            $configFolder = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\BepInEx\config"
             $excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
             Write-Host "=============================`nConfig Lock Menu`n============================="
             Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n" -ForegroundColor Blue
@@ -226,49 +227,49 @@ if ($args[0] -eq "-cfglock") {
             }
             if ($usermode -eq "L" -or $usermode -eq "l") {
                 if ($userselection -eq 1) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\manfredo52.CustomizableCamera.cfg"
+                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\manfredo52.CustomizableCamera.cfg"
                     if ($null -ne $SEL) {
                         Write-Host "Customizable Camera was already locked."
                     }
                     else {
-                        Add-Content -Path $excludefile -Value "$PSScriptroot\BepInEx\config\manfredo52.CustomizableCamera.cfg"
+                        Add-Content -Path $excludefile -Value "$configFolder\manfredo52.CustomizableCamera.cfg"
                         Write-Host "Customizable Camera has been locked."
                     }
                     Start-Sleep 2
                 }
                 if ($userselection -eq 2) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\randyknapp.mods.equipmentandquickslots.cfg"
+                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\randyknapp.mods.equipmentandquickslots.cfg"
                     if ($null -ne $SEL) {
                         Write-Host "Equipment and Quickslots was already locked."
                     }
                     else {
-                        Add-Content -Path $excludefile -Value "$PSScriptroot\BepInEx\config\randyknapp.mods.equipmentandquickslots.cfg"
+                        Add-Content -Path $excludefile -Value "$configFolder\randyknapp.mods.equipmentandquickslots.cfg"
                         Write-Host "Equipment and Quickslots has been locked."
                     }
                     Start-Sleep 2
                 }
                 if ($userselection -eq 3) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\virtuacode.valheim.equipwheel.cfg"
+                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\virtuacode.valheim.equipwheel.cfg"
                     if ($null -ne $SEL) {
                         Write-Host "Equip Wheel was already locked."
                     }
                     else {
-                        Add-Content -Path $excludefile -Value "$PSScriptroot\BepInEx\config\virtuacode.valheim.equipwheel.cfg"
+                        Add-Content -Path $excludefile -Value "$configFolder\virtuacode.valheim.equipwheel.cfg"
                         Write-Host "Equip Wheel has been locked."
                     }
                     Start-Sleep 2
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $SEL1 = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\manfredo52.CustomizableCamera.cfg"
-                    $SEL2 = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\randyknapp.mods.equipmentandquickslots.cfg"
-                    $SEL3 = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\virtuacode.valheim.equipwheel.cfg"
+                    $SEL1 = Select-String -Path $excludefile -Pattern "$configFolder\manfredo52.CustomizableCamera.cfg"
+                    $SEL2 = Select-String -Path $excludefile -Pattern "$configFolder\randyknapp.mods.equipmentandquickslots.cfg"
+                    $SEL3 = Select-String -Path $excludefile -Pattern "$configFolder\virtuacode.valheim.equipwheel.cfg"
                     if ($null -ne $SEL1 -and $null -ne $SEL2 -and $null -ne $SEL3) {
                         Write-Host "All available configs were already locked."
                     }
                     else {
-                        Add-Content -Path $excludefile -Value "$PSScriptroot\BepInEx\config\manfredo52.CustomizableCamera.cfg"
-                        Add-Content -Path $excludefile -Value "$PSScriptroot\BepInEx\config\randyknapp.mods.equipmentandquickslots.cfg"
-                        Add-Content -Path $excludefile -Value "$PSScriptroot\BepInEx\config\virtuacode.valheim.equipwheel.cfg"
+                        Add-Content -Path $excludefile -Value "$configFolder\manfredo52.CustomizableCamera.cfg"
+                        Add-Content -Path $excludefile -Value "$configFolder\randyknapp.mods.equipmentandquickslots.cfg"
+                        Add-Content -Path $excludefile -Value "$configFolder\virtuacode.valheim.equipwheel.cfg"
                         Write-Host "All available configs have been locked."
                         (Get-Content $excludefile | Group-Object | ForEach-Object{$_.group | Select-Object -First 1}) | Set-Content $excludefile
                     }
@@ -277,34 +278,34 @@ if ($args[0] -eq "-cfglock") {
             }
             if ($usermode -eq "U" -or $usermode -eq "u") {
                 if ($userselection -eq 1) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\manfredo52.CustomizableCamera.cfg"
+                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\manfredo52.CustomizableCamera.cfg"
                     if ($null -eq $SEL) {
                         Write-Host "Customizable Camera was already unlocked."
                     }
                     else {
-                        ((Get-Content -Path $excludefile) -replace "$PSScriptroot\BepInEx\config\manfredo52.CustomizableCamera.cfg", "") | Set-Content -Path $excludefile
+                        ((Get-Content -Path $excludefile) -replace "$configFolder\manfredo52.CustomizableCamera.cfg", "") | Set-Content -Path $excludefile
                         Write-Host "Customizable Camera has been unlocked."
                     }
                     Start-Sleep 2
                 }
                 if ($userselection -eq 2) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\randyknapp.mods.equipmentandquickslots.cfg"
+                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\randyknapp.mods.equipmentandquickslots.cfg"
                     if ($null -eq $SEL) {
                         Write-Host "Equipment and Quickslots was already unlocked."
                     }
                     else {                        
-                        ((Get-Content -Path $excludefile) -replace "$PSScriptroot\BepInEx\config\randyknapp.mods.equipmentandquickslots.cfg", "") | Set-Content -Path $excludefile       
+                        ((Get-Content -Path $excludefile) -replace "$configFolder\randyknapp.mods.equipmentandquickslots.cfg", "") | Set-Content -Path $excludefile       
                         Write-Host "Equipment and Quickslots has been unlocked."
                     }
                     Start-Sleep 2
                 }
                 if ($userselection -eq 3) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$PSScriptroot\BepInEx\config\virtuacode.valheim.equipwheel.cfg"
+                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\virtuacode.valheim.equipwheel.cfg"
                     if ($null -eq $SEL) {
                         Write-Host "Equip Wheel was already unlocked."
                     }
                     else {
-                        ((Get-Content -Path $excludefile) -replace "$PSScriptroot\BepInEx\config\virtuacode.valheim.equipwheel.cfg", "") | Set-Content -Path $excludefile
+                        ((Get-Content -Path $excludefile) -replace "$configFolder\virtuacode.valheim.equipwheel.cfg", "") | Set-Content -Path $excludefile
                         Write-Host "Equip Wheel has been unlocked."
                     }
                     Start-Sleep 2
