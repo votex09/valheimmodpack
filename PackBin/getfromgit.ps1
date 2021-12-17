@@ -182,9 +182,9 @@ if ($args[0] -eq "-update") {
         #if user locked configs, copy configs to PackBin folder
         if ($l -eq $true) {
             for ($i =0; $i -lt $availablelocks.Count; $i++) {
-                Write-Host "Configlocks found. Preserving user configs..." -ForegroundColor Green
                 Copy-Item -Path "$pathtoConfig\$availablelocks[$i].cfg" -Destination "$PSScriptRoot\PackBin\"
             }
+            Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
         }
         Write-Host "Git found." -ForegroundColor Green
         if (Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\winhttp.dll") {
@@ -208,6 +208,21 @@ if ($args[0] -eq "-update") {
             exit
         }
         else {
+            #check to see if user locked configs
+            $l = $false
+            for ($i = 0; $i -lt $availablelocks.Count; $i++) {
+                $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
+                if ($null -eq $SEL) {
+                    $l = $true
+                }
+            }
+            #if user locked configs, copy configs to PackBin folder
+            if ($l -eq $true) {
+                for ($i =0; $i -lt $availablelocks.Count; $i++) {
+                    Copy-Item -Path "$pathtoConfig\$availablelocks[$i].cfg" -Destination "$PSScriptRoot\PackBin\"
+                }
+                Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
+            }
             Write-Host "Pack not found. Cloning repository..." -ForegroundColor Yellow
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack" -Type directory
             git -C ("$PSScriptRoot\PackBin\git\ ") clone ("https://github.com/votex09/valheimdirtbagmodpack") --progress
@@ -217,6 +232,14 @@ if ($args[0] -eq "-update") {
             }
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #Clear-Host
+            #if user locked configs, move configs to config folder
+            if ($l -eq $true) {
+                Write-Host "Reapplying user configs..." -ForegroundColor Green
+                for ($i =0; $i -lt $availablelocks.Count; $i++) {
+                    Copy-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg" -Destination "$pathtoConfig\"
+                    Remove-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg"
+                }
+            }
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
