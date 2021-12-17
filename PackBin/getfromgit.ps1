@@ -262,7 +262,7 @@ if ($args[0] -eq "-cfglock") {
                     $SEL1 = Select-String -Path $excludefile -Pattern "manfredo52.CustomizableCamera.cfg"
                     $SEL2 = Select-String -Path $excludefile -Pattern "randyknapp.mods.equipmentandquickslots.cfg"
                     $SEL3 = Select-String -Path $excludefile -Pattern "virtuacode.valheim.equipwheel.cfg"
-                    if ($SEL1 -ne $null -or $SEL2 -ne $null -or $SEL3 -ne $null) {
+                    if ($SEL1 -ne $null -and $SEL2 -ne $null -and $SEL3 -ne $null) {
                         Write-Host "All available configs were already locked."
                     }
                     else {
@@ -270,6 +270,7 @@ if ($args[0] -eq "-cfglock") {
                         Add-Content -Path $excludefile -Value "randyknapp.mods.equipmentandquickslots.cfg"
                         Add-Content -Path $excludefile -Value "virtuacode.valheim.equipwheel.cfg"
                         Write-Host "All available configs have been locked."
+                        (gc $excludefile | Group-Object | %{$_.group | select -First 1}) | Set-Content $excludefile
                     }
                     Start-Sleep 2
                 }
