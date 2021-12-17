@@ -223,49 +223,52 @@ if ($args[0] -eq "-cfglock") {
             }
             if ($usermode -eq "L" -or $usermode -eq "l") {
                 if ($userselection -eq 1) {
-                    $excludefile[1] = "manfredo52.CustomizableCamera.cfg"
+                    $excludefile[0] = "manfredo52.CustomizableCamera.cfg"
                     Write-Host "Customizable Camera has been locked."
                 }
                 if ($userselection -eq 2) {
-                    $excludefile[2] = "randyknapp.mods.equipmentandquickslots.cfg"
+                    $excludefile[1] = "randyknapp.mods.equipmentandquickslots.cfg"
                     Write-Host "Equipment And Quickslots has been locked."
                 }
                 if ($userselection -eq 3) {
-                    $excludefile[3] = "virtuacode.valheim.equipwheel.cfg"
+                    $excludefile[2] = "virtuacode.valheim.equipwheel.cfg"
                     Write-Host "Equip Wheel has been locked."
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $excludefile[1] = "manfredo52.CustomizableCamera.cfg"
-                    $excludefile[2] = "randyknapp.mods.equipmentandquickslots.cfg"
-                    $excludefile[3] = "virtuacode.valheim.equipwheel.cfg"
+                    $excludefile[0] = "manfredo52.CustomizableCamera.cfg"
+                    $excludefile[1] = "randyknapp.mods.equipmentandquickslots.cfg"
+                    $excludefile[2] = "virtuacode.valheim.equipwheel.cfg"
                     Write-Host "All available configs have been locked."
+                    Start-Sleep 2
                 }
             }
             if ($usermode -eq "U" -or $usermode -eq "u") {
                 if ($userselection -eq 1) {
-                    $excludefile[1] = ""
+                    $excludefile[0] = ""
                     Write-Host "Customizable Camera has been unlocked."
                 }
                 if ($userselection -eq 2) {
-                    $excludefile[2] = ""
+                    $excludefile[1] = ""
                     Write-Host "Equipment And Quickslots has been unlocked."
                 }
                 if ($userselection -eq 3) {
-                    $excludefile[3] = ""
+                    $excludefile[2] = ""
                     Write-Host "Equip Wheel has been unlocked."
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
+                    $excludefile[0] = ""
                     $excludefile[1] = ""
                     $excludefile[2] = ""
-                    $excludefile[3] = ""
                     Write-Host "All available configs have been unlocked."
+                    Start-Sleep 2
                 }
             }
         }
         else {
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" -Type file
         }
-        Set-Content -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" -Value "$excludefile"
+        $excludefile | Set-Content -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
+        Clear-Host
     }
 }
 if ($args[0] -eq "-enableHD") {
