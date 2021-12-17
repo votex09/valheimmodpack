@@ -269,7 +269,6 @@ if ($args[0] -eq "-cfglock") {
                         Add-Content -Path $excludefile -Value "virtuacode.valheim.equipwheel.cfg"
                         Write-Host "All available configs have been locked."
                     }
-                    
                     Start-Sleep 2
                 }
             }
@@ -310,7 +309,6 @@ if ($args[0] -eq "-cfglock") {
                 if ($userselection -eq "A" -or $userselection -eq "a") {
                     Set-Content -Path $excludefile -Value ""
                     Write-Host "All available configs have been unlocked."
-                    }
                     Start-Sleep 2
                 }
             }
