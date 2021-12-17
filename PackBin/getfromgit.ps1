@@ -212,7 +212,9 @@ if ($args[0] -eq "-cfglock") {
             Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n"
             Write-Host "Current Locked Configs:`n"
             $locked = Get-Content $excludefile
-            Write-Host "$locked`n`n" -ForegroundColor Yellow
+            for ($i = 0; $i -lt $locked.Count; $i++) {
+                Write-Host $locked[$i] -ForegroundColor Yellow
+            }
             Write-Host "[1]Customizable Camera`n[2]Equipment and Quickslots`n[3]Equip Wheel`n`n"
             $usermode = Read-Host "[L]ock or [U]nlock a config?: "
             if ($usermode -eq "x" -or $usermode -eq "X") {
@@ -279,7 +281,7 @@ if ($args[0] -eq "-cfglock") {
                         Write-Host "Customizable Camera was already unlocked."
                     }
                     else {
-                        Remove-Content -Path $excludefile -Value "manfredo52.CustomizableCamera.cfg"
+                        ((Get-Content -Path $excludefile) -replace "manfredo52.CustomizableCamera.cfg", "") | Set-Content -Path $excludefile
                         Write-Host "Customizable Camera has been unlocked."
                     }
                     Start-Sleep 2
@@ -289,8 +291,8 @@ if ($args[0] -eq "-cfglock") {
                     if ($SEL -eq $null) {
                         Write-Host "Equipment and Quickslots was already unlocked."
                     }
-                    else {
-                        Remove-Content -Path $excludefile -Value "randyknapp.mods.equipmentandquickslots.cfg"
+                    else {                        
+                        ((Get-Content -Path $excludefile) -replace "randyknapp.mods.equipmentandquickslots.cfg", "") | Set-Content -Path $excludefile       
                         Write-Host "Equipment and Quickslots has been unlocked."
                     }
                     Start-Sleep 2
@@ -301,7 +303,7 @@ if ($args[0] -eq "-cfglock") {
                         Write-Host "Equip Wheel was already unlocked."
                     }
                     else {
-                        Remove-Content -Path $excludefile -Value "virtuacode.valheim.equipwheel.cfg"
+                        ((Get-Content -Path $excludefile) -replace "virtuacode.valheim.equipwheel.cfg", "") | Set-Content -Path $excludefile
                         Write-Host "Equip Wheel has been unlocked."
                     }
                     Start-Sleep 2
