@@ -2,6 +2,9 @@ $bepdisabled = "$PSScriptRoot\winhttp.disabled"
 $bepenabled = "$PSScriptRoot\winhttp.dll"
 $HDEnabled = "$PSScriptRoot\valheim_Data\HDEnabled"
 $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
+$pathtoConfig = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\BepInEx\config"
+$excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
+$availablelocks = @('manfredo52.CustomizableCamera','randyknapp.mods.equipmentandquickslots','virtuacode.valheim.equipwheel')
 if ($args[0] -eq "-enable") {
     #check to see if plugins are disabled
     If (Test-Path -Path $bepdisabled) { #If plugins are disabled, rename winhttp so they are enabled.
@@ -166,6 +169,20 @@ if ($args[0] -eq "-update") {
         Write-Host "Please wait for Git to finish installing..." -ForegroundColor Yellow
         pause
     }
+    #check to see if user locked configs
+    $l = $false
+    for ($i = 0; $i -lt $availablelocks.Count; $i++) {
+        $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
+        if ($null -eq $SEL) {
+            $l = $true
+        }
+    }
+    #if user locked configs, copy configs to PackBin folder
+    if ($l -eq $true) {
+        for ($i =0; $i -lt $availablelocks.Count; $i++) {
+            Copy-Item -Path "$pathtoConfig\$availablelocks[$i].cfg" -Destination "$PSScriptRoot\PackBin\"
+        }
+    }
     if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) { #Verify Git is installed.
         Clear-Host
         Write-Host "Git found." -ForegroundColor Green
@@ -191,6 +208,13 @@ if ($args[0] -eq "-update") {
             }
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #Clear-Host
+            #if user locked configs, move configs to config folder
+            if ($l -eq $true) {
+                for ($i =0; $i -lt $availablelocks.Count; $i++) {
+                    Copy-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg" -Destination "$pathtoConfig\"
+                    Remove-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg"
+                }
+            }
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
@@ -207,8 +231,6 @@ if ($args[0] -eq "-cfglock") {
     while ($menumode -eq "continue") {
         Clear-Host
         if ((Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")) {
-            $configFolder = "$PSScriptRoot\\PackBin\\git\\valheimdirtbagmodpack\\BepInEx\\config"
-            $excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
             Write-Host "=============================`nConfig Lock Menu`n============================="
             Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n" -ForegroundColor Blue
             Write-Host "Current Locked Configs:"
@@ -216,104 +238,77 @@ if ($args[0] -eq "-cfglock") {
             for ($i = 0; $i -lt $locked.Count; $i++) {
                 Write-Host $locked[$i] -ForegroundColor Yellow
             }
-            Write-Host "`n[1]Customizable Camera`n[2]Equipment and Quickslots`n[3]Equip Wheel`n`n"
-            $usermode = Read-Host "[L]ock or [U]nlock a config?: "
+            for ($i = 0; $i -lt $availablelocks.Count; $i++) {
+                Write-Host "[$i]$availablelocks[$i]" -ForegroundColor Green
+            }
+            $usermode = Read-Host "`n`n[L]ock or [U]nlock a config?: "
             if ($usermode -eq "x" -or $usermode -eq "X") {
                 exit
             }
             $userselection = Read-Host "Enter the number of the config you wish to lock/unlock (Or [A] for all): "
-            if ($usermode -eq "x" -or $usermode -eq "X") {
+            if ($userselection -eq "x" -or $userselection -eq "X") {
                 exit
             }
-            if ($usermode -eq "L" -or $usermode -eq "l") {
-                if ($userselection -eq 1) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\\manfredo52.CustomizableCamera.cfg"
-                    if ($null -ne $SEL) {
-                        Write-Host "Customizable Camera was already locked."
+            #lock config
+            if ($usermode -eq "l" -or $usermode -eq "L") {
+                if ($userselection -eq "a" -or $userselection -eq "A") {
+                    for ($i = 0; $i -lt $availablelocks.Count; $i++) {
+                        $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
+                        if ($null -ne $SEL) {
+                            Write-Host "$availablelocks[$i] was already locked."
+                        }
+                        else {
+                            Write-Host "Locking $availablelocks[$i]..."
+                            Add-Content -Path $excludefile -Value $availablelocks[$i]
+                        }
                     }
-                    else {
-                        Add-Content -Path $excludefile -Value "$configFolder\\manfredo52.CustomizableCamera.cfg"
-                        Write-Host "Customizable Camera has been locked."
-                    }
-                    Start-Sleep 2
                 }
-                if ($userselection -eq 2) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\\randyknapp.mods.equipmentandquickslots.cfg"
-                    if ($null -ne $SEL) {
-                        Write-Host "Equipment and Quickslots was already locked."
+                else {
+                    #check if array index is out of bounds
+                    if ($userselection -gt $availablelocks.Count -or $userselection -lt 0) {
+                        Write-Host "Invalid selection."
                     }
                     else {
-                        Add-Content -Path $excludefile -Value "$configFolder\\randyknapp.mods.equipmentandquickslots.cfg"
-                        Write-Host "Equipment and Quickslots has been locked."
+                        $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$userselection]"
+                        if ($null -ne $SEL) {
+                            Write-Host "$availablelocks[$userselection] was already locked."
+                        }
+                        else {
+                            Write-Host "Locking $availablelocks[$userselection]..."
+                            Add-Content -Path $excludefile -Value $availablelocks[$userselection]
+                        }
                     }
-                    Start-Sleep 2
-                }
-                if ($userselection -eq 3) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\\virtuacode.valheim.equipwheel.cfg"
-                    if ($null -ne $SEL) {
-                        Write-Host "Equip Wheel was already locked."
-                    }
-                    else {
-                        Add-Content -Path $excludefile -Value "$configFolder\\virtuacode.valheim.equipwheel.cfg"
-                        Write-Host "Equip Wheel has been locked."
-                    }
-                    Start-Sleep 2
-                }
-                if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $SEL1 = Select-String -Path $excludefile -Pattern "$configFolder\\manfredo52.CustomizableCamera.cfg"
-                    $SEL2 = Select-String -Path $excludefile -Pattern "$configFolder\\randyknapp.mods.equipmentandquickslots.cfg"
-                    $SEL3 = Select-String -Path $excludefile -Pattern "$configFolder\\virtuacode.valheim.equipwheel.cfg"
-                    if ($null -ne $SEL1 -and $null -ne $SEL2 -and $null -ne $SEL3) {
-                        Write-Host "All available configs were already locked."
-                    }
-                    else {
-                        Add-Content -Path $excludefile -Value "$configFolder\\manfredo52.CustomizableCamera.cfg"
-                        Add-Content -Path $excludefile -Value "$configFolder\\randyknapp.mods.equipmentandquickslots.cfg"
-                        Add-Content -Path $excludefile -Value "$configFolder\\virtuacode.valheim.equipwheel.cfg"
-                        Write-Host "All available configs have been locked."
-                        (Get-Content $excludefile | Group-Object | ForEach-Object{$_.group | Select-Object -First 1}) | Set-Content $excludefile
-                    }
-                    Start-Sleep 2
                 }
             }
-            if ($usermode -eq "U" -or $usermode -eq "u") {
-                if ($userselection -eq 1) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\\manfredo52.CustomizableCamera.cfg"
-                    if ($null -eq $SEL) {
-                        Write-Host "Customizable Camera was already unlocked."
+            #unlock config
+            if ($usermode -eq "u" -or $usermode -eq "U") {
+                if ($userselection -eq "a" -or $userselection -eq "A") {
+                    for ($i = 0; $i -lt $availablelocks.Count; $i++) {
+                        $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
+                        if ($null -eq $SEL) {
+                            Write-Host "$availablelocks[$i] was already unlocked."
+                        }
+                        else {
+                            Write-Host "Unlocking $availablelocks[$i]..."
+                            ((Get-Content -Path $excludefile) -replace "$availablelocks[$i]", "") | Set-Content -Path $excludefile
+                        }
+                    }
+                }
+                else {
+                    #check if array index is out of bounds
+                    if ($userselection -gt $availablelocks.Count -or $userselection -lt 0) {
+                        Write-Host "Invalid selection."
                     }
                     else {
-                        ((Get-Content -Path $excludefile) -replace "$configFolder\\manfredo52.CustomizableCamera.cfg", "") | Set-Content -Path $excludefile
-                        Write-Host "Customizable Camera has been unlocked."
+                        $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$userselection]"
+                        if ($null -eq $SEL) {
+                            Write-Host "$availablelocks[$userselection] was already unlocked."
+                        }
+                        else {
+                            Write-Host "Unlocking $availablelocks[$userselection]..."
+                            ((Get-Content -Path $excludefile) -replace "$availablelocks[$userselection]", "") | Set-Content -Path $excludefile
+                        }
                     }
-                    Start-Sleep 2
-                }
-                if ($userselection -eq 2) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\\randyknapp.mods.equipmentandquickslots.cfg"
-                    if ($null -eq $SEL) {
-                        Write-Host "Equipment and Quickslots was already unlocked."
-                    }
-                    else {                        
-                        ((Get-Content -Path $excludefile) -replace "$configFolder\\randyknapp.mods.equipmentandquickslots.cfg", "") | Set-Content -Path $excludefile       
-                        Write-Host "Equipment and Quickslots has been unlocked."
-                    }
-                    Start-Sleep 2
-                }
-                if ($userselection -eq 3) {
-                    $SEL = Select-String -Path $excludefile -Pattern "$configFolder\\virtuacode.valheim.equipwheel.cfg"
-                    if ($null -eq $SEL) {
-                        Write-Host "Equip Wheel was already unlocked."
-                    }
-                    else {
-                        ((Get-Content -Path $excludefile) -replace "$configFolder\\virtuacode.valheim.equipwheel.cfg", "") | Set-Content -Path $excludefile
-                        Write-Host "Equip Wheel has been unlocked."
-                    }
-                    Start-Sleep 2
-                }
-                if ($userselection -eq "A" -or $userselection -eq "a") {
-                    Set-Content -Path $excludefile -Value ""
-                    Write-Host "All available configs have been unlocked."
-                    Start-Sleep 2
                 }
             }
         }
