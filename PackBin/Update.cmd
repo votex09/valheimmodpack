@@ -14,7 +14,7 @@ echo [2] Disable Mods
 echo [3] Update Pack
 echo [4] Start Game
 echo. 
-echo [Q]uit and Update Scripts | [E]nable HD | [D]isable HD | [V]iew Update Log | [T]oggle Config Locks
+echo [Q]uit and Update Scripts - [E]nable HD - [D]isable HD - [V]iew Update Log - [T]oggle Config Locks
 echo.
 set /p x="Select an option: "
 if /I "%x%" == "0" powershell -executionpolicy bypass -file .\getfromgit.ps1 -full
