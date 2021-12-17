@@ -208,6 +208,7 @@ if ($args[0] -eq "-cfglock") {
     while ($menumode = "continue") {
         if ((Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")) {
             $excludefile = Get-Content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
+            $excludefile[$excludefile.Count] = '#endOfFile'
             Write-Host "=============================`nConfig Lock Menu`n============================="
             Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n"
             Write-Host "Current Locked Configs:`n"
@@ -273,7 +274,6 @@ if ($args[0] -eq "-cfglock") {
         else {
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" -Type file
         }
-        $excludefile[$excludefile.Count -1] = '#endOfFile'
         $excludefile | Set-Content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
         Clear-Host
     }
