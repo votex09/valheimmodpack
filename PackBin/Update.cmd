@@ -13,7 +13,7 @@ echo [1] Enable Mods
 echo [2] Disable Mods
 echo [3] Update Pack
 echo [4] Start Game
-echo 
+echo. 
 echo Options:
 echo [Q]uit and Update Scripts, [E]nable HD, [D]isable HD, [V]iew Update Log, [T]oggle Config Locks
 echo.

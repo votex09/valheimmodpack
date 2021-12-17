@@ -57,7 +57,7 @@ if ($args[0] -eq "-checkstatus") {
         Write-Host $updatemessage[1].Replace("fast-forwarded.", "updated.").Replace("branch", "modpack version") -ForegroundColor Cyan
         $vers = git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") rev-list --count main 
         Write-Host "Current Version : $vers -- Update Log:`n"
-        git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") log -n 40 --pretty='format:%cs | %ch | %s' | Out-File -FilePath "$PSScriptRoot\PackBin\gitlog.txt"
+        git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") log --pretty='format:%cs | %ch | %s' | Out-File -FilePath "$PSScriptRoot\PackBin\gitlog.txt"
         $logshort = Get-Item -Path "$PSScriptRoot\PackBin\gitlog.txt" | Get-Content -Head 6
         Write-Host $logshort[0] -ForegroundColor Blue
         Write-Host $logshort[1] -ForegroundColor Blue
@@ -200,7 +200,6 @@ if ($args[0] -eq "-update") {
 if ($args[0] -eq "-logs") {
     Clear-Host
     Import-Csv $PSScriptroot\PackBin\gitlog.txt -delimiter `| -Header 'Date', 'TimeStamp', 'Commit Message' | Out-Gridview
-    pause
     exit
 }
 if ($args[0] -eq "-cfglock") {
