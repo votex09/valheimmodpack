@@ -203,9 +203,9 @@ if ($args[0] -eq "-logs") {
     exit
 }
 if ($args[0] -eq "-cfglock") {
-    Clear-Host
     $menumode = "continue"
     while ($menumode = "continue") {
+        Clear-Host
         if ((Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")) {
             $excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
             Write-Host "=============================`nConfig Lock Menu`n============================="
