@@ -318,8 +318,7 @@ if ($args[0] -eq "-cfglock") {
         else {
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" -Type file
         }
-        Get-Content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" | ? {$_.trim() -ne "" } | set-content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
-        Clear-Host
+    (gc $excludefile) | ? {$_.trim() -ne "" } | set-content $excludefile
     }
 }
 if ($args[0] -eq "-enableHD") {
