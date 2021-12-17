@@ -207,12 +207,12 @@ if ($args[0] -eq "-cfglock") {
     $menumode = "continue"
     while ($menumode = "continue") {
         if ((Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")) {
-            $excludefile = Get-Content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
-            $excludefile[$excludefile.Count + 5] = '#endOfFile'
+            $excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
             Write-Host "=============================`nConfig Lock Menu`n============================="
             Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n"
             Write-Host "Current Locked Configs:`n"
-            Write-Host "$excludefile`n`n" -ForegroundColor Yellow
+            $locked = Get-Content $excludefile
+            Write-Host "$locked`n`n" -ForegroundColor Yellow
             Write-Host "[1]Customizable Camera`n[2]Equipment and Quickslots`n[3]Equip Wheel`n`n"
             $usermode = Read-Host "[L]ock or [U]nlock a config?: "
             if ($usermode -eq "x" -or $usermode -eq "X") {
@@ -224,49 +224,96 @@ if ($args[0] -eq "-cfglock") {
             }
             if ($usermode -eq "L" -or $usermode -eq "l") {
                 if ($userselection -eq 1) {
-                    $excludefile[0] = 'manfredo52.CustomizableCamera.cfg'
-                    Write-Host "Customizable Camera has been locked."
+                    $SEL = Select-String -Path $excludefile -Pattern "manfredo52.CustomizableCamera.cfg"
+                    if ($SEL -ne $null) {
+                        Write-Host "Customizable Camera was already locked."
+                    }
+                    else {
+                        Add-Content -Path $excludefile -Value "manfredo52.CustomizableCamera.cfg"
+                        Write-Host "Customizable Camera has been locked."
+                    }
                     Start-Sleep 2
                 }
                 if ($userselection -eq 2) {
-                    $excludefile[1] = 'randyknapp.mods.equipmentandquickslots.cfg'
-                    Write-Host "Equipment And Quickslots has been locked."
+                    $SEL = Select-String -Path $excludefile -Pattern "randyknapp.mods.equipmentandquickslots.cfg"
+                    if ($SEL -ne $null) {
+                        Write-Host "Equipment and Quickslots was already locked."
+                    }
+                    else {
+                        Add-Content -Path $excludefile -Value "randyknapp.mods.equipmentandquickslots.cfg"
+                        Write-Host "Equipment and Quickslots has been locked."
+                    }
                     Start-Sleep 2
                 }
                 if ($userselection -eq 3) {
-                    $excludefile[2] = 'virtuacode.valheim.equipwheel.cfg'
-                    Write-Host "Equip Wheel has been locked."
+                    $SEL = Select-String -Path $excludefile -Pattern "virtuacode.valheim.equipwheel.cfg"
+                    if ($SEL -ne $null) {
+                        Write-Host "Equip Wheel was already locked."
+                    }
+                    else {
+                        Add-Content -Path $excludefile -Value "virtuacode.valheim.equipwheel.cfg"
+                        Write-Host "Equip Wheel has been locked."
+                    }
                     Start-Sleep 2
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $excludefile[0] = 'manfredo52.CustomizableCamera.cfg'
-                    $excludefile[1] = 'randyknapp.mods.equipmentandquickslots.cfg'
-                    $excludefile[2] = 'virtuacode.valheim.equipwheel.cfg'
-                    Write-Host "All available configs have been locked."
+                    $SEL = Select-String -Path $excludefile -Pattern ("manfredo52.CustomizableCamera.cfg" -or "randyknapp.mods.equipmentandquickslots.cfg" -or "virtuacode.valheim.equipwheel.cfg")
+                    if ($SEL -ne $null) {
+                        Write-Host "Customizable Camera was already locked."
+                    }
+                    else {
+                        Add-Content -Path $excludefile -Value "manfredo52.CustomizableCamera.cfg"
+                        Add-Content -Path $excludefile -Value "randyknapp.mods.equipmentandquickslots.cfg"
+                        Add-Content -Path $excludefile -Value "virtuacode.valheim.equipwheel.cfg"
+                        Write-Host "All available configs have been locked."
+                    }
+                    
                     Start-Sleep 2
                 }
             }
             if ($usermode -eq "U" -or $usermode -eq "u") {
                 if ($userselection -eq 1) {
-                    $excludefile[0] = ''
-                    Write-Host "Customizable Camera has been unlocked."
+                    $SEL = Select-String -Path $excludefile -Pattern "manfredo52.CustomizableCamera.cfg"
+                    if ($SEL -eq $null) {
+                        Write-Host "Customizable Camera was already unlocked."
+                    }
+                    else {
+                        Remove-Content -Path $excludefile -Value "manfredo52.CustomizableCamera.cfg"
+                        Write-Host "Customizable Camera has been unlocked."
+                    }
                     Start-Sleep 2
                 }
                 if ($userselection -eq 2) {
-                    $excludefile[1] = ''
-                    Write-Host "Equipment And Quickslots has been unlocked."
+                    $SEL = Select-String -Path $excludefile -Pattern "randyknapp.mods.equipmentandquickslots.cfg"
+                    if ($SEL -eq $null) {
+                        Write-Host "Equipment and Quickslots was already unlocked."
+                    }
+                    else {
+                        Remove-Content -Path $excludefile -Value "randyknapp.mods.equipmentandquickslots.cfg"
+                        Write-Host "Equipment and Quickslots has been unlocked."
+                    }
                     Start-Sleep 2
                 }
                 if ($userselection -eq 3) {
-                    $excludefile[2] = ''
-                    Write-Host "Equip Wheel has been unlocked."
+                    $SEL = Select-String -Path $excludefile -Pattern "virtuacode.valheim.equipwheel.cfg"
+                    if ($SEL -eq $null) {
+                        Write-Host "Equip Wheel was already unlocked."
+                    }
+                    else {
+                        Remove-Content -Path $excludefile -Value "virtuacode.valheim.equipwheel.cfg"
+                        Write-Host "Equip Wheel has been unlocked."
+                    }
                     Start-Sleep 2
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $excludefile[0] = ''
-                    $excludefile[1] = ''
-                    $excludefile[2] = ''
-                    Write-Host "All available configs have been unlocked."
+                    $SEL = Select-String -Path $excludefile -Pattern ("manfredo52.CustomizableCamera.cfg" -or "randyknapp.mods.equipmentandquickslots.cfg" -or "virtuacode.valheim.equipwheel.cfg")
+                    if ($SEL -eq $null) {
+                        Write-Host "All available configs were already unlocked."
+                    }
+                    else {
+                        Remove-Content -Path $excludefile -Value ("manfredo52.CustomizableCamera.cfg" -or "randyknapp.mods.equipmentandquickslots.cfg" -or "virtuacode.valheim.equipwheel.cfg")
+                        Write-Host "All available configs have been unlocked."
+                    }
                     Start-Sleep 2
                 }
             }
@@ -274,7 +321,7 @@ if ($args[0] -eq "-cfglock") {
         else {
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" -Type file
         }
-        $excludefile | Set-Content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
+        Get-Content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" | ? {$_.trim() -ne "" } | set-content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
         Clear-Host
     }
 }
