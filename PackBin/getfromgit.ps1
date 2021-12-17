@@ -239,7 +239,7 @@ if ($args[0] -eq "-cfglock") {
                 Write-Host $locked[$i] -ForegroundColor Yellow
             }
             for ($i = 0; $i -lt $availablelocks.Count; $i++) {
-                Write-Host "[$i]$availablelocks[$i]" -ForegroundColor Green
+                Write-Host "[$i]"$availablelocks[$i]
             }
             $usermode = Read-Host "`n`n[L]ock or [U]nlock a config?: "
             if ($usermode -eq "x" -or $usermode -eq "X") {
