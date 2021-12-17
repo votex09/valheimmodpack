@@ -234,18 +234,21 @@ if ($args[0] -eq "-cfglock") {
             Write-Host "=============================`nConfig Lock Menu`n============================="
             Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n" -ForegroundColor Blue
             Write-Host "Current Locked Configs:"
-            $locked = Get-Content $excludefile
+            #retrieve list of locked configs
+            $locked = Get-Content -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
+            #loop through list and print to screen
             for ($i = 0; $i -lt $locked.Count; $i++) {
-                Write-Host $locked[$i] -ForegroundColor Yellow
+                Write-Host "`n$locked[$i]" -ForegroundColor Yellow
             }
+            Write-Host "`n------------------------------`n"
             for ($i = 0; $i -lt $availablelocks.Count; $i++) {
                 Write-Host "[$i]"$availablelocks[$i]
             }
-            $usermode = Read-Host "`n`n[L]ock or [U]nlock a config?: "
+            $usermode = Read-Host "`n`n[L]ock or [U]nlock a config?"
             if ($usermode -eq "x" -or $usermode -eq "X") {
                 exit
             }
-            $userselection = Read-Host "Enter the number of the config you wish to lock/unlock (Or [A] for all): "
+            $userselection = Read-Host "Enter the number of the config you wish to lock/unlock (Or [A] for all)"
             if ($userselection -eq "x" -or $userselection -eq "X") {
                 exit
             }
@@ -256,6 +259,7 @@ if ($args[0] -eq "-cfglock") {
                         $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
                         if ($null -ne $SEL) {
                             Write-Host "$availablelocks[$i] was already locked."
+                            Start-Sleep 3
                         }
                         else {
                             Write-Host "Locking $availablelocks[$i]..."
@@ -267,15 +271,18 @@ if ($args[0] -eq "-cfglock") {
                     #check if array index is out of bounds
                     if ($userselection -gt $availablelocks.Count -or $userselection -lt 0) {
                         Write-Host "Invalid selection."
+                        Start-Sleep 3
                     }
                     else {
                         $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$userselection]"
                         if ($null -ne $SEL) {
                             Write-Host "$availablelocks[$userselection] was already locked."
+                            Start-Sleep 3
                         }
                         else {
                             Write-Host "Locking $availablelocks[$userselection]..."
                             Add-Content -Path $excludefile -Value $availablelocks[$userselection]
+                            Start-Sleep 3
                         }
                     }
                 }
@@ -287,10 +294,12 @@ if ($args[0] -eq "-cfglock") {
                         $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
                         if ($null -eq $SEL) {
                             Write-Host "$availablelocks[$i] was already unlocked."
+                            Start-Sleep 3
                         }
                         else {
                             Write-Host "Unlocking $availablelocks[$i]..."
                             ((Get-Content -Path $excludefile) -replace "$availablelocks[$i]", "") | Set-Content -Path $excludefile
+                            Start-Sleep 3
                         }
                     }
                 }
@@ -298,15 +307,18 @@ if ($args[0] -eq "-cfglock") {
                     #check if array index is out of bounds
                     if ($userselection -gt $availablelocks.Count -or $userselection -lt 0) {
                         Write-Host "Invalid selection."
+                        Start-Sleep 3
                     }
                     else {
                         $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$userselection]"
                         if ($null -eq $SEL) {
                             Write-Host "$availablelocks[$userselection] was already unlocked."
+                            Start-Sleep 3
                         }
                         else {
                             Write-Host "Unlocking $availablelocks[$userselection]..."
                             ((Get-Content -Path $excludefile) -replace "$availablelocks[$userselection]", "") | Set-Content -Path $excludefile
+                            Start-Sleep 3
                         }
                     }
                 }
