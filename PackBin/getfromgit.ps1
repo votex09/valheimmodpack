@@ -169,23 +169,23 @@ if ($args[0] -eq "-update") {
         Write-Host "Please wait for Git to finish installing..." -ForegroundColor Yellow
         pause
     }
-    #check to see if user locked configs
-    $l = $false
-    for ($i = 0; $i -lt $availablelocks.Count; $i++) {
-        $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
-        if ($null -eq $SEL) {
-            $l = $true
-        }
-    }
-    #if user locked configs, copy configs to PackBin folder
-    if ($l -eq $true) {
-        for ($i =0; $i -lt $availablelocks.Count; $i++) {
-            Write-Host "Configlocks found. Preserving user configs..." -ForegroundColor Green
-            Copy-Item -Path "$pathtoConfig\$availablelocks[$i].cfg" -Destination "$PSScriptRoot\PackBin\"
-        }
-    }
     if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) { #Verify Git is installed.
         Clear-Host
+        #check to see if user locked configs
+        $l = $false
+        for ($i = 0; $i -lt $availablelocks.Count; $i++) {
+            $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
+            if ($null -eq $SEL) {
+                $l = $true
+            }
+        }
+        #if user locked configs, copy configs to PackBin folder
+        if ($l -eq $true) {
+            for ($i =0; $i -lt $availablelocks.Count; $i++) {
+                Write-Host "Configlocks found. Preserving user configs..." -ForegroundColor Green
+                Copy-Item -Path "$pathtoConfig\$availablelocks[$i].cfg" -Destination "$PSScriptRoot\PackBin\"
+            }
+        }
         Write-Host "Git found." -ForegroundColor Green
         if (Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\winhttp.dll") {
             git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") pull --progress
@@ -195,6 +195,14 @@ if ($args[0] -eq "-update") {
             }
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #Clear-Host
+            #if user locked configs, move configs to config folder
+            if ($l -eq $true) {
+                Write-Host "Reapplying user configs..." -ForegroundColor Green
+                for ($i =0; $i -lt $availablelocks.Count; $i++) {
+                    Copy-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg" -Destination "$pathtoConfig\"
+                    Remove-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg"
+                }
+            }
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
@@ -209,14 +217,6 @@ if ($args[0] -eq "-update") {
             }
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #Clear-Host
-            #if user locked configs, move configs to config folder
-            if ($l -eq $true) {
-                Write-Host "Reapplying user configs..." -ForegroundColor Green
-                for ($i =0; $i -lt $availablelocks.Count; $i++) {
-                    Copy-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg" -Destination "$pathtoConfig\"
-                    Remove-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg"
-                }
-            }
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
