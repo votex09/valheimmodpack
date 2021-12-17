@@ -257,9 +257,11 @@ if ($args[0] -eq "-cfglock") {
                     Start-Sleep 2
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $SEL = Select-String -Path $excludefile -Pattern ("manfredo52.CustomizableCamera.cfg" -or "randyknapp.mods.equipmentandquickslots.cfg" -or "virtuacode.valheim.equipwheel.cfg")
-                    if ($SEL -ne $null) {
-                        Write-Host "Customizable Camera was already locked."
+                    $SEL1 = Select-String -Path $excludefile -Pattern "manfredo52.CustomizableCamera.cfg"
+                    $SEL2 = Select-String -Path $excludefile -Pattern "randyknapp.mods.equipmentandquickslots.cfg"
+                    $SEL3 = Select-String -Path $excludefile -Pattern "virtuacode.valheim.equipwheel.cfg"
+                    if ($SEL1 -ne $null -or $SEL2 -ne $null -or $SEL3 -ne $null) {
+                        Write-Host "All available configs were already locked."
                     }
                     else {
                         Add-Content -Path $excludefile -Value "manfredo52.CustomizableCamera.cfg"
@@ -306,13 +308,8 @@ if ($args[0] -eq "-cfglock") {
                     Start-Sleep 2
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $SEL = Select-String -Path $excludefile -Pattern ("manfredo52.CustomizableCamera.cfg" -or "randyknapp.mods.equipmentandquickslots.cfg" -or "virtuacode.valheim.equipwheel.cfg")
-                    if ($SEL -eq $null) {
-                        Write-Host "All available configs were already unlocked."
-                    }
-                    else {
-                        Remove-Content -Path $excludefile -Value ("manfredo52.CustomizableCamera.cfg" -or "randyknapp.mods.equipmentandquickslots.cfg" -or "virtuacode.valheim.equipwheel.cfg")
-                        Write-Host "All available configs have been unlocked."
+                    Set-Content -Path $excludefile -Value ""
+                    Write-Host "All available configs have been unlocked."
                     }
                     Start-Sleep 2
                 }
