@@ -223,42 +223,48 @@ if ($args[0] -eq "-cfglock") {
             }
             if ($usermode -eq "L" -or $usermode -eq "l") {
                 if ($userselection -eq 1) {
-                    $excludefile[0] = "manfredo52.CustomizableCamera.cfg`n"
+                    $excludefile[0] = 'manfredo52.CustomizableCamera.cfg'
                     Write-Host "Customizable Camera has been locked."
+                    Start-Sleep 2
                 }
                 if ($userselection -eq 2) {
-                    $excludefile[1] = "randyknapp.mods.equipmentandquickslots.cfg`n"
+                    $excludefile[1] = 'randyknapp.mods.equipmentandquickslots.cfg'
                     Write-Host "Equipment And Quickslots has been locked."
+                    Start-Sleep 2
                 }
                 if ($userselection -eq 3) {
-                    $excludefile[2] = "virtuacode.valheim.equipwheel.cfg`n"
+                    $excludefile[2] = 'virtuacode.valheim.equipwheel.cfg'
                     Write-Host "Equip Wheel has been locked."
+                    Start-Sleep 2
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $excludefile[0] = "manfredo52.CustomizableCamera.cfg`n"
-                    $excludefile[1] = "randyknapp.mods.equipmentandquickslots.cfg`n"
-                    $excludefile[2] = "virtuacode.valheim.equipwheel.cfg`n"
+                    $excludefile[0] = 'manfredo52.CustomizableCamera.cfg'
+                    $excludefile[1] = 'randyknapp.mods.equipmentandquickslots.cfg'
+                    $excludefile[2] = 'virtuacode.valheim.equipwheel.cfg'
                     Write-Host "All available configs have been locked."
                     Start-Sleep 2
                 }
             }
             if ($usermode -eq "U" -or $usermode -eq "u") {
                 if ($userselection -eq 1) {
-                    $excludefile[0] = "`n"
+                    $excludefile[0] = ''
                     Write-Host "Customizable Camera has been unlocked."
+                    Start-Sleep 2
                 }
                 if ($userselection -eq 2) {
-                    $excludefile[1] = "`n"
+                    $excludefile[1] = ''
                     Write-Host "Equipment And Quickslots has been unlocked."
+                    Start-Sleep 2
                 }
                 if ($userselection -eq 3) {
-                    $excludefile[2] = "`n"
+                    $excludefile[2] = ''
                     Write-Host "Equip Wheel has been unlocked."
+                    Start-Sleep 2
                 }
                 if ($userselection -eq "A" -or $userselection -eq "a") {
-                    $excludefile[0] = "`n"
-                    $excludefile[1] = "`n"
-                    $excludefile[2] = "`n"
+                    $excludefile[0] = ''
+                    $excludefile[1] = ''
+                    $excludefile[2] = ''
                     Write-Host "All available configs have been unlocked."
                     Start-Sleep 2
                 }
