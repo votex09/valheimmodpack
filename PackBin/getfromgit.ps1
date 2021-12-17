@@ -174,7 +174,7 @@ if ($args[0] -eq "-update") {
         #check to see if user locked configs
         $l = $false
         for ($i = 0; $i -lt $availablelocks.Count; $i++) {
-            $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
+            $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$i])"
             if ($null -eq $SEL) {
                 $l = $true
             }
@@ -182,7 +182,7 @@ if ($args[0] -eq "-update") {
         #if user locked configs, copy configs to PackBin folder
         if ($l -eq $true) {
             for ($i =0; $i -lt $availablelocks.Count; $i++) {
-                Copy-Item -Path "$pathtoConfig\$availablelocks[$i].cfg" -Destination "$PSScriptRoot\PackBin\"
+                Copy-Item -Path "$pathtoConfig\$($availablelocks[$i]).cfg" -Destination "$PSScriptRoot\PackBin\"
             }
             Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
         }
@@ -199,8 +199,8 @@ if ($args[0] -eq "-update") {
             if ($l -eq $true) {
                 Write-Host "Reapplying user configs..." -ForegroundColor Green
                 for ($i =0; $i -lt $availablelocks.Count; $i++) {
-                    Copy-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg" -Destination "$pathtoConfig\"
-                    Remove-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg"
+                    Copy-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg" -Destination "$pathtoConfig\"
+                    Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
                 }
             }
             Write-Host "Update complete." -ForegroundColor Green
@@ -211,7 +211,7 @@ if ($args[0] -eq "-update") {
             #check to see if user locked configs
             $l = $false
             for ($i = 0; $i -lt $availablelocks.Count; $i++) {
-                $SEL = Select-String -Path $excludefile -Pattern "$availablelocks[$i]"
+                $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$i])"
                 if ($null -eq $SEL) {
                     $l = $true
                 }
@@ -219,7 +219,7 @@ if ($args[0] -eq "-update") {
             #if user locked configs, copy configs to PackBin folder
             if ($l -eq $true) {
                 for ($i =0; $i -lt $availablelocks.Count; $i++) {
-                    Copy-Item -Path "$pathtoConfig\$availablelocks[$i].cfg" -Destination "$PSScriptRoot\PackBin\"
+                    Copy-Item -Path "$pathtoConfig\$($availablelocks[$i]).cfg" -Destination "$PSScriptRoot\PackBin\"
                 }
                 Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
             }
@@ -236,8 +236,8 @@ if ($args[0] -eq "-update") {
             if ($l -eq $true) {
                 Write-Host "Reapplying user configs..." -ForegroundColor Green
                 for ($i =0; $i -lt $availablelocks.Count; $i++) {
-                    Copy-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg" -Destination "$pathtoConfig\"
-                    Remove-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg"
+                    Copy-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg" -Destination "$pathtoConfig\"
+                    Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
                 }
             }
             Write-Host "Update complete." -ForegroundColor Green
