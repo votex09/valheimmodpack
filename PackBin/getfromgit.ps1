@@ -238,11 +238,11 @@ if ($args[0] -eq "-cfglock") {
             $locked = Get-Content -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
             #loop through list and print to screen
             for ($i = 0; $i -lt $locked.Count; $i++) {
-                Write-Host $locked[$i] -ForegroundColor Yellow
+                Write-Host $($locked[$i]) -ForegroundColor Yellow
             }
             Write-Host "`n------------------------------`n"
             for ($i = 0; $i -lt $availablelocks.Count; $i++) {
-                Write-Host "[$i]"$availablelocks[$i]
+                Write-Host "[$i]"$($availablelocks[$i])
             }
             $usermode = Read-Host "`n`n[L]ock or [U]nlock a config?"
             if ($usermode -eq "x" -or $usermode -eq "X") {
