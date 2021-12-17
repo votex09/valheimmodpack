@@ -1,5 +1,6 @@
 $bepdisabled = "$PSScriptRoot\winhttp.disabled"
 $bepenabled = "$PSScriptRoot\winhttp.dll"
+$bepvers = (Get-Item ".\bepinex\core\bepinex.dll").VersionInfo.ProductVersion
 $HDEnabled = "$PSScriptRoot\valheim_Data\HDEnabled"
 $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
 $pathtoConfig = "$PSScriptRoot\BepInEx\config"
@@ -59,7 +60,7 @@ if ($args[0] -eq "-checkstatus") {
         $updatemessage = Get-Item -Path "$PSScriptRoot\PackBin\gitstatus.txt" | Get-Content -Tail 5
         Write-Host $updatemessage[1].Replace("fast-forwarded.", "updated.").Replace("branch", "modpack version") -ForegroundColor Cyan
         $vers = git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") rev-list --count origin/main 
-        Write-Host "Current Version : $vers -- Update Log:`n"
+        Write-Host "Current Version : $vers/$bepvers-- Update Log:`n"
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") log origin/main --no-merges --pretty='format:%cs | %ch | %s' | Out-File -FilePath "$PSScriptRoot\PackBin\gitlog.txt"
         $logshort = Get-Item -Path "$PSScriptRoot\PackBin\gitlog.txt" | Get-Content -Head 6
         Write-Host $logshort[0] -ForegroundColor Blue
