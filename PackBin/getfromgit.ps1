@@ -2,7 +2,7 @@ $bepdisabled = "$PSScriptRoot\winhttp.disabled"
 $bepenabled = "$PSScriptRoot\winhttp.dll"
 $HDEnabled = "$PSScriptRoot\valheim_Data\HDEnabled"
 $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
-$pathtoConfig = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\BepInEx\config"
+$pathtoConfig = "$PSScriptRoot\BepInEx\config"
 $excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
 $availablelocks = @('manfredo52.CustomizableCamera','randyknapp.mods.equipmentandquickslots','virtuacode.valheim.equipwheel')
 if ($args[0] -eq "-enable") {
