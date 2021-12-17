@@ -209,13 +209,13 @@ if ($args[0] -eq "-cfglock") {
         if ((Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")) {
             $excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
             Write-Host "=============================`nConfig Lock Menu`n============================="
-            Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n"
-            Write-Host "Current Locked Configs:`n"
+            Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n" -ForegroundColor Blue
+            Write-Host "Current Locked Configs:"
             $locked = Get-Content $excludefile
             for ($i = 0; $i -lt $locked.Count; $i++) {
                 Write-Host $locked[$i] -ForegroundColor Yellow
             }
-            Write-Host "[1]Customizable Camera`n[2]Equipment and Quickslots`n[3]Equip Wheel`n`n"
+            Write-Host "`n[1]Customizable Camera`n[2]Equipment and Quickslots`n[3]Equip Wheel`n`n"
             $usermode = Read-Host "[L]ock or [U]nlock a config?: "
             if ($usermode -eq "x" -or $usermode -eq "X") {
                 exit
