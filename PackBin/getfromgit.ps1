@@ -273,6 +273,7 @@ if ($args[0] -eq "-cfglock") {
         else {
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" -Type file
         }
+        $excludefile[$excludefile.Count -1] = '#endOfFile'
         $excludefile | Set-Content "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
         Clear-Host
     }
