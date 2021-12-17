@@ -175,7 +175,7 @@ if ($args[0] -eq "-update") {
         $l = $false
         for ($i = 0; $i -lt $availablelocks.Count; $i++) {
             $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$i])"
-            if ($null -eq $SEL) {
+            if ($null -ne $SEL) {
                 $l = $true
             }
         }
@@ -212,7 +212,7 @@ if ($args[0] -eq "-update") {
             $l = $false
             for ($i = 0; $i -lt $availablelocks.Count; $i++) {
                 $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$i])"
-                if ($null -eq $SEL) {
+                if ($null -ne $SEL) {
                     $l = $true
                 }
             }
