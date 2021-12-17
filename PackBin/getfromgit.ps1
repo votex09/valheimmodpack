@@ -221,7 +221,7 @@ if ($args[0] -eq "-cfglock") {
             if ($usermode -eq "x" -or $usermode -eq "X") {
                 exit
             }
-            if ($usermode = "L" -or $usermode = "l") {
+            if ($usermode -eq "L" -or $usermode -eq "l") {
                 if ($userselection -eq 1) {
                     $excludefile[1] = "manfredo52.CustomizableCamera.cfg"
                     Write-Host "Customizable Camera has been locked."
@@ -241,7 +241,7 @@ if ($args[0] -eq "-cfglock") {
                     Write-Host "All available configs have been locked."
                 }
             }
-            if ($usermode = "U") {
+            if ($usermode -eq "U" -or $usermode -eq "u") {
                 if ($userselection -eq 1) {
                     $excludefile[1] = ""
                     Write-Host "Customizable Camera has been unlocked."
