@@ -180,6 +180,7 @@ if ($args[0] -eq "-update") {
     #if user locked configs, copy configs to PackBin folder
     if ($l -eq $true) {
         for ($i =0; $i -lt $availablelocks.Count; $i++) {
+            Write-Host "Configlocks found. Preserving user configs..." -ForegroundColor Green
             Copy-Item -Path "$pathtoConfig\$availablelocks[$i].cfg" -Destination "$PSScriptRoot\PackBin\"
         }
     }
@@ -210,6 +211,7 @@ if ($args[0] -eq "-update") {
             #Clear-Host
             #if user locked configs, move configs to config folder
             if ($l -eq $true) {
+                Write-Host "Reapplying user configs..." -ForegroundColor Green
                 for ($i =0; $i -lt $availablelocks.Count; $i++) {
                     Copy-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg" -Destination "$pathtoConfig\"
                     Remove-Item -Path "$PSScriptRoot\PackBin\$availablelocks[$i].cfg"
