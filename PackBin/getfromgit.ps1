@@ -234,8 +234,8 @@ if ($args[0] -eq "-cfglock") {
             Write-Host "=============================`nConfig Lock Menu`n============================="
             Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n" -ForegroundColor Blue
             Write-Host "Current Locked Configs:"
-            #retrieve list of locked configs from file
-            $locked = Get-Content -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
+            #retrieve list of locked configs from file as array@()
+            $locked = @(Get-Content -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")
             #loop through list and print to screen
             for ($i = 0; $i -lt $locked.Count; $i++) {
                 Write-Host "$($locked[$i])" -ForegroundColor Yellow
