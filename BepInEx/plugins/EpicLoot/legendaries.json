@@ -57,7 +57,7 @@
         { "Type": "Throwable" },
         { "Type": "RecallWeapon" },
         { "Type": "Opportunist", "Values": { "MinValue" : 25, "MaxValue" : 30, "Increment" : 1 } },
-        { "Type": "ModifyBackstab", "Values": { "MinValue" : 80, "MaxValue" : 90, "Increment" : 1 } }
+        { "Type": "ModifyBackstab", "Values": { "MinValue" : 25, "MaxValue" : 35, "Increment" : 1 } }
       ]
     },
     {
@@ -90,23 +90,7 @@
         { "Type": "Glowing" },
         { "Type": "RemoveSpeedPenalty" },
         { "Type": "Opportunist", "Values": { "MinValue" : 30, "MaxValue" : 35, "Increment" : 1 } },
-        { "Type": "ModifyBackstab", "Values": { "MinValue" : 61, "MaxValue" : 80, "Increment" : 1 } }
-      ]
-    },
-    {
-      "ID": "Laevateinn",
-      "Name": "$mod_epicloot_l_lokis",
-      "Description": "$mod_epicloot_l_lokis_desc",
-      "Requirements" : {
-        "AllowedItemTypes": [ "OneHandedWeapon" ],
-        "AllowedSkillTypes": [ "Knives" ]
-      },
- , 
-      "GuaranteedMagicEffects": [
-        { "Type": "Throwable" },
-        { "Type": "RecallWeapon" },
-        { "Type": "AddPoisonDamage", "Values": { "MinValue" : 45, "MaxValue" : 55, "Increment" : 1 } },
-        { "Type": "ModifyBackstab", "Values": { "MinValue" : 90, "MaxValue" : 100, "Increment" : 1 } }
+        { "Type": "ModifyBackstab", "Values": { "MinValue" : 5, "MaxValue" : 30, "Increment" : 1 } }
       ]
     },
     {
@@ -374,13 +358,20 @@
  
     },
     {
-      "ID": "LokiDagger",
-      "Name": "Loki's Devious Dagger",
-      "Description": "Needle-like.",
-      "IsSetItem": true, 
-      "Requirements": {
+      "ID": "Laevateinn",
+      "Name": "$mod_epicloot_l_lokis",
+      "Description": "$mod_epicloot_l_lokis_desc",
+      "Requirements" : {
         "AllowedItemTypes": [ "OneHandedWeapon" ],
-		"AllowedSkillTypes": [ "Knives" ] }  
+        "AllowedSkillTypes": [ "Knives" ]
+      },
+ , 
+      "GuaranteedMagicEffects": [
+        { "Type": "Throwable" },
+        { "Type": "RecallWeapon" },
+        { "Type": "AddPoisonDamage", "Values": { "MinValue" : 5, "MaxValue" : 15, "Increment" : 1 } },
+        { "Type": "ModifyBackstab", "Values": { "MinValue" : 10, "MaxValue" : 25, "Increment" : 1 } }
+      ]
     },
 
 	// Thor
@@ -668,7 +659,7 @@
         "LokiCape",
         "LokiHelm",
         "LokiChest",
-        "LokiWeapon"
+        "Laevateinn"
       ],
       "SetBonuses": [
         { "Count": 2, "Effect": { "Type": "ModifyBackstab", "Values": { "MinValue": 25, "MaxValue": 35, "Increment": 1 } } },

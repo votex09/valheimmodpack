@@ -75,7 +75,7 @@
                "fDamage":0,
                "fBlunt":0,
                "fSlash":0,
-               "fPierce":120,
+               "fPierce":60,
                "fChop":0,
                "fPickaxe":0,
                "fFire":0,
@@ -98,7 +98,7 @@
             "dtAttackDamageOverride":{
                "fDamage":0,
                "fBlunt":0,
-               "fSlash":140,
+               "fSlash":100,
                "fPierce":0,
                "fChop":0,
                "fPickaxe":0,

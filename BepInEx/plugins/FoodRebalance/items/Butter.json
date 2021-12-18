@@ -1,9 +1,0 @@
-{
-    "name": "rk_butter",
-    "weight": 1,
-    "stack": 10,
-    "health": 100,
-    "stamina": 0,
-    "regen": 0,
-    "duration": 1000
-}

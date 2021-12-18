@@ -1,9 +1,0 @@
-{
-    "name": "rk_boiledegg",
-    "weight": 1,
-    "stack": 10,
-    "health": 10,
-    "stamina": 50,
-    "regen": 4,
-    "duration": 1200
-}

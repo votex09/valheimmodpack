@@ -3,20 +3,20 @@
    "sNewPrefabName":"SvartalfrQueen",
    "Category_Appearance":{
       "vScale":{
-         "fX":2.75,
-         "fY":3.2,
-         "fZ":3.1
+         "fX":1.75,
+         "fY":2.2,
+         "fZ":2.1
       },
       "cTintColor":{
-         "fRed":2.55,
-         "fGreen":1.35,
-	  "fBlue":1.35},
+         "fRed":0,
+         "fGreen":0,
+	  "fBlue":2.55},
       "cTintItems":null,
       "cBodySmoke":null,
       "cBodyFlames":{
-         "fRed":2.55,
-         "fGreen":1.5,
-         "fBlue":0.5
+         "fRed":0.1,
+         "fGreen":0.2,
+         "fBlue":2.55
       },
       "sCustomTexture":null
    },
@@ -69,21 +69,21 @@
       ],
       "aAdvancedCustomAttacks":[
                   {
-            "sOriginalPrefabName":"BowHuntsman",
+            "sOriginalPrefabName":"SvartalfrQueenBow",
             "sTargetAnim":"bow_fire",
-            "fAIAttackInterval":5,
+            "fAIAttackInterval":6,
             "bAIPrioritized":null,
             "dtAttackDamageOverride":{
                "fDamage":0,
                "fBlunt":0,
-               "fSlash":30,
-               "fPierce":0,
+               "fSlash":0,
+               "fPierce":130,
                "fChop":0,
                "fPickaxe":0,
-               "fFire":30,
-               "fFrost":0,
+               "fFire":0,
+               "fFrost":50,
                "fLightning":0,
-               "fPoison":30,
+               "fPoison":0,
                "fSpirit":0
             },
             "fAttackDamageTotalOverride":null,
@@ -91,6 +91,30 @@
             "aStartEffects":[
                "vfx_crow_death"
             ],
+            "aHitEffects":null,
+            "aTriggerEffects":null
+         },
+		 {
+            "sOriginalPrefabName":"SvartalfrQueenGreatSword",
+            "sTargetAnim":"swing_axe",
+            "fAIAttackInterval":4,
+            "bAIPrioritized":true,
+            "dtAttackDamageOverride":{
+               "fDamage":0,
+               "fBlunt":0,
+               "fSlash":180,
+               "fPierce":0,
+               "fChop":0,
+               "fPickaxe":0,
+               "fFire":0,
+               "fFrost":50,
+               "fLightning":0,
+               "fPoison":0,
+               "fSpirit":0
+            },
+            "fAttackDamageTotalOverride":null,
+            "sAttackProjectileOverride":null,
+            "aStartEffects":null,
             "aHitEffects":null,
             "aTriggerEffects":null
          },

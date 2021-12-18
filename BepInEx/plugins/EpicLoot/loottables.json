@@ -404,6 +404,7 @@
         { "Item": "MaceIron",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "SpearElderbark",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "SledgeIron",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
+        { "Item": "BattleaxeCrystal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "BowFineWood",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "AtgeirIron",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "AxeIron",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] }
@@ -415,6 +416,7 @@
         { "Item": "SwordSilver", "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "MaceSilver",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "SledgeIron",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
+		{ "Item": "KnifeSilver",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "SpearWolfFang",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "BowHuntsman",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "Battleaxe",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] }
@@ -440,7 +442,7 @@
 		{ "Item": "BowHeavymetal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "SpearHeavymetal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "BattleaxeHeavymetal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
-		{ "Item": "GreatswordHeavymetal",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
+		{ "Item": "GreatSwordHeavymetal",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "SwordHeavymetal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "AxeHeavymetal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "AtgeirHeavymetal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
@@ -455,7 +457,7 @@
 		{ "Item": "BowFrometal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "SpearFrometal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "BattleaxeFrometal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
-		{ "Item": "GreatswordFrometal",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
+		{ "Item": "GreatSwordFrometal",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "SwordFrometal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "AxeFrometal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "AtgeirFrometal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
@@ -470,7 +472,7 @@
 		{ "Item": "BowFlametal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "SpearFlametal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "BattleaxeFlametal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
-		{ "Item": "GreatswordFlametal",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
+		{ "Item": "GreatSwordFlametal",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "SwordFlametal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "AxeFlametal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "AtgeirFlametal",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
@@ -493,6 +495,7 @@
       "Loot": [
 		{ "Item": "ShieldBronzeBuckler", "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "ArmorBronzeChest", "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
+		{ "Item": "ShieldTowerBone", "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "ArmorBronzeLegs",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "HelmetBronze",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "CapeTrollHide",  "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] }
@@ -501,7 +504,7 @@
 	{
       "Name": "LegendaryArmorTier3",
       "Loot": [
-		{ "Item": "ShieldBanded", "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
+		{ "Item": "ShieldIronBuckler", "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
 		{ "Item": "ShieldIronTower", "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "CapeTrollHide", "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },
         { "Item": "HelmetIron",    "Weight": 3, "Rarity": [ 0, 0, 0, 100 ] },

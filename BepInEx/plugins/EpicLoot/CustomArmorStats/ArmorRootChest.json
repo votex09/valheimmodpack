@@ -1,0 +1,10 @@
+{
+    "name": "ArmorRootChest",
+    "armor": 8.0,
+    "armorPerLevel": 2.0,
+    "movementModifier": 0.0,
+    "damageModifiers": [
+        "Pierce:Resistant",
+        "Fire:Weak"
+    ]
+}
