@@ -207,7 +207,7 @@ if ($args[0] -eq "-update") {
                 }
             }
             Copy-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Destination "$PSScriptRoot\bepinex\plugins\"
-            Remove-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\"
+            Remove-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Recurse
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
