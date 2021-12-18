@@ -172,6 +172,8 @@ if ($args[0] -eq "-update") {
     }
     if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) { #Verify Git is installed.
         Clear-Host
+        #copy quest files
+        Copy-Item -Path "$PSScriptroot\bepinex\plugins\HaldorFetchQuests\" -Destination "$PSScriptRoot\PackBin\" -Recurse -Force
         #check to see if user locked configs
         $l = $false
         for ($i = 0; $i -lt $availablelocks.Count; $i++) {
@@ -204,6 +206,8 @@ if ($args[0] -eq "-update") {
                     Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
                 }
             }
+            Copy-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Destination "$PSScriptRoot\bepinex\plugins\"
+            Remove-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\"
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
@@ -241,6 +245,8 @@ if ($args[0] -eq "-update") {
                     Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
                 }
             }
+            Copy-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Destination "$PSScriptRoot\bepinex\plugins\" -Recurse -Force
+            Remove-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\"
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
