@@ -1,0 +1,79 @@
+---
+# Use the Abenaki entry in this file as a template for any language localizations you want to add
+# The list of supported languages for localization for now is as follows:
+# English (hardcoded but can be overwritten in this file)
+# Swedish
+# French
+# Italian
+# German
+# Spanish
+# Russian
+# Romanian
+# Bulgarian
+# Macedonian
+# Finnish
+# Danish
+# Norwegian
+# Icelandic
+# Turkish
+# Lithuanian
+# Czech
+# Hungarian
+# Slovak
+# Polish
+# Dutch
+# Portuguese_European
+# Portuguese_Brazilian
+# Chinese
+# Japanese
+# Korean
+# Hindi
+# Thai
+# Abenaki
+# Croatian
+# Georgian
+# Greek
+# Serbian
+# Ukrainian
+
+Localizations:
+    Abenaki:
+        T1ChaosPlateHelm:
+            Name: "placeholder"
+            Description: "placeholder"
+        T1ChaosPlateArmor:
+            Name: "placeholder"
+            Description: "placeholder"
+        T1ChaosPlateLegs:
+            Name: "placeholder"
+            Description: "placeholder"
+        T2ChaosPlateHelm:
+            Name: "placeholder"
+            Description: "placeholder"
+        T2ChaosPlateArmor:
+            Name: "placeholder"
+            Description: "placeholder"
+        T2ChaosPlateLegs:
+            Name: "placeholder"
+            Description: "placeholder"
+        ChaosPlateHelm:
+            Name: "placeholder"
+            Description: "placeholder"
+        ChaosPlateArmorBody:
+            Name: "placeholder"
+            Description: "placeholder"
+        ChaosPlateLegs:
+            Name: "placeholder"
+            Description: "placeholder"
+        ChaosPlateHelmAlt:
+            Name: "placeholder"
+            Description: "placeholder"
+        EliteChaosPlateHelm:
+            Name: "placeholder"
+            Description: "placeholder"
+        EliteChaosPlateArmor:
+            Name: "placeholder"
+            Description: "placeholder"
+        EliteChaosPlateLegs:
+            Name: "placeholder"
+            Description: "placeholder"
