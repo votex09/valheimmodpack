@@ -1,5 +1,6 @@
 $bepdisabled = "$PSScriptRoot\winhttp.disabled"
 $bepenabled = "$PSScriptRoot\winhttp.dll"
+$EVAVersion = "EVA1.3.0"
 $bepvers = (Get-Item ".\bepinex\core\bepinex.dll").VersionInfo.ProductVersion
 $HDEnabled = "$PSScriptRoot\valheim_Data\HDEnabled"
 $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
@@ -208,6 +209,21 @@ if ($args[0] -eq "-update") {
             }
             Copy-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Destination "$PSScriptRoot\bepinex\plugins\"
             Remove-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Recurse
+            #check to see if EpicValheimAdditions is installed
+            if (Test-Path -Path "$PSScriptRoot\PackBin\$EVAVersion") {
+                Write-Host "$EVAVersion found." -ForegroundColor Green
+            }
+            else {
+                Write-Host "$EVAVersion not found. Downloading..." -ForegroundColor Yellow
+                Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/1.3.0/ -O $PSScriptRoot\PackBin\$EVAVersion.zip
+                & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\$EVAVersion.zip" "-o$PSScriptRoot\PackBin\unpack\"
+                if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
+                    Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
+                }
+                Move-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\EpicValheimsAdditions.dll"
+                Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
+                New-Item -Path "$PSScriptRoot\PackBin\$EVAVersion" -Type file
+            }
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
@@ -247,6 +263,21 @@ if ($args[0] -eq "-update") {
             }
             Copy-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Destination "$PSScriptRoot\bepinex\plugins\" -Recurse -Force
             Remove-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Recurse
+            #check to see if EpicValheimAdditions is installed
+            if (Test-Path -Path "$PSScriptRoot\PackBin\$EVAVersion") {
+                Write-Host "$EVAVersion found." -ForegroundColor Green
+            }
+            else {
+                Write-Host "$EVAVersion not found. Downloading..." -ForegroundColor Yellow
+                Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/1.3.0/ -O $PSScriptRoot\PackBin\$EVAVersion.zip
+                & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\$EVAVersion.zip" "-o$PSScriptRoot\PackBin\unpack\"
+                if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
+                    Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
+                }
+                Move-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\EpicValheimsAdditions.dll"
+                Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
+                New-Item -Path "$PSScriptRoot\PackBin\$EVAVersion" -Type file
+            }
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
