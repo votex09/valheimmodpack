@@ -224,7 +224,7 @@ if ($args[0] -eq "-update") {
                 if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
                     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
                 }
-                Move-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\EpicValheimsAdditions.dll"
+                Copy-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\"
                 Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
                 New-Item -Path "$PSScriptRoot\PackBin\$EVAVersion" -Type file
             }
@@ -278,7 +278,7 @@ if ($args[0] -eq "-update") {
                 if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
                     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
                 }
-                Move-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\EpicValheimsAdditions.dll"
+                Copy-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\"
                 Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
                 New-Item -Path "$PSScriptRoot\PackBin\$EVAVersion" -Type file
             }
