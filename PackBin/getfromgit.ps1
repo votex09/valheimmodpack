@@ -8,6 +8,32 @@ $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
 $pathtoConfig = "$PSScriptRoot\BepInEx\config"
 $excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
 $availablelocks = @('manfredo52.CustomizableCamera','randyknapp.mods.equipmentandquickslots','virtuacode.valheim.equipwheel')
+function Get-IniContent ($filePath)
+{
+    $ini = @{}
+    switch -regex -file $FilePath
+    {
+        "^\[(.+)\]" # Section
+        {
+            $section = $matches[1]
+            $ini[$section] = @{}
+            $CommentCount = 0
+        }
+        "^(;.*)$" # Comment
+        {
+            $value = $matches[1]
+            $CommentCount = $CommentCount + 1
+            $name = "Comment" + $CommentCount
+            $ini[$section][$name] = $value
+        }
+        "(.+?)\s*=(.*)" # Key
+        {
+            $name,$value = $matches[1..2]
+            $ini[$section][$name] = $value
+        }
+    }
+    return $ini
+}
 if ($args[0] -eq "-enable") {
     #check to see if plugins are disabled
     If (Test-Path -Path $bepdisabled) { #If plugins are disabled, rename winhttp so they are enabled.
