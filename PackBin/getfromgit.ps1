@@ -1,6 +1,7 @@
 $bepdisabled = "$PSScriptRoot\winhttp.disabled"
 $bepenabled = "$PSScriptRoot\winhttp.dll"
 $EVAVersion = "EVA1.3.0"
+$EVAVERS = Substring($EVAVersion.length - 5, 5)
 $bepvers = (Get-Item ".\bepinex\core\bepinex.dll").VersionInfo.ProductVersion
 $HDEnabled = "$PSScriptRoot\valheim_Data\HDEnabled"
 $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
@@ -219,7 +220,7 @@ if ($args[0] -eq "-update") {
             }
             else {
                 Write-Host "$EVAVersion not found. Downloading..." -ForegroundColor Yellow
-                Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/1.3.0/ -O $PSScriptRoot\PackBin\$EVAVersion.zip
+                Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/$EVAVERS/ -O $PSScriptRoot\PackBin\$EVAVersion.zip
                 & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\$EVAVersion.zip" "-o$PSScriptRoot\PackBin\unpack\"
                 if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
                     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
@@ -273,7 +274,9 @@ if ($args[0] -eq "-update") {
             }
             else {
                 Write-Host "$EVAVersion not found. Downloading..." -ForegroundColor Yellow
-                Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/1.3.0/ -O $PSScriptRoot\PackBin\$EVAVersion.zip
+                if (!(Test-Path -Path "$PSSCriptRoot\PackBin\$EVAVersion.zip")) {
+                    Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/$EVAVERS/ -O $PSScriptRoot\PackBin\$EVAVersion.zip
+                }
                 & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\$EVAVersion.zip" "-o$PSScriptRoot\PackBin\unpack\"
                 if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
                     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
