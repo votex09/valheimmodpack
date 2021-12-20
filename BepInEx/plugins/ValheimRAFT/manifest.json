@@ -1,0 +1,10 @@
+{
+    "name": "ValheimRAFT",
+    "version_number": "1.3.1",
+    "website_url": "https://www.nexusmods.com/valheim/mods/1136?tab=description",
+    "description": "Allows you to build your own ship.",
+    "dependencies": [
+		"denikson-BepInExPack_Valheim-5.4.1601",
+		"ValheimModding-Jotunn-2.4.0"
+	]
+}

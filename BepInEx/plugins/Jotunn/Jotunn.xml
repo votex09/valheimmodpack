@@ -3011,6 +3011,49 @@
                 Manually close the GradientPicker and apply the selected color
             </summary>
         </member>
+        <member name="T:Jotunn.GUI.MinimapOverlayPanel">
+            <summary>
+                Panel for displaying and toggling custom map overlays
+            </summary>
+        </member>
+        <member name="F:Jotunn.GUI.MinimapOverlayPanel.OverlayGroup">
+            <summary>
+                
+            </summary>
+        </member>
+        <member name="F:Jotunn.GUI.MinimapOverlayPanel.Button">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Jotunn.GUI.MinimapOverlayPanel.BaseMod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Jotunn.GUI.MinimapOverlayPanel.BaseModText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Jotunn.GUI.MinimapOverlayPanel.BaseToggle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Jotunn.GUI.MinimapOverlayPanel.ToggleOverlayGroup">
+            <summary>
+                Toggle the overlay list
+            </summary>
+        </member>
+        <member name="M:Jotunn.GUI.MinimapOverlayPanel.AddOverlayToggle(System.String,System.String)">
+            <summary>
+                Add a new toggle for a map overlay
+            </summary>
+            <param name="modName"></param>
+            <param name="overlayName"></param>
+            <returns></returns>
+        </member>
         <member name="T:Jotunn.IManager">
             <summary>
                 The base class for all the library's various Managers
@@ -4184,101 +4227,104 @@
             </summary>
             <param name="fileContent"> Entire file as string </param>
         </member>
-        <member name="T:Jotunn.Managers.MapOverlayManager">
+        <member name="T:Jotunn.Managers.MinimapManager">
             <summary>
                 Manager for adding custom Map Overlays to the game.
             </summary>
         </member>
-        <member name="P:Jotunn.Managers.MapOverlayManager.Instance">
+        <member name="P:Jotunn.Managers.MinimapManager.Instance">
             <summary>
                 The singleton instance of this manager.
             </summary>
         </member>
-        <member name="E:Jotunn.Managers.MapOverlayManager.OnVanillaMapAvailable">
+        <member name="M:Jotunn.Managers.MinimapManager.#ctor">
+            <summary>
+                Hide .ctor
+            </summary>
+        </member>
+        <member name="E:Jotunn.Managers.MinimapManager.OnVanillaMapAvailable">
             <summary>
                 Event that gets fired once the Map for a World has started and Mods can begin to draw.
             </summary>
         </member>
-        <member name="E:Jotunn.Managers.MapOverlayManager.OnVanillaMapDataLoaded">
+        <member name="E:Jotunn.Managers.MinimapManager.OnVanillaMapDataLoaded">
             <summary>
                 Event that gets fired once data for a specific Map for a world has been loaded. Eg, Pins are available after this has fired.
             </summary>
         </member>
-        <member name="T:Jotunn.Managers.MapOverlayManager.MapOverlay">
+        <member name="F:Jotunn.Managers.MinimapManager.FilterOn">
             <summary>
-                Object for modders to use to access and modify their Overlay.
-                Modders should modify the Image's shader's texture directly.
-                MapName and TextureSize should not be modified.
+                Colour which sets a filter on. Used for ForestFilter and FogFilter.
+                A full alpha value enables this pixel, and then the red value is written to the result texture.
             </summary>
         </member>
-        <member name="F:Jotunn.Managers.MapOverlayManager.MapOverlay.Helper">
+        <member name="F:Jotunn.Managers.MinimapManager.FilterOff">
             <summary>
-                Internal Helper GameObject to hold the Image component
+                Colour which sets a filter off. See FilterOn.
             </summary>
         </member>
-        <member name="F:Jotunn.Managers.MapOverlayManager.MapOverlay.MapName">
+        <member name="F:Jotunn.Managers.MinimapManager.MeadowHeight">
             <summary>
-                Unique ID per overlay
+                Height "Colour" used for the base height of "Meadows"
             </summary>
         </member>
-        <member name="P:Jotunn.Managers.MapOverlayManager.MapOverlay.TextureSize">
+        <member name="F:Jotunn.Managers.MinimapManager.Overlays">
             <summary>
-                Initial texture size to calculate the relative drawing position
+                Container to hold all live Overlays.
             </summary>
         </member>
-        <member name="P:Jotunn.Managers.MapOverlayManager.MapOverlay.Img">
+        <member name="F:Jotunn.Managers.MinimapManager.Drawings">
             <summary>
-                Image component holding the overlay texture data
+                Container to hold all live Drawings.
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.Init">
+        <member name="M:Jotunn.Managers.MinimapManager.Init">
             <summary>
                 Creates the Overlays and registers hooks.
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.AddMapOverlay">
+        <member name="M:Jotunn.Managers.MinimapManager.GetMapOverlay(System.String,System.Boolean)">
             <summary>
-                Create a new mapoverlay with a default overlay name
-            </summary>
-            <returns>Reference to MapOverlay for modder to edit</returns>
-        </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.AddMapOverlay(System.String)">
-            <summary>
-                Create a new mapoverlay with a custom overlay name
+                Create a new MapOverlay with a custom overlay name
             </summary>
             <param name="name">Custom name for the MapOverlay</param>
+            <param name="ignoreFog">When set to true, that layer will be drawn regardless of exploration status, defaults to false</param>
             <returns>Reference to MapOverlay for modder to edit</returns>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.AddMapOverlay(Jotunn.Managers.MapOverlayManager.MapOverlay)">
+        <member name="M:Jotunn.Managers.MinimapManager.GetMapDrawing(System.String)">
             <summary>
-                If a mod already has an instance of MapOverlay ready, they can simply call this function to register to the MapOverlayManager.
-                This Manager will then ensure the image is updated.
+                Create a new MapDrawing with a custom overlay name
             </summary>
-            <param name="ovl">The MapOverlay to be registered</param>
+            <param name="name">Custom name for the MapDrawing</param>
+            <returns>Reference to MapDrawing for modder to edit</returns>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.RemoveMapOverlay(System.String)">
+        <member name="M:Jotunn.Managers.MinimapManager.RemoveMapOverlay(System.String)">
             <summary>
                 Causes MapManager to stop updating the MapOverlay object and removes this Manager's reference to that overlay.
-                A mod could still hold references and keep the object alive.
             </summary>
             <param name="name">The name of the MapOverlay to be removed</param>
             <returns>True if removal was successful. False if there was an error removing the object from the internal dict.</returns>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.GetMapOverlay(System.String)">
+        <member name="M:Jotunn.Managers.MinimapManager.RemoveMapDrawing(System.String)">
             <summary>
-                Returns a reference to a currently registered MapOverlay
+                Causes MapManager to stop updating the MapDrawing object and removes this Manager's reference to that drawing.
             </summary>
-            <param name="name">The name of the MapOverlay to retrieve</param>
-            <returns>The MapOverlay if it exists.</returns>
+            <param name="name">The name of the MapDrawing to be removed</param>
+            <returns>True if removal was successful. False if there was an error removing the object from the internal dict.</returns>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.MaskWithFog(Jotunn.Managers.MapOverlayManager.MapOverlay)">
+        <member name="M:Jotunn.Managers.MinimapManager.GetOverlayNames">
             <summary>
-                Helper function to set pixels on the overlay image completely transparent if there is map fog over that pixel.
-                The end effect is to "put fog over top of the overlay".
+                Return a list of all current overlay names
             </summary>
-            <param name="ovl">The overlay to place fog on top of</param>
+            <returns>List of names</returns>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.WorldToOverlayCoords(UnityEngine.Vector3,System.Int32)">
+        <member name="M:Jotunn.Managers.MinimapManager.GetDrawingNames">
+            <summary>
+                Return a list of all current MapDrawing names
+            </summary>
+            <returns>List of names</returns>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.WorldToOverlayCoords(UnityEngine.Vector3,System.Int32)">
             <summary>
                 Input a World Coordinate and the size of the overlay texture to retrieve the translated overlay coordinates. 
             </summary>
@@ -4286,48 +4332,167 @@
             <param name="texSize">Size of the image from your MapOverlay</param>
             <returns>The 2D coordinate space on the MapOverlay</returns>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.OverlayToWorldCoords(UnityEngine.Vector2,System.Int32)">
+        <member name="M:Jotunn.Managers.MinimapManager.OverlayToWorldCoords(UnityEngine.Vector2,System.Int32)">
             <summary>
                 Input a MapOverlay Coordinate and the size of the overlay texture to retrieve the translated World coordinates.
             </summary>
             <param name="input">The 2D Overlay coordinate</param>
             <param name="texSize">The size of the Overlay</param>
             <returns>The 3D World coordinate that corresponds to the input Vector</returns>
+            
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.Update">
+        <member name="M:Jotunn.Managers.MinimapManager.Minimap_Start(On.Minimap.orig_Start,Minimap)">
             <summary>
-                All map overlays need to be updated in this way to keep them scaled and positioned properly when the minimap itself is moved / scaled.
-                This function is public as it needs to be called by MapManagerHelper.
-                Automatically scales and positions based on whether the large or small map is active.
+                Setup GUI on <see cref="M:Minimap.Start"/>.
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.AddOverlay(Jotunn.Managers.MapOverlayManager.MapOverlay)">
-            <summary>
-                Helper function to set default properties of a MapOverlay.
-                Create a new image of our custom default size and set its anchor min/max to the bottom left.
-                Then add a reference of the mapoverlay to our dict so we can update it later.
-            </summary>
-            <param name="ovl">The overlay to be added</param>
-        </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.InvokeOnVanillaMapAvailable(On.Minimap.orig_Start,Minimap)">
+        <member name="M:Jotunn.Managers.MinimapManager.InvokeOnVanillaMapAvailable">
             <summary>
                 Safely invoke OnVanillaMapAvailable event.
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.InvokeOnVanillaMapDataLoaded(On.Minimap.orig_LoadMapData,Minimap)">
+        <member name="M:Jotunn.Managers.MinimapManager.Minimap_LoadMapData(On.Minimap.orig_LoadMapData,Minimap)">
+            <summary>
+                Setup textures and GUI on <see cref="M:Minimap.LoadMapData"/>
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.InvokeOnVanillaMapDataLoaded">
             <summary>
                 Safely invoke InvokeOnVanillaMapDataLoaded event.
             </summary>
         </member>
-        <member name="M:Jotunn.Managers.MapOverlayManager.Minimap_Start(On.Minimap.orig_Start,Minimap)">
+        <member name="M:Jotunn.Managers.MinimapManager.DrawingsActive">
             <summary>
-                Monomod hook into the Minimap Awake method. MapManager adds its helper component after the Minimap does its thing.
+                Return whether the Drawings functionality is active.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.SetupDrawings">
+            <summary>
+                Called when the first MapDraw object is created.
+                Initializes all variables required for MapDraw objects to be rendered.
+                Changes the behaviour of some vanilla shaders.
             </summary>
         </member>
-        <member name="T:Jotunn.Managers.MapOverlayManager.MapManagerHelper">
+        <member name="T:Jotunn.Managers.MinimapManager.MapOverlay">
             <summary>
-                    Helper class that gets attached to the Minimap object on Minimap.Awake()
-                    Used to give MapManager Update() functionality
+                Object for modders to use to access and modify their Overlay.
+                Modders should modify the texture directly.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapOverlay.OverlayTex">
+            <summary>
+                Texture to draw overlay texture information to
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapOverlay.Enabled">
+            <summary>
+                Set true to render this overlay, false to hide
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapOverlay.Dirty">
+            <summary>
+                Flag to determine if this overlay had changes since its last draw
+            </summary>
+        </member>
+        <member name="F:Jotunn.Managers.MinimapManager.MapOverlay.IgnoreFog">
+            <summary>
+                Flag to determine if this overlay should be hidden in unexplored areas
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.MapOverlay.#ctor">
+            <summary>
+                Hide .ctor
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.MapOverlay.SetTextureDirty(UnityEngine.Texture2D)">
+            <summary>
+                Function called on Texture2D.Apply to check if one of our member textures was changed
+            </summary>
+            <param name="tex"></param>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.MapOverlay.Destroy">
+            <summary>
+                Destroys the overlay texture
+            </summary>
+        </member>
+        <member name="T:Jotunn.Managers.MinimapManager.MapDrawing">
+            <summary>
+                Object for modders to use to access and modify their Overlay.
+                Modders should modify the texture directly.
+                
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapDrawing.MainTex">
+            <summary>
+                Texture to draw main texture information to
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapDrawing.HeightFilter">
+            <summary>
+                Texture to draw height filter information to
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapDrawing.ForestFilter">
+            <summary>
+                Texture to draw forest filter information to
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapDrawing.FogFilter">
+            <summary>
+                Texture to draw fog filter information to
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapDrawing.Enabled">
+            <summary>
+                Set true to render this overlay, false to hide
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapDrawing.Dirty">
+            <summary>
+                Flag to determine if this overlay had changes since its last draw
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.MapDrawing.#ctor">
+            <summary>
+                Hide .ctor
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.MapDrawing.SetTextureDirty(UnityEngine.Texture2D)">
+            <summary>
+                Function called on Texture2D.Apply to check if one of our member textures was changed
+            </summary>
+            <param name="tex"></param>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.MapDrawing.Destroy">
+            <summary>
+                Destroys all textures
+            </summary>
+        </member>
+        <member name="T:Jotunn.Managers.MinimapManager.MapOverlayBase">
+            <summary>
+                Overlay Base to inherit from
+                
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapOverlayBase.Name">
+            <summary>
+                Unique name per overlay
+            </summary>
+        </member>
+        <member name="P:Jotunn.Managers.MinimapManager.MapOverlayBase.TextureSize">
+            <summary>
+                Initial texture size to calculate the relative drawing position
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.MapOverlayBase.#ctor">
+            <summary>
+                Hide .ctor
+            </summary>
+        </member>
+        <member name="M:Jotunn.Managers.MinimapManager.MapOverlayBase.Create(UnityEngine.Texture2D)">
+            <summary>
+                Helper function to create and copy overlay texture instances
             </summary>
         </member>
         <member name="T:Jotunn.Managers.MockManager">
@@ -4838,7 +5003,7 @@
         </member>
         <member name="M:Jotunn.Managers.RenderManager.Render(Jotunn.Managers.RenderManager.RenderRequest)">
             <summary>
-                Create a <see cref="T:UnityEngine.Sprite"/> of the <paramref name="target"/>
+                Create a <see cref="T:UnityEngine.Sprite"/> from a <see cref="T:Jotunn.Managers.RenderManager.RenderRequest"/>/>
             </summary>
             <param name="renderRequest"></param>
             <returns>If this is called on a headless server or when there is no active visual Mesh attached to the target, this method returns null.</returns>
