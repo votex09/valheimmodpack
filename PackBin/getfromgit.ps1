@@ -174,7 +174,9 @@ if ($args[0] -eq "-update") {
     if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) { #Verify Git is installed.
         Clear-Host
         #copy quest files
-        Copy-Item -Path "$PSScriptroot\bepinex\plugins\HaldorFetchQuests\" -Destination "$PSScriptRoot\PackBin\" -Recurse -Force
+        if (Test-Path -Path "$PSScriptroot\bepinex\plugins\HaldorFetchQuests\") {
+            Copy-Item -Path "$PSScriptroot\bepinex\plugins\HaldorFetchQuests\" -Destination "$PSScriptRoot\PackBin\" -Recurse -Force
+        }
         #check to see if user locked configs
         $l = $false
         for ($i = 0; $i -lt $availablelocks.Count; $i++) {
@@ -207,8 +209,10 @@ if ($args[0] -eq "-update") {
                     Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
                 }
             }
-            Copy-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Destination "$PSScriptRoot\bepinex\plugins\"
-            Remove-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Recurse
+            if (Test-Path -Path "$PSScriptRoot\PackBin\HaldorFetchQuests\") {
+                Copy-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Destination "$PSScriptRoot\bepinex\plugins\"
+                Remove-Item -Path "$PSScriptroot\PackBin\HaldorFetchQuests\" -Recurse
+            }
             #check to see if EpicValheimAdditions is installed
             if (Test-Path -Path "$PSScriptRoot\PackBin\$EVAVersion") {
                 Write-Host "$EVAVersion found." -ForegroundColor Green
