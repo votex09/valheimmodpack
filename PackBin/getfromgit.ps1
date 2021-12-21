@@ -309,6 +309,7 @@ if ($args[0] -eq "-update") {
                     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
                 }
                 Copy-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\"
+                Start-Sleep 3
                 Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
                 New-Item -Path "$PSScriptRoot\PackBin\EVA$EVAVersion" -Type file
             }
