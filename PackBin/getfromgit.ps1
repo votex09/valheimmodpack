@@ -246,6 +246,8 @@ if ($args[0] -eq "-update") {
             else {
                 Write-Host "EVA$EVAVersion not found. Downloading..." -ForegroundColor Yellow
                 Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/$EVAVersion/ -O $PSScriptRoot\PackBin\EVA$EVAVersion.zip
+            }
+            if (Test-Path -Path "$PSScriptRoot\PackBin\EVA$EVAVersion.zip") {
                 & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\EVA$EVAVersion.zip" "-o$PSScriptRoot\PackBin\unpack\"
                 if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
                     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
@@ -299,20 +301,20 @@ if ($args[0] -eq "-update") {
             }
             else {
                 Write-Host "EVA$EVAVersion not found. Downloading..." -ForegroundColor Yellow
-                if (!(Test-Path -Path "$PSSCriptRoot\PackBin\EVA$EVAVersion.zip")) {
-                    Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/$EVAVERS/ -O $PSScriptRoot\PackBin\$EVAVersion.zip
+                Invoke-WebRequest https://valheim.thunderstore.io/package/download/Huntardys/EpicValheimsAdditions/$EVAVersion/ -O $PSScriptRoot\PackBin\EVA$EVAVersion.zip
+            }
+            if (Test-Path -Path "$PSScriptRoot\PackBin\EVA$EVAVersion.zip") {
+                & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\EVA$EVAVersion.zip" "-o$PSScriptRoot\PackBin\unpack\"
+                if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
+                    Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
                 }
+                Copy-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\"
+                Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
+                New-Item -Path "$PSScriptRoot\PackBin\EVA$EVAVersion" -Type file
             }
-            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\EVA$EVAVersion.zip" "-o$PSScriptRoot\PackBin\unpack\"
-            if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
-                Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
-            }
-            Copy-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\"
-            Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
-            New-Item -Path "$PSScriptRoot\PackBin\EVA$EVAVersion" -Type file
             Write-Host "Update complete." -ForegroundColor Green
             pause
-            exit #end
+            exit
         }
     }
 }
