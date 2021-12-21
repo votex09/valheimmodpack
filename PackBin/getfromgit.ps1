@@ -307,12 +307,13 @@ if ($args[0] -eq "-update") {
                 & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\EVA$EVAVersion.zip" "-o$PSScriptRoot\PackBin\unpack\"
                 if (Test-Path -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll") {
                     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\EpicValheimsAdditions.dll" -Recurse
-                    Remove-Item -Path "$PSScriptRoot\PackBin\EVA$EVAVersion"
                 }
                 Copy-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\"
                 Start-Sleep 3
                 Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
-                New-Item -Path "$PSScriptRoot\PackBin\EVA$EVAVersion" -Type file
+                if (!(Test-Path -Path "$PSScriptRoot\PackBin\EVA$EVAVersion")){
+                    New-Item -Path "$PSScriptRoot\PackBin\EVA$EVAVersion" -Type file
+                }
             }
             Write-Host "Update complete." -ForegroundColor Green
             pause
