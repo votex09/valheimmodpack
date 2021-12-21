@@ -310,7 +310,6 @@ if ($args[0] -eq "-update") {
             Copy-Item -Path "$PSScriptRoot\PackBin\unpack\EpicValheimsAdditions.dll" -Destination "$PSScriptRoot\BepInEx\plugins\"
             Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
             New-Item -Path "$PSScriptRoot\PackBin\EVA$EVAVersion" -Type file
-            }
             Write-Host "Update complete." -ForegroundColor Green
             pause
             exit
