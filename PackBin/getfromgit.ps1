@@ -312,7 +312,7 @@ if ($args[0] -eq "-update") {
             New-Item -Path "$PSScriptRoot\PackBin\EVA$EVAVersion" -Type file
             Write-Host "Update complete." -ForegroundColor Green
             pause
-            exit
+            exit #end
         }
     }
 }
