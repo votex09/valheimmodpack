@@ -98,22 +98,22 @@
     {
       "Type": "MagicRune",
       "Fallback": "",
-      "Items": ["rune_chain_lightning","rune_firebolt","rune_frostbolt","rune_frostnova","rune_glacial_spike","rune_immolate"]
+      "Items": [ "rune_chain_lightning", "rune_firebolt", "rune_frostbolt", "rune_frostnova", "rune_glacial_spike", "rune_immolate" ]
     },
     {
       "Type": "MagicFrost",
       "Fallback": "",
-      "Items": ["rune_frostbolt","rune_frostnova","rune_glacial_spike"]
+      "Items": [ "rune_frostbolt", "rune_frostnova", "rune_glacial_spike" ]
     },
     {
       "Type": "MagicLightning",
       "Fallback": "",
-      "Items": ["rune_chain_lightning"]
+      "Items": [ "rune_chain_lightning" ]
     },
     {
       "Type": "MagicFire",
       "Fallback": "",
-      "Items": ["rune_firebolt","rune_immolate"]
+      "Items": [ "rune_firebolt", "rune_immolate" ]
     }
   ]
 }
