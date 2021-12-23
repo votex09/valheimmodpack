@@ -207,40 +207,6 @@
 		{ "Item": "Coins",      "Amount": 200 }
 
       ]
-    },
-
-    {
-      "ItemTypes" : [ "RuneFire", "RuneFrost", "RuneLightning", "RuneMagic" ],
-      "Rarity": "Legendary",
-      "Cost": [
-	  	{ "Item": "RunestoneEpic",    "Amount": 1 },
-        { "Item": "EssenceLegendary",      "Amount": 2 },
-		{ "Item": "Coins",      "Amount": 200 }
-      ]
-    },
-    {
-      "ItemTypes" : [ "RuneFire", "RuneFrost", "RuneLightning", "RuneMagic" ],
-      "Rarity": "Epic",
-      "Cost": [
-	  	{ "Item": "ReagentEpic",    "Amount": 1 },
-      { "Item": "Coins",      "Amount": 100 }
-      ]
-    },
-    {
-      "ItemTypes" : [ "RuneFire", "RuneFrost", "RuneLightning", "RuneMagic" ],
-      "Rarity": "Rare",
-      "Cost": [
-	  	{ "Item": "ReagentRare",    "Amount": 1 },
-      { "Item": "Coins",      "Amount": 50 }
-      ]
-    },
-    {
-      "ItemTypes" : [ "RuneFire", "RuneFrost", "RuneLightning", "RuneMagic" ],
-      "Rarity": "Magic",
-      "Cost": [
-	  	{ "Item": "ReagentMagic",    "Amount": 1 },
-      { "Item": "Coins",      "Amount": 25 }
-      ]
     }
 	
   ],
@@ -360,42 +326,11 @@
 		{ "Item": "RunestoneRare",    "Amount": 1 },
 		{ "Item": "Coins",      "Amount": 200 }
       ]
-    },
-
-
-
-    {
-      "ItemTypes" : [ "RuneMagic" ],
-      "Rarity": "Magic",
-      "Cost": [
-		{ "Item": "RunestoneRare",    "Amount": 1 },
-		{ "Item": "Coins",      "Amount": 25 }
-      ]
-    },
-    {
-      "ItemTypes" : [ "RuneMagic" ],
-      "Rarity": "Rare",
-      "Cost": [
-		{ "Item": "RunestoneRare",    "Amount": 1 },
-		{ "Item": "Coins",      "Amount": 50 }
-      ]
-    },
-    {
-      "ItemTypes" : [ "RuneMagic" ],
-      "Rarity": "Epic",
-      "Cost": [
-		{ "Item": "RunestoneRare",    "Amount": 1 },
-		{ "Item": "Coins",      "Amount": 100 }
-      ]
-    },
-    {
-      "ItemTypes" : [ "RuneMagic" ],
-      "Rarity": "Legendary",
-      "Cost": [
-		{ "Item": "RunestoneRare",    "Amount": 1 },
-		{ "Item": "Coins",      "Amount": 200 }
-      ]
     }
+	
+	
+	
+	
 	
 	
 	
