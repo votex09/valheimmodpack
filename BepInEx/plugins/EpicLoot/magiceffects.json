@@ -646,7 +646,8 @@
           "OneHandedWeapon",
           "TwoHandedWeapon",
           "Bow",
-          "Torch"
+          "Torch",
+          "MagicFire"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -685,7 +686,8 @@
           "OneHandedWeapon",
           "TwoHandedWeapon",
           "Bow",
-          "Torch"
+          "Torch",
+          "MagicFrost"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -724,7 +726,8 @@
           "OneHandedWeapon",
           "TwoHandedWeapon",
           "Bow",
-          "Torch"
+          "Torch",
+          "MagicLightning"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -763,7 +766,8 @@
           "OneHandedWeapon",
           "TwoHandedWeapon",
           "Bow",
-          "Torch"
+          "Torch",
+          "MagicRune"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -802,7 +806,8 @@
           "OneHandedWeapon",
           "TwoHandedWeapon",
           "Bow",
-          "Torch"
+          "Torch",
+          "MagicRune"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -1293,7 +1298,8 @@
       "Requirements" : {
         "AllowedItemTypes" : [
           "Legs",
-          "Utility"
+          "Utility",
+          "MagicRune"
         ]
       },
       "ValuesPerRarity" : {
@@ -1484,7 +1490,8 @@
         "AllowedItemTypes" : [
           "OneHandedWeapon",
           "TwoHandedWeapon",
-          "Bow"
+          "Bow",
+          "MagicRune"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -1518,7 +1525,8 @@
           "OneHandedWeapon",
           "TwoHandedWeapon",
           "Bow",
-          "Tool"
+          "Tool",
+          "MagicRune"
         ]
       },
       "ValuesPerRarity" : {
@@ -1541,7 +1549,7 @@
       "Description" : "$mod_epicloot_me_throwable_desc",
       "Requirements" : {
         "AllowedItemTypes" : [
-          "OneHandedWeapon",
+          "OneHandedWeapon"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes",
@@ -1583,7 +1591,9 @@
         "AllowedItemTypes" : [
           "OneHandedWeapon",
           "TwoHandedWeapon",
-          "Bow"
+          "Bow",
+          "MagicLightning",
+          "MagicFrost"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -2035,7 +2045,7 @@
       "Description" : "$mod_epicloot_me_recallweapon_desc",
       "Requirements" : {
         "AllowedItemTypes" : [
-          "OneHandedWeapon",
+          "OneHandedWeapon"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -2487,7 +2497,8 @@
         "AllowedItemTypes" : [
           "OneHandedWeapon",
           "TwoHandedWeapon",
-          "Bow"
+          "Bow",
+          "MagicRune"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -2695,7 +2706,8 @@
         "AllowedItemTypes" : [
           "OneHandedWeapon",
           "TwoHandedWeapon",
-          "Bow"
+          "Bow",
+          "MagicRune"
         ],
         "ExcludedSkillTypes": [
           "Pickaxes"
@@ -2715,9 +2727,6 @@
         "$mod_epicloot_me_slow_suffix1"
       ]
     },
-
-    // Set Effects
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     {
       "Type" : "Bulwark",
       "DisplayText" : "$mod_epicloot_set_me_bulwark",
