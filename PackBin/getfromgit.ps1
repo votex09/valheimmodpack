@@ -483,7 +483,7 @@ if ($args[0] -eq "-update")
     }
     #get the filename and content of each file in .\PackBin\ModVer and store them in a dictionary
     $localModList = @{};
-    $ModName = Get-ChildItem -Path $ModVer -File
+    $ModName = Get-ChildItem -Path "$ModVer\*" -File
     for ($i = 0; $i -lt $ModName.Count; $i++)
     {
         $localModList.Add("$($ModName[$i])", (Get-Content -Path "$ModVer/$($ModName[$i])"))
