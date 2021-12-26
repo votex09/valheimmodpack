@@ -129,7 +129,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname" -Force
+            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname" -Force -Verbose
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -165,7 +165,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot" -Force
+            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot" -Force -Verbose
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -204,7 +204,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
-            Copy-Item -Path "$PackBin\ModArchive\$xname.dll" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname.dll" -Force
+            Copy-Item -Path "$PackBin\ModArchive\$xname.dll" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname.dll" -Force -Verbose
         }
         "directunpack_github" #==============================================================================================
         {
@@ -217,11 +217,11 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
                 if ($download_result.StatusCode -eq 200)
                 {
-                    Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io  ($filesize)" -ForegroundColor Green
+                    Write-Host "$xname (v.$xversion) successfully downloaded from github  ($filesize)" -ForegroundColor Green
                 }
                 else
                 {
-                    Write-Host "Downloading $xname (v.$xversion) from valheim.thunderstore.io Failed" -ForegroundColor Red
+                    Write-Host "Downloading $xname (v.$xversion) from github Failed" -ForegroundColor Red
                     Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
                 }
             }
@@ -230,7 +230,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname" -Force
+            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname" -Force -Verbose
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -271,7 +271,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\unpack\$xname" -Force
+            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\unpack\$xname" -Force -Verbose
             if (!(Test-Path -Path "$PSScriptRoot\BepInEx\unpack\$xname"))
             {
                 New-Item -Path "$PSScriptRoot\BepInEx\unpack\$xname" -ItemType Directory
