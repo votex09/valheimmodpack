@@ -546,7 +546,7 @@ if ($args[0] -eq "-update")
             #download mods that are missing or are out of date from ModVer based on the pack.ini file
             foreach ($mod in $config.GetEnumerator())
             {
-                Write-Host "$($mod.name) - Remote: v$($mod.value.version) Local: v$localModList."$($mod.name)"" -ForegroundColor Yellow
+                #Write-Host "$($mod.name) - Remote: v$($mod.value.version) Local: v$localModList."$($mod.name)"" -ForegroundColor Yellow
                 if (!($localModList."$($mod.name)") -or ($localModList."$($mod.name)".version -ne $mod.value.version))
                 {
                     if ($config."$($mod.name)".specialinstall = "false")
