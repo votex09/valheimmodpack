@@ -3,7 +3,6 @@ $bepdisabled = "$PSScriptRoot\winhttp.disabled"
 $bepenabled = "$PSScriptRoot\winhttp.dll"
 if (!(Test-Path -Path "$PSScriptRoot\BepInEx\Core\BepInEx.dll"))
 {
-    Write-Host "BepInEx not found, Mods are not installed"
     $bepvers = "Not Installed"
 }
 else
@@ -350,7 +349,7 @@ if ($args[0] -eq "-full")
 }
 if ($args[0] -eq "-checkstatus") 
 {
-    if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe") -and (Test-Path -Path "$PSScriptRoot\winhttp.dll"))
+    if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe"))
     {
         Write-Host "Git is installed." -ForegroundColor Green
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") remote update *> $null
