@@ -128,6 +128,10 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Remove-Item -Path "$PackBin\ModArchive\$xname.zip"
                 Write-Host "Unable to extract mod archive - please update again to attempt to correct this." -ForegroundColor Red
             }
+            if($? -eq $true)
+            {
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+            }
         }
         "directunpack_thunderstore_root" #==============================================================================================
         {
@@ -160,6 +164,10 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Remove-Item -Path "$PackBin\ModArchive\$xname.zip"
                 Write-Host "Unable to extract mod archive - please update again to attempt to correct this." -ForegroundColor Red
             }
+            if($? -eq $true)
+            {
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+            }
         }
         "raw" #==============================================================================================
         {
@@ -170,6 +178,10 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 #download the file
                 $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
                 $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.dll" -PassThru
+                if($? -eq $true)
+                {
+                    New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+                }
                 if ($download_result.StatusCode -eq 200)
                 {
                     Write-Host "$xname (v.$xversion) successfully downloaded from $xurl ($filesize)" -ForegroundColor Green
@@ -216,6 +228,10 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Remove-Item -Path "$PackBin\ModArchive\$xname.zip"
                 Write-Host "Unable to extract mod archive - please update again to attempt to correct this." -ForegroundColor Red
             }
+            if($? -eq $true)
+            {
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+            }
 
         }
         "git" #==============================================================================================
@@ -258,6 +274,10 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 Remove-Item -Path "$PackBin\ModArchive\$xname.zip"
                 Write-Host "Unable to extract mod archive - please update again to attempt to correct this." -ForegroundColor Red
+            }
+            if($? -eq $true)
+            {
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
             }
         }
     }
