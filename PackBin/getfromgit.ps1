@@ -472,8 +472,6 @@ if ($args[0] -eq "-disableHD")
 #>
 if ($args[0] -eq "-update") 
 {
-    #get ini file content as a dictionary
-    $config = Get-IniFile "$PackBin\pack.ini"
     #create needed directories if they don't exist
     if (!(Test-Path -Path $PSScriptRoot\PackBin\ModVer)) 
     {
@@ -538,6 +536,9 @@ if ($args[0] -eq "-update")
             {
                 Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
             }
+            git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") pull --progress
+            #get ini file content as a dictionary
+            $config = Get-IniFile "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\PackBin\pack.ini"
             #Clear-Host
             #$ModName[0] $localModList."$($ModName[0])"      #Example of retrieving the modname and its version from its entry in .\PackBin\ModVer
             #Write-Host $config."$($ModName[0])".url            #Example of retrieving the data from the pack.ini file
@@ -560,7 +561,6 @@ if ($args[0] -eq "-update")
                     }
                 }
             }
-            git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") pull --progress
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\pull.bat -NoNewWindow
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #if user locked configs, move configs to config folder
@@ -584,16 +584,6 @@ if ($args[0] -eq "-update")
             git -C ("$PSScriptRoot\PackBin\git\ ") clone ("https://github.com/votex09/valheimdirtbagmodpack") --progress
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\clone.bat -NoNewWindow
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
-            #if user locked configs, move configs to config folder
-            if ($l -eq $true) 
-            {
-                Write-Host "Reapplying user configs..." -ForegroundColor Green
-                for ($i =0; $i -lt $availablelocks.Count; $i++) 
-                {
-                    Copy-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg" -Destination "$pathtoConfig\"
-                    Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
-                }
-            }
             Write-Host "Preliminary Update complete. Please run Update again." -ForegroundColor Green
             pause
             exit
