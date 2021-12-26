@@ -163,7 +163,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "Reinstalling $xname (v.$xversion)" -ForegroundColor DarkBlue
             }
             #unpack the file
-            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot" -aoa *> $null
+            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx" -aoa *> $null
             #delete the archive on error
             if ($? -eq $false)
             {
