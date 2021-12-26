@@ -1,7 +1,15 @@
 $ProgressPreference = 'SilentlyContinue'
 $bepdisabled = "$PSScriptRoot\winhttp.disabled"
 $bepenabled = "$PSScriptRoot\winhttp.dll"
-$bepvers = (Get-Item ".\bepinex\core\bepinex.dll").VersionInfo.ProductVersion
+if (!(Test-Path -Path "$PSScriptRoot\BepInEx\Core\BepInEx.dll"))
+{
+    Write-Host "BepInEx not found, Mods are not installed"
+    $bepvers = "Not Installed"
+}
+else
+{
+    $bepvers = (Get-Item ".\bepinex\core\bepinex.dll").VersionInfo.ProductVersion
+}
 $HDEnabled = "$PSScriptRoot\valheim_Data\HDEnabled"
 $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
 $PackBin = "$PSScriptRoot\PackBin"
