@@ -107,25 +107,17 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         "directunpack_thunderstore" #==============================================================================================
         {
             $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
-            #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($localModList.$xname -eq $xversion))
+            #download the file
+            $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
+            $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
+            if ($download_result.StatusCode -eq 200)
             {
-                #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
-                if ($download_result.StatusCode -eq 200)
-                {
-                    Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
-                }
-                else
-                {
-                    Write-Host "Downloading $xname (v.$xversion) from valheim.thunderstore.io Failed" -ForegroundColor Red
-                    Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
-                }
+                Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
             }
             else
             {
-                Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
+                Write-Host "Downloading $xname (v.$xversion) from valheim.thunderstore.io Failed" -ForegroundColor Red
+                Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
             }
             #unpack the file
             & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\plugins\$xname" -aoa *> $null
@@ -143,25 +135,17 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         "directunpack_thunderstore_root" #==============================================================================================
         {
             $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
-            #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($localModList.$xname -eq $xversion))
+            #download the file
+            $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
+            $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
+            if ($download_result.StatusCode -eq 200)
             {
-                #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
-                if ($download_result.StatusCode -eq 200)
-                {
-                    Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
-                }
-                else
-                {
-                    Write-Host "Downloading $xname (v.$xversion) from valheim.thunderstore.io Failed" -ForegroundColor Red
-                    Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
-                }
+                Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
             }
             else
             {
-                Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
+                Write-Host "Downloading $xname (v.$xversion) from valheim.thunderstore.io Failed" -ForegroundColor Red
+                Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
             }
             #unpack the file
             & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot" -aoa *> $null
@@ -179,54 +163,38 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         "raw" #==============================================================================================
         {
             $download_url = $xurl + ($mod.value.urlsuffix).Replace("<Vers>", "/$xversion")
-            #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.dll") -or ($localModList.$xname -eq $xversion))
+            #download the file
+            $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
+            $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.dll" -PassThru
+            if($? -eq $true)
             {
-                #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.dll" -PassThru
-                if($? -eq $true)
-                {
-                    New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force | Out-Null
-                }
-                if ($download_result.StatusCode -eq 200)
-                {
-                    Write-Host "$xname (v.$xversion) successfully downloaded from $xurl ($filesize)" -ForegroundColor Green
-                }
-                else
-                {
-                    Write-Host "Downloading $xname (v.$xversion) from $xurl Failed" -ForegroundColor Red
-                    Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
-                }
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force | Out-Null
+            }
+            if ($download_result.StatusCode -eq 200)
+            {
+                Write-Host "$xname (v.$xversion) successfully downloaded from $xurl ($filesize)" -ForegroundColor Green
             }
             else
             {
-                Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
+                Write-Host "Downloading $xname (v.$xversion) from $xurl Failed" -ForegroundColor Red
+                Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
             }
             Copy-Item -Path "$PackBin\ModArchive\$xname.dll" -Destination "$PSScriptRoot\BepInEx\plugins\$xname.dll" -Force
         }
         "directunpack_github" #==============================================================================================
         {
             $download_url = $xurl + "/releases/download/$xversion/$xname" + "_" + "v$xversion.zip"
-            #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($localModList.$xname -eq $xversion))
+            #download the file
+            $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
+            $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
+            if ($download_result.StatusCode -eq 200)
             {
-                #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
-                if ($download_result.StatusCode -eq 200)
-                {
-                    Write-Host "$xname (v.$xversion) successfully downloaded from github  ($filesize)" -ForegroundColor Green
-                }
-                else
-                {
-                    Write-Host "Downloading $xname (v.$xversion) from github Failed" -ForegroundColor Red
-                    Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
-                }
+                Write-Host "$xname (v.$xversion) successfully downloaded from github  ($filesize)" -ForegroundColor Green
             }
             else
             {
-                Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
+                Write-Host "Downloading $xname (v.$xversion) from github Failed" -ForegroundColor Red
+                Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
             }
             #unpack the file
             & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\plugins\$xname" -aoa *> $null
@@ -249,25 +217,17 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         "directunpack_thunderstore_bepinex" #==============================================================================================
         {
             $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
-            #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($localModList.$xname -ne $xversion))
+            #download the file
+            $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
+            $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
+            if ($download_result.StatusCode -eq 200)
             {
-                #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
-                if ($download_result.StatusCode -eq 200)
-                {
-                    Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
-                }
-                else
-                {
-                    Write-Host "Downloading $xname (v.$xversion) from valheim.thunderstore.io Failed" -ForegroundColor Red
-                    Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
-                }
+                Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
             }
             else
             {
-                Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
+                Write-Host "Downloading $xname (v.$xversion) from valheim.thunderstore.io Failed" -ForegroundColor Red
+                Write-Host "Error code: $($download_result.StatusCode)" -ForegroundColor Red
             }
             #unpack the file
             if (!(Test-Path -Path "$PSScriptRoot\BepInEx\unpack\$xname"))
