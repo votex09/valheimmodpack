@@ -108,7 +108,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         {
             $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
             #check if the file is already downloaded
-            (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($xversion -ne $localModList."$($xname)".version))
+            (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip"))
             {
                 #download the file
                 $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
@@ -144,7 +144,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         {
             $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
             #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($xversion -ne $localModList."$($xname)".version))
+            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip"))
             {
                 #download the file
                 $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
@@ -180,7 +180,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         {
             $download_url = $xurl + ($mod.value.urlsuffix).Replace("<Vers>", "/$xversion")
             #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.dll") -or ($xversion -ne $localModList."$($xname)".version))
+            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.dll"))
             {
                 #download the file
                 $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
@@ -209,7 +209,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         {
             $download_url = $xurl + "/releases/download/$xversion/$xname" + "_" + "v$xversion.zip"
             #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($xversion -ne $localModList."$($xname)".version))
+            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip"))
             {
                 #download the file
                 $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
@@ -250,7 +250,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         {
             $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
             #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($xversion -ne $localModList."$($xname)".version))
+            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip"))
             {
                 #download the file
                 $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
