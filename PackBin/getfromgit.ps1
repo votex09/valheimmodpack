@@ -212,7 +212,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip"))
             {
                 #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
+                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
                 $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
                 if ($download_result.StatusCode -eq 200)
                 {
