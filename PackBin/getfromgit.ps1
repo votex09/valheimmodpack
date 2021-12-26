@@ -598,6 +598,10 @@ if ($args[0] -eq "-update")
                 }
                 Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
             }
+            If ((Test-Path -Path "$PSScriptRoot\BepinEx\Plugins")) 
+            {
+                Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
+            }
             #Clear-Host
             #$ModName[0] $localModList."$($ModName[0])"      #Example of retrieving the modname and its version from its entry in .\PackBin\ModVer
             #Write-Host $config."$($ModName[0])".url            #Example of retrieving the data from the pack.ini file
@@ -624,10 +628,6 @@ if ($args[0] -eq "-update")
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack" -Type directory
             git -C ("$PSScriptRoot\PackBin\git\ ") clone ("https://github.com/votex09/valheimdirtbagmodpack") --progress
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\clone.bat -NoNewWindow
-            If ((Test-Path -Path "$PSScriptRoot\BepinEx\Plugins")) 
-            {
-                Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
-            }
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #if user locked configs, move configs to config folder
             if ($l -eq $true) 
