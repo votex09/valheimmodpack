@@ -547,7 +547,7 @@ if ($args[0] -eq "-update")
             foreach ($mod in $config.GetEnumerator())
             {
                 $curName = $mod.name
-                Write-Host "$curName - Remote: v$($mod.value.version) Local: v$($localModList.$($curName))" -ForegroundColor Yellow
+                Write-Host "$curName - Remote: v$($mod.value.version) Local: v$localModList.$($mod.name)" -ForegroundColor Yellow
                 if (!($localModList."$($mod.name)") -or ($localModList."$($mod.name)".version -ne $mod.value.version))
                 {
                     if ($config."$($mod.name)".specialinstall = "false")
