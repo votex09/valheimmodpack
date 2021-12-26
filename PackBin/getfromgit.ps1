@@ -137,7 +137,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             }
             if($? -eq $true)
             {
-                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force | Out-Null
             }
         }
         "directunpack_thunderstore_root" #==============================================================================================
@@ -173,7 +173,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             }
             if($? -eq $true)
             {
-                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force | Out-Null
             }
         }
         "raw" #==============================================================================================
@@ -187,7 +187,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.dll" -PassThru
                 if($? -eq $true)
                 {
-                    New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+                    New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force | Out-Null
                 }
                 if ($download_result.StatusCode -eq 200)
                 {
@@ -238,7 +238,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             }
             if($? -eq $true)
             {
-                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force | Out-Null
             }
 
         }
@@ -288,7 +288,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             }
             if($? -eq $true)
             {
-                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force
+                New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force | Out-Null
             }
         }
     }
