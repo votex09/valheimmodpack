@@ -1,7 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 $bepdisabled = "$PSScriptRoot\winhttp.disabled"
 $bepenabled = "$PSScriptRoot\winhttp.dll"
-$EVAVersion = "1.3.0"
 $bepvers = (Get-Item ".\bepinex\core\bepinex.dll").VersionInfo.ProductVersion
 $HDEnabled = "$PSScriptRoot\valheim_Data\HDEnabled"
 $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
@@ -443,6 +442,15 @@ if ($args[0] -eq "-update")
 {
     #get ini file content as a dictionary
     $config = Get-IniFile "$PackBin\pack.ini"
+    #create needed directories if they don't exist
+    if (!(Test-Path -Path $PSScriptRoot\PackBin\ModVer)) 
+    {
+        New-Item -Path $PSScriptRoot\PackBin\ModVer -Type directory
+    }
+    if (!(Test-Path -Path $PSScriptRoot\PackBin\ModArchive))
+    {
+        New-Item -Path $PSScriptRoot\PackBin\ModArchive -Type directory
+    }
     #get the filename and content of each file in .\PackBin\ModVer and store them in a dictionary
     $localModList = @{};
     $ModName = Get-ChildItem -Path $ModVer -File
