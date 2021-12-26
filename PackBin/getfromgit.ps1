@@ -341,8 +341,9 @@ if ($args[0] -eq "-full")
 }
 if ($args[0] -eq "-checkstatus") 
 {
-    if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe")) 
+    if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe") -and (Test-Path -Path "$PSScriptRoot\winhttp.dll"))
     {
+        Write-Host "Git is installed." -ForegroundColor Green
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") remote update *> $null
         git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") status -uno | Out-File -FilePath "$PSScriptRoot\PackBin\gitstatus.txt"
         $updatemessage = Get-Item -Path "$PSScriptRoot\PackBin\gitstatus.txt" | Get-Content -Tail 5
@@ -358,6 +359,10 @@ if ($args[0] -eq "-checkstatus")
         Write-Host $logshort[4] -ForegroundColor Blue
         Write-Host $logshort[5] -ForegroundColor Blue
     }
+    else
+    {
+        Write-Host "Git is not installed." -ForegroundColor Red 
+    }
     <#
     if (Test-Path -Path $PSScriptRoot\PackBin\Version) 
     {
@@ -371,10 +376,6 @@ if ($args[0] -eq "-checkstatus")
         Write-Host $updates[0] -ForegroundColor Blue
     }
     #>
-    else 
-    {
-        Write-Host "No update log found. Please update the pack."
-    }
     Write-Host "`n=========================`n"
 
     If (Test-Path -Path $bepdisabled) 
