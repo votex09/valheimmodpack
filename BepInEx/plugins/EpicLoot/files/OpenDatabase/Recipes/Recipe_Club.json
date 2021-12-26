@@ -1,0 +1,19 @@
+{
+	"recipe_id": "Recipe_Club",
+	"result_item_id": "Club",
+	"result_amount": 1,
+	"RepairStation": "$piece_workbench",
+	"minStationLevel": 1,
+	"ingredients": [
+		{
+			"id": "Wood",
+			"amount": 6,
+			"amountPerLevel": 0
+		},
+		{
+			"id": "BoneFragments",
+			"amount": 0,
+			"amountPerLevel": 5
+		}
+	]
+}

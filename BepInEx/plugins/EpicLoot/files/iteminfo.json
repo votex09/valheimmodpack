@@ -1,0 +1,99 @@
+{
+  "ItemInfo": [
+    {
+      "Type": "Swords",
+      "Fallback": "AxeFlint",
+      "Items": [ "SwordBronze", "SwordIron", "SwordSilver", "SwordBlackmetal", "SwordHeavymetal", "SwordFrometal", "SwordFlametal" ]
+    },
+    {
+      "Type": "Axes",
+      "Fallback": "Club",
+      "Items": [ "AxeStone", "AxeFlint", "AxeBronze", "AxeIron", "AxeBlackMetal", "AxeHeavymetal", "AxeFrometal", "AxeFlametal" ]
+    },
+    {
+      "Type": "TwoHandAxes",
+      "Fallback": "AxeIron",
+      "Items": [ "Battleaxe", "BattleaxeHeavymetal", "BattleaxeFrometal", "BattleaxeFlametal" ]
+    },
+    {
+      "Type": "Knives",
+      "Fallback": "Club",
+      "Items": [ "KnifeFlint", "KnifeCopper", "KnifeChitin", "KnifeBlackMetal", "KnifeHeavymetal", "KnifeFrometal", "KnifeFlametal" ]
+    },
+    {
+      "Type": "Clubs",
+      "Fallback": "",
+      "Items": [ "Club", "MaceBronze", "MaceIron", "MaceSilver", "MaceNeedle", "MaceHeavymetal", "MaceFrometal", "MaceFlametal" ]
+    },
+    {
+      "Type": "Sledges",
+      "Fallback": "AxeFlint",
+      "Items": [ "SledgeStagbreaker", "SledgeIron", "SledgeHeavymetal", "SledgeFrometal", "SledgeFlametal" ]
+    },
+    {
+      "Type": "Polearms",
+      "Fallback": "SpearBronze",
+      "Items": [ "AtgeirBronze", "AtgeirIron", "AtgeirBlackmetal", "AtgeirHeavymetal", "AtgeirFrometal", "AtgeirFlametal" ]
+    },
+    {
+      "Type": "Spears",
+      "Fallback": "Club",
+      "Items": [ "SpearFlint", "SpearBronze", "SpearElderbark", "SpearChitin", "SpearWolfFang", "SpearHeavymetal", "SpearFrometal", "SpearFlametal" ]
+    },
+    {
+      "Type": "Pickaxes",
+      "Fallback": "AxeFlint",
+      "Items": [ "PickaxeAntler", "PickaxeBronze", "PickaxeIron", "PickaxeHeavymetal", "PickaxeFrometal", "PickaxeFlametal" ]
+    },
+    {
+      "Type": "Bows",
+      "Fallback": "Club",
+      "Items": [ "Bow", "BowFineWood", "BowHuntsman", "BowDraugrFang", "BowHeavymetal", "BowFrometal", "BowFlametal" ]
+    },
+    {
+      "Type": "RoundShields",
+      "Fallback": "Club",
+      "Items": [ "ShieldWood", "ShieldBronzeBuckler", "ShieldBanded", "ShieldSilver", "ShieldBlackmetal", "ShieldHeavymetal", "ShieldFrometal", "ShieldFlametal" ]
+    },
+    {
+      "Type": "TowerShields",
+      "Fallback": "Club",
+      "Items": [ "ShieldWoodTower", "ShieldIronTower", "ShieldSerpentscale", "ShieldBlackmetalTower", "ShieldHeavymetalTower", "ShieldFrometalTower", "ShieldFlametalTower" ]
+    },
+    {
+      "Type": "ChestArmor",
+      "Fallback": "",
+      "Items": [ "ArmorRagsChest", "ArmorLeatherChest", "ArmorTrollLeatherChest", "ArmorBronzeChest", "ArmorIronChest", "ArmorWolfChest", "ArmorPaddedCuirass", "T1ChaosPlateArmor", "T2ChaosPlateArmor", "ChaosPlateArmorBody" ]
+    },
+    {
+      "Type": "LegsArmor",
+      "Fallback": "",
+      "Items": [ "ArmorRagsLegs", "ArmorLeatherLegs", "ArmorTrollLeatherLegs", "ArmorBronzeLegs", "ArmorIronLegs", "ArmorWolfLegs", "ArmorPaddedGreaves", "T1ChaosPlateLegs", "T2ChaosPlateLegs", "ChaosPlateLegs" ]
+    },
+    {
+      "Type": "HeadArmor",
+      "Fallback": "ArmorRagsChest",
+      "Items": [ "HelmetLeather", "HelmetTrollLeather", "HelmetBronze", "HelmetIron", "HelmetDrake", "HelmetPadded", "T1ChaosPlateHelm", "T2ChaosPlateHelm", "ChaosPlateHelm" ]
+    },
+    {
+      "Type": "ShouldersArmor",
+      "Fallback": "ArmorRagsLegs",
+      "Items": [ "CapeDeerHide", "CapeTrollHide", "CapeWolf", "CapeLinen", "CapeLox" ]
+    },
+    {
+      "Type": "Torches",
+      "Fallback": "Club",
+      "Items": [ "Torch" ]
+    },
+    {
+      "Type": "Tools",
+      "Fallback": "Club",
+      "Items": [ "Hammer", "Hoe", "Cultivator" ]
+    },
+    {
+      "Type": "Utility",
+      "Fallback": "",
+      "Items": [ ]
+    }
+  ]
+}
