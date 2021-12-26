@@ -129,7 +129,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname" -Force -Verbose
+            Expand-Archive -Path $PackBin\ModArchive\$xname.zip -DestinationPath "$PSScriptRoot\BepInEx\plugins\$xname" -Force -Verbose
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -165,7 +165,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot" -Force -Verbose
+            Expand-Archive -Path $PackBin\ModArchive\$xname.zip -DestinationPath "$PSScriptRoot" -Force -Verbose
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -204,7 +204,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
-            Copy-Item -Path "$PackBin\ModArchive\$xname.dll" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname.dll" -Force -Verbose
+            Copy-Item -Path "$PackBin\ModArchive\$xname.dll" -Destination "$PSScriptRoot\BepInEx\plugins\$xname.dll" -Force -Verbose
         }
         "directunpack_github" #==============================================================================================
         {
@@ -230,7 +230,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\Plugins\$xname" -Force -Verbose
+            Expand-Archive -Path $PackBin\ModArchive\$xname.zip -Destinationpath "$PSScriptRoot\BepInEx\plugins\$xname" -Force -Verbose
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -271,7 +271,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            Expand-Archive -Path "$PackBin\ModArchive\$xname.zip" -Destination "$PSScriptRoot\BepInEx\unpack\$xname" -Force -Verbose
+            Expand-Archive -Path $PackBin\ModArchive\$xname.zip -DestinationPath "$PSScriptRoot\BepInEx\unpack\$xname" -Force -Verbose
             if (!(Test-Path -Path "$PSScriptRoot\BepInEx\unpack\$xname"))
             {
                 New-Item -Path "$PSScriptRoot\BepInEx\unpack\$xname" -ItemType Directory
