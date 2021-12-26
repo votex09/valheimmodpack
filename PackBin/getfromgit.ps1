@@ -520,6 +520,23 @@ if ($args[0] -eq "-update")
             Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
         }
         Write-Host "Git found." -ForegroundColor Green
+        foreach ($mod in $config.GetEnumerator())
+        {
+            #Write-Host "$($mod.name)"
+            if (!($localModList."$($mod.name)") -or ($localModList."$($mod.name)".version -ne $mod.value.version))
+            {
+                if ($config."$($mod.name)".specialinstall = "false")
+                {
+                    #normal install
+                    Get-DLMethod $mod.name $mod.value.method $mod.value.url $mod.value.version $false $mod.value.urlsuffix
+                }
+                else
+                {
+                    #special install
+                    Get-DLMethod $mod.name $mod.value.method $mod.value.url $mod.value.version $true $mod.value.urlsuffix
+                }
+            }
+        }
         if (Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\winhttp.dll") 
         {
             If ((Test-Path -Path "$PSScriptRoot\BepinEx\Plugins\")) 
@@ -531,23 +548,6 @@ if ($args[0] -eq "-update")
             #Write-Host $config."$($ModName[0])".url            #Example of retrieving the data from the pack.ini file
             #===========================================================================================================================
             #download mods that are missing or are out of date from ModVer based on the pack.ini file
-            foreach ($mod in $config.GetEnumerator())
-            {
-                #Write-Host "$($mod.name)"
-                if (!($localModList."$($mod.name)") -or ($localModList."$($mod.name)".version -ne $mod.value.version))
-                {
-                    if ($config."$($mod.name)".specialinstall = "false")
-                    {
-                        #normal install
-                        Get-DLMethod $mod.name $mod.value.method $mod.value.url $mod.value.version $false $mod.value.urlsuffix
-                    }
-                    else
-                    {
-                        #special install
-                        Get-DLMethod $mod.name $mod.value.method $mod.value.url $mod.value.version $true $mod.value.urlsuffix
-                    }
-                }
-            }
             git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") pull --progress
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\pull.bat -NoNewWindow
             Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
