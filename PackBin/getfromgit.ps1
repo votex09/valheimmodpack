@@ -129,7 +129,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\plugins\$xname" *> $null
+            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\plugins\$xname" /E /NFL /NDL /NJH /NJS /nc /ns *> $null
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -165,7 +165,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot" *> $null
+            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot" /E /NFL /NDL /NJH /NJS /nc /ns *> $null
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -230,7 +230,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\plugins\$xname" *> $null
+            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\plugins\$xname" /E /NFL /NDL /NJH /NJS /nc /ns *> $null
             #delete the archive on error
             if ($? -eq $false)
             {
@@ -271,7 +271,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\unpack\$xname" *> $null
+            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\unpack\$xname" /E /NFL /NDL /NJH /NJS /nc /ns *> $null
             if (!(Test-Path -Path "$PSScriptRoot\BepInEx\unpack\$xname"))
             {
                 New-Item -Path "$PSScriptRoot\BepInEx\unpack\$xname" -ItemType Directory
