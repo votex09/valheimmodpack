@@ -532,73 +532,12 @@ if ($args[0] -eq "-update")
             Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
         }
         Write-Host "Git found." -ForegroundColor Green
-        foreach ($mod in $config.GetEnumerator())
-        {
-            #Write-Host "$($mod.name)"
-            if (!($localModList."$($mod.name)") -or ($localModList."$($mod.name)".version -ne $mod.value.version))
-            {
-                if ($config."$($mod.name)".specialinstall = "false")
-                {
-                    #normal install
-                    Get-DLMethod $mod.name $mod.value.method $mod.value.url $mod.value.version $false $mod.value.urlsuffix
-                }
-                else
-                {
-                    #special install
-                    Get-DLMethod $mod.name $mod.value.method $mod.value.url $mod.value.version $true $mod.value.urlsuffix
-                }
-            }
-        }
         if (Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\PackBin\pack.ini") 
         {
             If ((Test-Path -Path "$PSScriptRoot\BepinEx\Plugins\")) 
             {
                 Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
             }
-            #Clear-Host
-            #$ModName[0] $localModList."$($ModName[0])"      #Example of retrieving the modname and its version from its entry in .\PackBin\ModVer
-            #Write-Host $config."$($ModName[0])".url            #Example of retrieving the data from the pack.ini file
-            #===========================================================================================================================
-            #download mods that are missing or are out of date from ModVer based on the pack.ini file
-            git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") pull --progress
-            #Start-Process -Filepath $PSScriptRoot\PackBin\git\pull.bat -NoNewWindow
-            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
-            #if user locked configs, move configs to config folder
-            if ($l -eq $true) 
-            {
-                Write-Host "Reapplying user configs..." -ForegroundColor Green
-                for ($i =0; $i -lt $availablelocks.Count; $i++) 
-                {
-                    Copy-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg" -Destination "$pathtoConfig\"
-                    Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
-                }
-            }
-            Write-Host "Update complete." -ForegroundColor Green
-            pause
-            exit
-        }
-        else 
-        {
-            #check to see if user locked configs
-            $l = $false
-            for ($i = 0; $i -lt $availablelocks.Count; $i++) 
-            {
-                $SEL = Select-String -Path $excludefile -Pattern "$($availablelocks[$i])"
-                if ($null -ne $SEL) 
-                {
-                    $l = $true
-                }
-            }
-            #if user locked configs, copy configs to PackBin folder
-            if ($l -eq $true) 
-            {
-                for ($i =0; $i -lt $availablelocks.Count; $i++) 
-                {
-                    Copy-Item -Path "$pathtoConfig\$($availablelocks[$i]).cfg" -Destination "$PSScriptRoot\PackBin\"
-                }
-                Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
-            }
-            
             #Clear-Host
             #$ModName[0] $localModList."$($ModName[0])"      #Example of retrieving the modname and its version from its entry in .\PackBin\ModVer
             #Write-Host $config."$($ModName[0])".url            #Example of retrieving the data from the pack.ini file
@@ -621,6 +560,25 @@ if ($args[0] -eq "-update")
                     }
                 }
             }
+            git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") pull --progress
+            #Start-Process -Filepath $PSScriptRoot\PackBin\git\pull.bat -NoNewWindow
+            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
+            #if user locked configs, move configs to config folder
+            if ($l -eq $true) 
+            {
+                Write-Host "Reapplying user configs..." -ForegroundColor Green
+                for ($i =0; $i -lt $availablelocks.Count; $i++) 
+                {
+                    Copy-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg" -Destination "$pathtoConfig\"
+                    Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
+                }
+            }
+            Write-Host "Update complete." -ForegroundColor Green
+            pause
+            exit
+        }
+        else 
+        {
             Write-Host "Pack not found. Cloning repository..." -ForegroundColor Yellow
             New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack" -Type directory
             git -C ("$PSScriptRoot\PackBin\git\ ") clone ("https://github.com/votex09/valheimdirtbagmodpack") --progress
