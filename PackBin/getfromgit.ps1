@@ -108,7 +108,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
         {
             $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
             #check if the file is already downloaded
-            if (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip"))
+            (!(Test-Path -Path "$PackBin\ModArchive\$xname.zip") -or ($xversion -ne $localModList."$($xname)".version))
             {
                 #download the file
                 $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
@@ -546,7 +546,7 @@ if ($args[0] -eq "-update")
             #download mods that are missing or are out of date from ModVer based on the pack.ini file
             foreach ($mod in $config.GetEnumerator())
             {
-                #Write-Host "$($mod.name)"
+                Write-Host "$($mod.name) - Remote: v$($mod.value.version) Local: v$localModList."$($mod.name)".version" -ForegroundColor Yellow
                 if (!($localModList."$($mod.name)") -or ($localModList."$($mod.name)".version -ne $mod.value.version))
                 {
                     if ($config."$($mod.name)".specialinstall = "false")
