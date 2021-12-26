@@ -274,9 +274,12 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 New-Item -Path "$PSScriptRoot\BepInEx\unpack\$xname" -ItemType Directory
             }
+            else
+            {
+                Remove-Item -Path "$PSScriptRoot\BepInEx\unpack\*" -Recurse -Force
+            }
             & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\unpack\$xname" -aoa *> $null
             Copy-Item -Path "$PSScriptRoot\BepInEx\unpack\$xname\BepInExPack_Valheim\*" -Destination "$PSScriptRoot\" -Recurse -Force
-            Remove-Item -Path "$PSScriptRoot\BepInEx\unpack\" -Recurse -Force
             #delete the archive on error
             if ($? -eq $false)
             {
