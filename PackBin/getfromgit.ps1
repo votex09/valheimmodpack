@@ -636,7 +636,7 @@ if ($args[0] -eq "-update")
                     Remove-Item -Path "$PSScriptRoot\PackBin\$($availablelocks[$i]).cfg"
                 }
             }
-            Write-Host "Update complete." -ForegroundColor Green
+            Write-Host "Preliminary Update complete. Please run Update again." -ForegroundColor Green
             pause
             exit
         }
