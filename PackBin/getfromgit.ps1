@@ -270,11 +270,11 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
             #unpack the file
-            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\unpack\$xname" -aoa *> $null
             if (!(Test-Path -Path "$PSScriptRoot\BepInEx\unpack\$xname"))
             {
                 New-Item -Path "$PSScriptRoot\BepInEx\unpack\$xname" -ItemType Directory
             }
+            & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PackBin\ModArchive\$xname.zip" "-o$PSScriptRoot\BepInEx\unpack\$xname" -aoa *> $null
             Copy-Item -Path "$PSScriptRoot\BepInEx\unpack\$xname\BepInExPack_Valheim\*" -Destination "$PSScriptRoot\" -Recurse -Force
             Remove-Item -Path "$PSScriptRoot\BepInEx\unpack\" -Recurse -Force
             #delete the archive on error
