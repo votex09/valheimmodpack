@@ -549,7 +549,7 @@ if ($args[0] -eq "-update")
                 }
             }
         }
-        if (Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\winhttp.dll") 
+        if (Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\PackBin\pack.ini") 
         {
             If ((Test-Path -Path "$PSScriptRoot\BepinEx\Plugins\")) 
             {
@@ -598,10 +598,7 @@ if ($args[0] -eq "-update")
                 }
                 Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
             }
-            If ((Test-Path -Path "$PSScriptRoot\BepinEx\Plugins")) 
-            {
-                Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
-            }
+            
             #Clear-Host
             #$ModName[0] $localModList."$($ModName[0])"      #Example of retrieving the modname and its version from its entry in .\PackBin\ModVer
             #Write-Host $config."$($ModName[0])".url            #Example of retrieving the data from the pack.ini file
