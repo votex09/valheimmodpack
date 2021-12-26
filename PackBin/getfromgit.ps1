@@ -203,7 +203,7 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 Write-Host "$xname (v.$xversion) already exists" -ForegroundColor Cyan
             }
-            Copy-Item -Path "$PackBin\ModArchive\$xname.dll" -Destination "$PSScriptRoot\BepInEx\plugins\$xname.dll" -Force -Verbose
+            Copy-Item -Path "$PackBin\ModArchive\$xname.dll" -Destination "$PSScriptRoot\BepInEx\plugins\$xname.dll" -Force
         }
         "directunpack_github" #==============================================================================================
         {
