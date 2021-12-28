@@ -111,8 +111,8 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             if ($xurl -ne "reinstall")
             {
                 #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
+                $filesize = (((Invoke-WebRequest -UseBasicParsing -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
+                $download_result = Invoke-WebRequest -UseBasicParsing -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
                 if ($download_result.StatusCode -eq 200)
                 {
                     Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
@@ -146,8 +146,8 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
                 #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
+                $filesize = (((Invoke-WebRequest -UseBasicParsing -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
+                $download_result = Invoke-WebRequest -UseBasicParsing -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
                 if ($download_result.StatusCode -eq 200)
                 {
                     Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
@@ -181,8 +181,8 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 $download_url = $xurl + ($mod.value.urlsuffix).Replace("<Vers>", "/$xversion")
                 #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.dll" -PassThru
+                $filesize = (((Invoke-WebRequest -UseBasicParsing -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString(".00") + " MB"
+                $download_result = Invoke-WebRequest -UseBasicParsing -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.dll" -PassThru
                 if($? -eq $true)
                 {
                     New-Item -Path "$ModVer\$xname" -ItemType File -Value "$xversion" -Force | Out-Null
@@ -209,8 +209,8 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 $download_url = $xurl + "/releases/download/$xversion/$xname" + "_" + "v$xversion.zip"
                 #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
+                $filesize = (((Invoke-WebRequest -UseBasicParsing -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
+                $download_result = Invoke-WebRequest -UseBasicParsing -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
                 if ($download_result.StatusCode -eq 200)
                 {
                     Write-Host "$xname (v.$xversion) successfully downloaded from github  ($filesize)" -ForegroundColor Green
@@ -249,8 +249,8 @@ Function Get-DLMethod ($xname, $xmethod, $xurl, $xversion, $special, $urlsuffix)
             {
                 $download_url = $xurl.Replace("/package/", "/package/download/") + "/$xversion"
                 #download the file
-                $filesize = (((Invoke-WebRequest -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
-                $download_result = Invoke-WebRequest -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
+                $filesize = (((Invoke-WebRequest -UseBasicParsing -Uri $download_url -Method Head).Headers.'Content-Length') / 1024 / 1024).ToString("0.00") + " MB"
+                $download_result = Invoke-WebRequest -UseBasicParsing -Uri $download_url -OutFile "$PackBin\ModArchive\$xname.zip" -PassThru
                 if ($download_result.StatusCode -eq 200)
                 {
                     Write-Host "$xname (v.$xversion) successfully downloaded from valheim.thunderstore.io ($filesize)" -ForegroundColor Green
