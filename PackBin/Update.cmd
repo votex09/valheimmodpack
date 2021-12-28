@@ -1,6 +1,6 @@
 @echo off
 :Selector
-curl -o getfromgit.ps1 https://raw.githubusercontent.com/votex09/valheimdirtbagmodpack/main/PackBin/getfromgit.ps1
+curl -o getfromgit.ps1 https://raw.githubusercontent.com/votex09/valheimdirtbagmodpack/main/PackBin/getfromgit.ps1 -L
 cls
 ECHO =============================
 ECHO    Valheim Updater/Patcher
@@ -31,4 +31,4 @@ goto Selector
 :startgame
 explorer steam://rungameid/892970
 :end
-curl -o Update.cmd https://raw.githubusercontent.com/votex09/valheimdirtbagmodpack/main/PackBin/Update.cmd
+curl -o Update.cmd https://raw.githubusercontent.com/votex09/valheimdirtbagmodpack/main/PackBin/Update.cmd -L
