@@ -14,7 +14,7 @@ $HDDisabled = "$PSScriptRoot\valheim_Data\HDDisabled"
 $PackBin = "$PSScriptRoot\PackBin"
 $ModVer = "$PSScriptRoot\PackBin\ModVer"
 $pathtoConfig = "$PSScriptRoot\BepInEx\config"
-$excludefile = "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude"
+$excludefile = "$PSScriptRoot\PackBin\git\valheimmodpack\.git\info\exclude"
 $availablelocks = @('manfredo52.CustomizableCamera','randyknapp.mods.equipmentandquickslots','virtuacode.valheim.equipwheel')
 function Get-IniFile {
     <#
@@ -334,10 +334,10 @@ if ($args[0] -eq "-full")
         Rename-Item -Path $bepdisabled -NewName "winhttp.dll"
     }
     Write-Host "Downloading mod package from git..."
-    Invoke-WebRequest "https://github.com/votex09/valheimdirtbagmodpack/archive/main.zip" -O $PSScriptRoot\PackBin\pack.zip
+    Invoke-WebRequest "https://github.com/votex09/valheimmodpack/archive/main.zip" -O $PSScriptRoot\PackBin\pack.zip
     & "$PSScriptRoot\PackBin\7z\7za.exe" x "$PSScriptRoot\PackBin\pack.zip" "-o$PSScriptRoot\PackBin\unpack\"
     Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
-    Robocopy ("$PSScriptRoot\PackBin\unpack\valheimdirtbagmodpack-main\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
+    Robocopy ("$PSScriptRoot\PackBin\unpack\valheimmodpack-main\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
     Clear-Host
     Write-Host "Cleaning up..."
     Remove-Item "$PSscriptRoot\PackBin\Unpack\*" -Recurse
@@ -351,13 +351,13 @@ if ($args[0] -eq "-checkstatus")
     if ((Test-Path -Path "C:\Program Files\Git\git-cmd.exe"))
     {
         Write-Host "Git is installed." -ForegroundColor Green
-        git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") remote update *> $null
-        git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") status -uno | Out-File -FilePath "$PSScriptRoot\PackBin\gitstatus.txt"
+        git -C ("$PSScriptRoot\PackBin\git\valheimmodpack\ ") remote update *> $null
+        git -C ("$PSScriptRoot\PackBin\git\valheimmodpack\ ") status -uno | Out-File -FilePath "$PSScriptRoot\PackBin\gitstatus.txt"
         $updatemessage = Get-Item -Path "$PSScriptRoot\PackBin\gitstatus.txt" | Get-Content -Tail 5
         Write-Host $updatemessage[1].Replace("fast-forwarded.", "updated.").Replace("branch", "modpack version") -ForegroundColor Cyan
-        $vers = git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") rev-list --count origin/main 
+        $vers = git -C ("$PSScriptRoot\PackBin\git\valheimmodpack\ ") rev-list --count origin/main 
         Write-Host "Current Version : $vers/$bepvers-- Update Log:`n"
-        git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") log origin/main --no-merges --pretty='format:%cs | %ch | %s' | Out-File -FilePath "$PSScriptRoot\PackBin\gitlog.txt"
+        git -C ("$PSScriptRoot\PackBin\git\valheimmodpack\ ") log origin/main --no-merges --pretty='format:%cs | %ch | %s' | Out-File -FilePath "$PSScriptRoot\PackBin\gitlog.txt"
         $logshort = Get-Item -Path "$PSScriptRoot\PackBin\gitlog.txt" | Get-Content -Head 6
         Write-Host $logshort[0] -ForegroundColor Blue
         Write-Host $logshort[1] -ForegroundColor Blue
@@ -526,15 +526,15 @@ if ($args[0] -eq "-update")
             Write-Host "Config locks found. Preserving user configs..." -ForegroundColor Green
         }
         Write-Host "Git found." -ForegroundColor Green
-        if (Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\PackBin\pack.ini") 
+        if (Test-Path -Path "$PSScriptRoot\PackBin\git\valheimmodpack\PackBin\pack.ini") 
         {
             If ((Test-Path -Path "$PSScriptRoot\BepinEx\Plugins\")) 
             {
                 Remove-Item -Path "$PSScriptRoot\BepInEx\Plugins\*" -Recurse
             }
-            git -C ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") pull --progress
+            git -C ("$PSScriptRoot\PackBin\git\valheimmodpack\ ") pull --progress
             #get ini file content as a dictionary
-            $config = Get-IniFile "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\PackBin\pack.ini"
+            $config = Get-IniFile "$PSScriptRoot\PackBin\git\valheimmodpack\PackBin\pack.ini"
             #Clear-Host
             #$ModName[0] $localModList."$($ModName[0])"      #Example of retrieving the modname and its version from its entry in .\PackBin\ModVer
             #Write-Host $config."$($ModName[0])".url            #Example of retrieving the data from the pack.ini file
@@ -563,7 +563,7 @@ if ($args[0] -eq "-update")
                 }
             }
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\pull.bat -NoNewWindow
-            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
+            Robocopy ("$PSScriptRoot\PackBin\git\valheimmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             #if user locked configs, move configs to config folder
             if ($l -eq $true) 
             {
@@ -581,10 +581,10 @@ if ($args[0] -eq "-update")
         else 
         {
             Write-Host "Pack not found. Cloning repository..." -ForegroundColor Yellow
-            New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack" -Type directory
-            git -C ("$PSScriptRoot\PackBin\git\ ") clone ("https://github.com/votex09/valheimdirtbagmodpack") --progress
+            New-Item -Path "$PSScriptRoot\PackBin\git\valheimmodpack" -Type directory
+            git -C ("$PSScriptRoot\PackBin\git\ ") clone ("https://github.com/votex09/valheimmodpack") --progress
             #Start-Process -Filepath $PSScriptRoot\PackBin\git\clone.bat -NoNewWindow
-            Robocopy ("$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
+            Robocopy ("$PSScriptRoot\PackBin\git\valheimmodpack\ ") ("$PSScriptRoot ") /E /NFL /NDL /NJH /NJS /nc /ns
             Write-Host "Preliminary Update complete. Please run Update again." -ForegroundColor Green
             pause
             exit
@@ -603,13 +603,13 @@ if ($args[0] -eq "-cfglock")
     while ($menumode -eq "continue") 
     {
         Clear-Host
-        if ((Test-Path -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")) 
+        if ((Test-Path -Path "$PSScriptRoot\PackBin\git\valheimmodpack\.git\info\exclude")) 
         {
             Write-Host "=============================`nConfig Lock Menu`n============================="
             Write-Host "This menu locks certain configs from changing on update.`nThis is the only way for keybindings for mods to persist between updates.`nEnter [X] to exit`n`n" -ForegroundColor Blue
             Write-Host "Current Locked Configs:"
             #retrieve list of locked configs from file as array@()
-            $locked = @(Get-Content -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude")
+            $locked = @(Get-Content -Path "$PSScriptRoot\PackBin\git\valheimmodpack\.git\info\exclude")
             #loop through list and print to screen
             for ($i = 0; $i -lt $locked.Count; $i++) 
             {
@@ -724,7 +724,7 @@ if ($args[0] -eq "-cfglock")
         }
         else 
         {
-            New-Item -Path "$PSScriptRoot\PackBin\git\valheimdirtbagmodpack\.git\info\exclude" -Type file
+            New-Item -Path "$PSScriptRoot\PackBin\git\valheimmodpack\.git\info\exclude" -Type file
         }
         (Get-Content $excludefile) | Where-Object {$_.trim() -ne "" } | set-content $excludefile
         Start-Sleep 2
